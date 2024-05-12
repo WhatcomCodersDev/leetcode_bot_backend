@@ -8,6 +8,18 @@ from app.services.redis_client import RedisClient
 
 load_dotenv()
 
+environment = os.getenv("ENVIRONMENT", "development")  # Default to development if not set
+print(f"Current environment: {environment}")
+if environment == "production":
+    question_channel_id = int(os.getenv('PROD_QUESTION_CHANNEL_ID'))
+    answer_channel_id = int(os.getenv('PROD_ANSWER_CHANNEL_ID'))
+    announce_channel_id = int(os.getenv('PROD_ANNOUNCE_CHANNEL_ID'))
+    discord_bot_token = os.getenv("DISCORD_BOT_TOKEN")
+else:
+    question_channel_id = int(os.getenv('TEST_QUESTION_CHANNEL_ID'))
+    answer_channel_id = int(os.getenv('TEST_ANSWER_CHANNEL_ID'))
+    announce_channel_id = int(os.getenv('TEST_ANNOUNCE_CHANNEL_ID'))
+    discord_bot_token = os.getenv('DEV_BOT_TOKEN')
 
 # Todo - Load environment variables somewhere else
 environment = os.getenv("ENVIRONMENT", "development")  # Default to development if not set

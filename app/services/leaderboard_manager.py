@@ -46,6 +46,7 @@ class LeaderboardManager:
             self.add_user_id_to_cached_attempters_list(user_id,difficulty,attempted_difficulty_map)
             self.firestore_wrapper.add_or_update_user_score(user_id, ATTEMPT_PT)
         except Exception as e:
+            print(f"Error processing points for attempt: {e}")
             return None
 
         return ATTEMPT_PT

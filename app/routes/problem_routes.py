@@ -25,5 +25,5 @@ def get_problem_by_id(problem_id):
     if not problem:
         return jsonify({'error': 'No problem found'}), 404
     
-    return jsonify(problem.to_dict()), 200
+    return jsonify(problem), 200
 

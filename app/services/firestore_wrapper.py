@@ -21,7 +21,7 @@ class FirestoreWrapper:
     
     def get_doc_ref(self, collection_ref: CollectionReference, document_name: str) -> DocumentReference:
         try:
-            doc_ref = collection_ref.document(document_name)
+            doc_ref = collection_ref.document(str(document_name))
         except Exception as e:
             print(f"Failed to get document with name {document_name} because: {e}")
             raise
