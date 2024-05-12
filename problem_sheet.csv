@@ -1,0 +1,521 @@
+ID,PROBLEM,URL,LEVEL,TAG,B75,B50,NC.io,G75,LC,SP,NOTES
+1,LRU Cache,https://leetcode.com/problems/lru-cache/,Medium,Design/OOD,,,X,X,X,,"Linked List, Hashtable"
+2,Min Stack,https://leetcode.com/problems/min-stack/,Easy,Design/OOD,,,X,X,X,,Stack
+3,Implement Queue Using Stacks,https://leetcode.com/problems/implement-queue-using-stacks/,Easy,Design/OOD,,,,X,,,
+4,Implement Stack Using Queues,https://leetcode.com/problems/implement-stack-using-queues/,Easy,Design/OOD,,,,,,,
+5,Insert Delete GetRandom O(1),https://leetcode.com/problems/insert-delete-getrandom-o1/,Medium,Design/OOD,,,,X,X,,"Array, Hashtable, RNG"
+6,Insert Delete GetRandom O(1) Duplicates,https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/,Hard,Design/OOD,,,,,,,"Array, Hashtable, RNG, Set"
+7,Shuffle an Array,https://leetcode.com/problems/shuffle-an-array/,Medium,Design/OOD,,,,,X,,"Array, Math, RNG"
+8,Random Pick with Weight,https://leetcode.com/problems/random-pick-with-weight/,Medium,Design/OOD,,,,X,,,RNG
+9,Time-Based Key Value Store,https://leetcode.com/problems/time-based-key-value-store/,Medium,Design/OOD,,,X,X,,,"Hashtable, Binary Search
+
+use hashmap that maps keys to a list of tuples that contain values and timestamps
+on get, binary search on timestamps to give you the MAXIMUM value such that the guess is <= timestamp"
+10,Logger Rate Limiter,https://leetcode.com/problems/logger-rate-limiter/,Easy,Design/OOD,,,,,,,
+11,Design Hit Counter,https://leetcode.com/problems/design-hit-counter/,Medium,Design/OOD,,,,X,,,Array
+12,Design Twitter,https://leetcode.com/problems/design-twitter/,Medium,Design/OOD,,,X,,,,
+13,Maximum Frequency Stack,https://leetcode.com/problems/maximum-frequency-stack/,Hard,Design/OOD,,,,X,,X,Bucket Sort
+14,Prefix and Suffix Search,https://leetcode.com/problems/prefix-and-suffix-search/,Hard,Design/OOD,,,,,,X,Trie
+15,Design Search Autocomplete System,https://leetcode.com/problems/design-search-autocomplete-system/,Hard,Design/OOD,,,,,,X,Trie
+16,Design In-Memory File System,https://leetcode.com/problems/design-in-memory-file-system/,Hard,Design/OOD,,,,X,,,Trie
+17,Operations on Tree,https://leetcode.com/problems/operations-on-tree/,Medium,Design/OOD,,,,,,,Tree
+18,Rank Teams by Votes,https://leetcode.com/problems/rank-teams-by-votes/,Medium,Design/OOD,,,,,,,Sorting
+19,Design Underground System,https://leetcode.com/problems/design-underground-system/,Medium,Design/OOD,,,,,,,Hashtable
+20,Design Excel Sum Formula,https://leetcode.com/problems/design-excel-sum-formula/description/,,Design/OOD,,,,,,,
+21,Online Stock Span,https://leetcode.com/problems/online-stock-span/,Medium,Design/OOD,,,,,,,"Stack, monotonic stack"
+22,Design Circular Queue,https://leetcode.com/problems/design-circular-queue/,Medium,Design/OOD,,,,,,,Linked list
+23,Serialize/Deserialize Nested JSON ,https://leetcode.com/discuss/interview-question/124708/Print-JSON-format-String,Hard,Design/OOD,,,,,,,
+,,,,,,,,,,,
+25,Two Sum,https://leetcode.com/problems/two-sum/,Easy,Array,X,X,X,X,X,X,
+26,Two Sum 2,https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/,Medium,Array,,,X,,,,
+27,Best Time to Buy and Sell Stock,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/,Easy,Array,X,X,X,X,X,X,Greedy
+28,Best Time to Buy and Sell Stock w/Cooldown,https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/,Medium,Array,,,X,,X,X,DP
+29,Longest Consecutive Sequence,https://leetcode.com/problems/longest-consecutive-sequence/,Medium,Array,X,X,X,X,,X,Set
+30,Contains Duplicate,https://leetcode.com/problems/contains-duplicate/,Easy,Array,X,X,X,X,,X,
+31,Product of Array Except Self,https://leetcode.com/problems/product-of-array-except-self/,Medium,Array,X,X,X,X,X,X,Prefix sum
+32,Maximum Subarray,https://leetcode.com/problems/maximum-subarray/,Easy,Array,X,X,X,X,X,,"greedy/sliding window
+trick is to keep track of total, whenever total sum goes negative, reset to 0 and start again and just keep checking:
+res = max(res, total)"
+33,Maximum Product Subarray,https://leetcode.com/problems/maximum-product-subarray/,Medium,Array,X,X,X,X,,X,DP
+34,Single Number,https://leetcode.com/problems/single-number/,Easy,Array,,,X,X,X,X,Bit Manipulation
+35,Missing Number,https://leetcode.com/problems/missing-number/,Easy,Array,,,X,X,,X,Bit Manipulation
+36,Find all Numbers Disappeared in an Array,https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/,Easy,Array,,,,,,X,
+37,Find all Duplicates in Array,https://leetcode.com/problems/find-all-duplicates-in-an-array/,Medium,Array,,,,,,X,
+38,First Missing Positive,https://leetcode.com/problems/first-missing-positive/,Hard,Array,,,,X,X,X,Hash
+39,Rotate Array,https://leetcode.com/problems/rotate-array/,Easy,Array,,,,X,X,,
+40,Contiguous Array,https://leetcode.com/problems/contiguous-array/,Medium,Array,,,,X,,,
+41,Missing Ranges,https://leetcode.com/problems/missing-ranges/,Easy,Array,,,,,X,,
+42,Majority Element,https://leetcode.com/problems/majority-element/,Easy,Array,,,,X,X,,Sorting
+43,Range Sum Query,https://leetcode.com/problems/range-sum-query-immutable/,Easy,Array,,,,,,X,"Prefix Sum, Design"
+44,Subarray Sum Equals K,https://leetcode.com/problems/subarray-sum-equals-k/,Medium,Array,,,,X,,,"Prefix Sum, Hashtable"
+45,Two City Scheduling,https://leetcode.com/problems/two-city-scheduling/solution/,Medium,Array,,,,,,,"Greedy, Sorting"
+46,Maximum Profit in Job Scheduling,https://leetcode.com/problems/maximum-profit-in-job-scheduling/,Hard,Array,,,,X,,,"DP, Binary Search, Sorting"
+47,"Minimum Number of Arrows 
+to Burst Balloons",https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/,Medium,Array,,,,,,X,Greedy
+48,Gas Station,https://leetcode.com/problems/gas-station/,Medium,Array,,,X,X,,,"Greedy, stupid asf problem
+check if sum(cost) > sum(gas), if so, return -1 because we can't make a trip
+
+keep track of possible starting point and total
+iterate through array and do total += gas[i] - cost[i]
+if total < 0, reset total to 0 and set starting point to i + 1
+then just return starting point"
+49,Hand of Straights,https://leetcode.com/problems/hand-of-straights/,Medium,Array,,,X,,,,"greedy ofc...
+
+keep a count dictionary that counts how many of each card exists
+initialize a minHeap with just the keys (unique vals in the given array)
+enter a while loop with condition while minHeap is not empty
+then get the min value thats in the heap, iterate from that min value to min value + groupSize
+if the current index is NOT in the count dictionary, we know it doesnt exist so we return false
+then decrement with count[i] -= 1, and see if it's 0
+if count[i] == 0 AND I IS NOT THE MINIMUM of the heap, WE RETURN FALSE
+otherwise we just pop from the heap"
+50,Merge Triplets to Form Target Triplet,https://leetcode.com/problems/merge-triplets-to-form-target-triplet/,Medium,Array,,,X,,,,Greedy
+,,,,,,,,,,,
+52,3Sum,https://leetcode.com/problems/3sum/,Medium,2 Pointers,X,X,X,X,,X,"Sorting input array, then making sure you skip past duplicates on the left pointer"
+53,3Sum Closest,https://leetcode.com/problems/3sum-closest/,Medium,2 Pointers,,,,X,,X,
+54,Container With Most Water,https://leetcode.com/problems/container-with-most-water/,Medium,2 Pointers,X,X,X,X,,X,Greedy
+55,Trapping Rain Water,https://leetcode.com/problems/trapping-rain-water/,Hard,2 Pointers,,,X,X,X,X,
+56,Intersection of Two Arrays 2,https://leetcode.com/problems/intersection-of-two-arrays-ii/,Easy,2 Pointers,,,,,X,,
+57,Sort Colors,https://leetcode.com/problems/sort-colors/,Medium,2 Pointers,,,,X,X,X,
+58,Squares of a Sorted Array,https://leetcode.com/problems/squares-of-a-sorted-array/,Easy,2 Pointers,,,,X,,X,
+59,Move Zeroes,https://leetcode.com/problems/move-zeroes/,Easy,2 Pointers,,,,X,,,
+60,Find the Duplicate Number,https://leetcode.com/problems/find-the-duplicate-number/,Medium,2 Pointers,,,X,X,,X,Binary Search
+61,Subarray Product Less Than K,https://leetcode.com/problems/subarray-product-less-than-k/,Medium,2 Pointers,,,,,,X,
+62,Next Permutation,https://leetcode.com/problems/next-permutation/,Medium,2 Pointers,,,,,,,Recursion?
+,,,,,,,,,,,
+64,Longest Substring w/out Repeating Chars,https://leetcode.com/problems/longest-substring-without-repeating-characters/,Medium,Sliding Window,X,X,X,X,X,X,
+65,Longest Repeating Character Replacement,https://leetcode.com/problems/longest-repeating-character-replacement/,Medium,Sliding Window,X,X,X,X,,X,
+66,Minimum Window Substring,https://leetcode.com/problems/minimum-window-substring/,Hard,Sliding Window,X,X,X,X,X,X,
+67,Longest Substring w/at most K Distinct Chars,https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/,Hard,Sliding Window,,,,,X,,
+68,Sliding Window Maximum,https://leetcode.com/problems/sliding-window-maximum/,Hard,Sliding Window,,,X,X,X,X,
+69,Minimum Size Subarray Sum,https://leetcode.com/problems/minimum-size-subarray-sum/,Medium,Sliding Window,,,,,,X,
+70,Fruit Into Baskets,https://leetcode.com/problems/fruit-into-baskets/,Medium,Sliding Window,,,,,,X,
+71,Permutation in String,https://leetcode.com/problems/permutation-in-string/,Medium,Sliding Window,,,X,,,X,
+72,Minimum Number of K Consecutive Bit Flips,https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/,Hard,Sliding Window,,,,,,X,
+73,"Count Unique Characters of 
+All Substrings of a Given String",https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/,Hard,Sliding Window,,,,,,X,
+74,Substring with Concatenation of All Words,https://leetcode.com/problems/substring-with-concatenation-of-all-words/,Hard,Sliding Window,,,,,,X,
+75,Find all Anagrams in a String,https://leetcode.com/problems/find-all-anagrams-in-a-string/,Medium,Sliding Window,,,,X,,,
+76,Frequency of the Most Frequent Element,https://leetcode.com/problems/frequency-of-the-most-frequent-element/,Medium,Sliding Window,,,,,,,
+77,"Minimum Number of Flips to 
+Make Binary Strings Alternating",https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/,Medium,Sliding Window,,,,,,,
+,,,,,,,,,,,
+79,Valid Anagram,https://leetcode.com/problems/valid-anagram/,Easy,String,X,X,X,X,,,
+80,Group Anagrams,https://leetcode.com/problems/group-anagrams/,Medium,String,X,X,X,X,X,,
+81,Valid Palindrome,https://leetcode.com/problems/valid-palindrome/,Easy,String,X,,X,X,,,2 Pointers
+82,Valid Palindrome 2,https://leetcode.com/problems/valid-palindrome-ii/,Easy,String,X,,,,,,
+83,Longest Palindromic Substring,https://leetcode.com/problems/longest-palindromic-substring/,Medium,String,X,,X,X,X,,DP (but expansion is easier)
+84,Palindromic Substrings,https://leetcode.com/problems/palindromic-substrings/,Medium,String,X,X,X,,,X,DP (but expansion is easier)
+85,Encode and Decode Strings,https://leetcode.com/problems/encode-and-decode-strings/,Medium,String,X,X,X,X,,,Design
+86,Ransom Note,https://leetcode.com/problems/ransom-note/,Easy,String,,,,X,,,Hashtable
+87,Palindrome Number,https://leetcode.com/problems/palindrome-number/,Easy,String,,,,X,,,Math
+88,Longest Common Prefix,https://leetcode.com/problems/longest-common-prefix/,Easy,String,,,,X,,,
+89,Backspace String Compare,https://leetcode.com/problems/backspace-string-compare/,Easy,String,,,,X,,X,2 pointers
+90,Find First Palindrome in Array,https://leetcode.com/problems/find-first-palindromic-string-in-the-array/,Easy,String,,,,,,,
+91,Longest Palindrome,https://leetcode.com/problems/longest-palindrome/,Easy,String,,,,X,,,
+92,Reverse String,https://leetcode.com/problems/reverse-string/,Easy,String,,,,,X,,
+93,First Unique Character in a String,https://leetcode.com/problems/first-unique-character-in-a-string/,Easy,String,,,,,X,,
+94,String to Integer (atoi),https://leetcode.com/problems/string-to-integer-atoi/,Medium,String,,,,X,X,,
+95,Implement strStr(),https://leetcode.com/problems/implement-strstr/,Easy,String,,,,,X,,
+96,Largest Number,https://leetcode.com/problems/largest-number/,Medium,String,,,,X,,,
+97,Reorganize String,https://leetcode.com/problems/reorganize-string/,Medium,String,,,,,,X,Greedy
+98,Reorganize String K Distance Apart,https://leetcode.com/problems/rearrange-string-k-distance-apart/,Hard,String,,,,,,X,Greedy
+99,Regular Expression Matching,https://leetcode.com/problems/regular-expression-matching/,Hard,String,,,X,,X,,Recursion
+100,Wildcard Matching,https://leetcode.com/problems/wildcard-matching/,Hard,String,,,,,,,Recursion
+101,Index Pairs of a String,https://leetcode.com/problems/index-pairs-of-a-string/,Easy,String,,,,,,X,Trie
+102,Longest Word in Dictionary,https://leetcode.com/problems/longest-word-in-dictionary/,Medium,String,,,,,,X,Trie
+103,Palindrome Pairs,https://leetcode.com/problems/palindrome-pairs/,Hard,String,,,,X,,X,Trie
+104,Text Justification,https://leetcode.com/problems/text-justification/,Hard,String,,,,,,,Greedy
+105,Parition Labels,https://leetcode.com/problems/partition-labels/,Medium,String,,,X,,,,Greedy
+106,Valid Parenthesis String,https://leetcode.com/problems/valid-parenthesis-string/,Medium,String,,,X,,,,Greedy
+107,Verifying an Alien Dictionary,https://leetcode.com/problems/verifying-an-alien-dictionary/,Easy,String,,,,,,,
+,,,,,,,,,,,
+109,Valid Parentheses,https://leetcode.com/problems/valid-parentheses/,Easy,Stack,X,X,X,X,X,,
+110,Longest Valid Parenthesis,https://leetcode.com/problems/longest-valid-parentheses/,Hard,Stack,,,,X,,,
+111,Largest Rectangle in Histogram,https://leetcode.com/problems/largest-rectangle-in-histogram/,Hard,Stack,,,X,X,X,,Monotonic stack
+112,Daily Temperatures,https://leetcode.com/problems/daily-temperatures/,Medium,Stack,,,X,X,,,"stack with pairs of temp and index, initialize answers with all 0s, then traverse with enumerate
+do while stack not empty and current temperature is greater than last elem on stack:
+pop from stack and get the index, then do answer[stackindex] = i - stackindex
+finally just append the current pair of temp and index"
+113,Asteroid Collision,https://leetcode.com/problems/asteroid-collision/,Medium,Stack,,,,X,,,
+114,Car Fleet,https://leetcode.com/problems/car-fleet/,Medium,Stack,,,X,,,,"can either do with stack or without one
+REMEMBER TO SORT BY DECREASING POS, ZIP TWO ARRAYS TOGETHER
+
+for without stack, just iterate through zipped array and keep track of slowest (target - p)/s
+everytime you see a number slower than the one stored, just set prev = to that number and add one to answer
+
+for with stack, iterate through zipped array again and append (target - p)/s for EACH ELEMENT
+then if len(stack) >= 2 and stack[-1] <= stack[-2], pop once 
+return length of stack"
+115,"Basic Calculator (+, -, parentheses, space)",https://leetcode.com/problems/basic-calculator/,Hard,Stack,,,,X,,,Recursion
+116,"Basic Calculator 2 (+, -, *, /)",https://leetcode.com/problems/basic-calculator-ii/,Medium,Stack,,,,X,,,"Recursion; convert infix to
+postfix then eval postfix"
+117,Evaluate Reverse Polish Notation,https://leetcode.com/problems/evaluate-reverse-polish-notation/,Medium,Stack,,,X,X,,,"stack problem, on + and * append stack.pop() + stack.pop() to stack, on - and / store the two stack.pop()s into a and b, then stack.append(b - a), return stack[0]"
+118,Parse Lisp Expression,https://leetcode.com/problems/parse-lisp-expression/,Hard,Stack,,,,,,,Recursion
+119,Remove All Adjacent Duplicates in String 2,https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/,Medium,Stack,,,,,,,
+120,Simplify Path,https://leetcode.com/problems/simplify-path/,Medium,Stack,,,,,,,
+121,Decode String,https://leetcode.com/problems/decode-string/,Medium,Stack,,,,,,,
+122,Remove K Digits,https://leetcode.com/problems/remove-k-digits/,Medium,Stack,,,,,,,Monotonic stack
+,,,,,,,,,,,
+124,Custom Binary Search Implementation (bisect in Python),https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/702162/python-lets-implement-pythons-bisect-algorithm,,,,,,,,,
+125,Powerful Binary Search Template for Problem Solving,https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template-solved-many-problems,,,,,,,,,
+126,Binary Search for Beginners,https://leetcode.com/discuss/general-discussion/691825/Binary-Search-for-Beginners-Problems-or-Patterns-or-Sample-solutions,,,,,,,,,
+127,Binary Search,https://leetcode.com/problems/binary-search/,Easy,Binary Search,,,X,X,,X,
+128,Find Minimum in Rotated Sorted Array,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/,Medium,Binary Search,X,X,X,X,,X,"classic binary search but keep track of min each iteration of while loop
+just look at if guessed number is bigger than the number at the right pointer
+if nums[m] > nums[r], then minimum is at the right half
+else its at the left half"
+129,Search in Rotated Sorted Array,https://leetcode.com/problems/search-in-rotated-sorted-array/,Medium,Binary Search,X,X,X,X,X,X,"binary search but split conditions based off of left half and right half array
+
+if in left half currently (if nums[m] > nums[r]):
+then check if target < nums[l] or nums[m] < target, then l = m + 1
+else go r = m - 1
+
+else if in right half currently:
+then check if target > nums[r] or nums[m] > target, then r = m - 1
+else go l = m + 1"
+130,Search in Rotated Sorted Array 2,https://leetcode.com/problems/search-in-rotated-sorted-array-ii/,Medium,Binary Search,,,,,,X,
+131,First Bad Version,https://leetcode.com/problems/first-bad-version/,Easy,Binary Search,,,,X,X,,
+132,Search for a Range,https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/,Medium,Binary Search,,,,,X,,
+133,Median of Two Sorted Arrays,https://leetcode.com/problems/median-of-two-sorted-arrays/,Hard,Binary Search,,,X,X,X,X,
+134,Find Smallest Letter Greater than Target,https://leetcode.com/problems/find-smallest-letter-greater-than-target/,Easy,Binary Search,,,,,,X,
+135,Peak Index in a Mountain Array,https://leetcode.com/problems/peak-index-in-a-mountain-array/,Easy,Binary Search,,,,,,X,
+136,Kth Smallest Element in a Sorted Matrix,https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/,Medium,Binary Search,,,,,,X,
+137,Search a 2D Matrix,https://leetcode.com/problems/search-a-2d-matrix/,Medium,Binary Search,,,X,X,,X,"binary search first for the row, then normal binary search on col
+conditions for row binary search
+
+if target > matrix[row][-1] then top = row + 1
+if target < matrix[row][0] then bottom = row - 1
+else break
+
+REMEMBER TO DO EXTRA CHECK TO SEE IF TOP > BOTTOM AND RETURN FALSE IF SO"
+138,Search a 2D Matrix 2,https://leetcode.com/problems/search-a-2d-matrix-ii/,Medium,Binary Search,,,,,X,X,
+139,Find K Closest Elements,https://leetcode.com/problems/find-k-closest-elements/,Medium,Binary Search,,,,X,,X,
+140,Count of Range Sum,https://leetcode.com/problems/count-of-range-sum/,Hard,Binary Search,,,,,,X,
+141,Find Peak Element,https://leetcode.com/problems/find-peak-element/,Medium,Binary Search,,,,,,X,
+142,Koko Eating Bananas,https://leetcode.com/problems/koko-eating-bananas/,Medium,Binary Search,,,X,,,,"binary search on the 1 and max of piles
+use the sum of the total time taken with the middle speed to see if it's feasible to eat before h hours are up
+so totalTime += ceil(float(pile)/m)
+if totalTime <= h, then it means it's a feasible time, so we should keep that as the result for now and lower our upper bound
+if totalTime < h, then it means we need to increase our speed, so l = m + 1"
+143,Search Insert Position,https://leetcode.com/problems/search-insert-position/,Easy,Binary Search,,,,,,,
+144,"Find First and Last Position of 
+Element in Sorted Array",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/,Medium,Binary Search,,,,,,,
+145,Valid Perfect Square,https://leetcode.com/problems/valid-perfect-square/,Easy,Binary Search,,,,,,,
+146,Guess Number Higher or Lower,https://leetcode.com/problems/guess-number-higher-or-lower/,Easy,Binary Search,,,,,,,
+147,Maximum Number of Removable Characters,https://leetcode.com/problems/maximum-number-of-removable-characters/,Medium,Binary Search,,,,,,,
+148,Leftmost Column with at Least a One,https://leetcode.com/problems/leftmost-column-with-at-least-a-one/,Medium,Binary Search,,,,,,,
+149,Capacity to Ship Packages Within D Days,https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/,Medium,Binary Search,,,,,,,
+150,Cutting Ribbons,https://leetcode.com/problems/cutting-ribbons/,Medium,Binary Search,,,,,,,
+,,,,,,,,,,,
+152,Convert 1D Array into 2D Array,https://leetcode.com/problems/convert-1d-array-into-2d-array/,Easy,Matrix,,,,,,X,
+153,Set Matrix Zeroes,https://leetcode.com/problems/set-matrix-zeroes/,Medium,Matrix,X,,X,X,,X,
+154,Spiral Matrix,https://leetcode.com/problems/spiral-matrix/,Medium,Matrix,X,,X,X,X,X,
+155,Rotate Image,https://leetcode.com/problems/rotate-image/,Medium,Matrix,X,,X,X,,X,
+156,Valid Sudoku,https://leetcode.com/problems/valid-sudoku/,Medium,Matrix,,,X,X,,,"Hashtable, Set"
+157,01 Matrix,https://leetcode.com/problems/01-matrix/,Medium,Matrix,,,,X,,,
+,,,,,,,,,,,
+159,Reverse a Linked List,https://leetcode.com/problems/reverse-linked-list/,Easy,Linked List,X,X,X,X,X,X,
+160,Reverse Linked List 2,https://leetcode.com/problems/reverse-linked-list-ii/,Medium,Linked List,,,,,,X,
+161,Linked List Cycle (detect if exists),https://leetcode.com/problems/linked-list-cycle/,Easy,Linked List,X,X,X,x,,X,2 Pointers (Tortoise and Hare)
+162,Linked List Cycle 2 (find cycle entry point),https://leetcode.com/problems/linked-list-cycle-ii/,Medium,Linked List,X,,,,,X,"Tortoise/Hare, Move one to 
+head, Iterate in sync"
+163,Merge Two Sorted Lists,https://leetcode.com/problems/merge-two-sorted-lists/,Easy,Linked List,X,,X,X,X,X,
+164,Remove Nth Node from End of List,https://leetcode.com/problems/remove-nth-node-from-end-of-list/,Medium,Linked List,X,X,X,X,,X,2 Pointers
+165,Reorder List,https://leetcode.com/problems/reorder-list/,Medium,Linked List,X,,X,X,,X,"Find middle node; reverse second
+half; merge both halves"
+166,Palindrome Linked List,https://leetcode.com/problems/palindrome-linked-list/,Easy,Linked List,,,,X,X,X,
+167,Intersection of two Linked Lists,https://leetcode.com/problems/intersection-of-two-linked-lists/,Easy,Linked List,,,,,X,,
+168,Copy Linked List with Random Pointer,https://leetcode.com/problems/copy-list-with-random-pointer/,Medium,Linked List,,,X,,X,,
+169,Sort List,https://leetcode.com/problems/sort-list/,Medium,Linked List,,,,X,X,X,
+170,Middle of the Linked List,https://leetcode.com/problems/middle-of-the-linked-list/,Easy,Linked List,,,,X,,X,
+171,Remove Linked List Elements,https://leetcode.com/problems/remove-linked-list-elements/Z,Easy,Linked List,,,,,,X,
+172,Remove Duplicates from Sorted List,https://leetcode.com/problems/remove-duplicates-from-sorted-list/,Easy,Linked List,,,,,,X,
+173,Add Two Numbers,https://leetcode.com/problems/add-two-numbers/,Medium,Linked List,,,X,X,X,X,Math
+174,Add Two Numbers 2,https://leetcode.com/problems/add-two-numbers-ii/,Medium,Linked List,,,,,,,"reverse lists, Add Two Numbers, 
+reverse output"
+175,Sort List,https://leetcode.com/problems/sort-list/,Medium,Linked List,,,,,,X,
+176,Rotate List,https://leetcode.com/problems/rotate-list/,Medium,Linked List,,,,X,,X,
+177,Swap Nodes in Pairs,https://leetcode.com/problems/swap-nodes-in-pairs/,Medium,Linked List,,,,X,,X,
+178,Odd Even Linked List,https://leetcode.com/problems/odd-even-linked-list/,Medium,Linked List,,,,X,,X,
+179,Reverse Nodes in K Group,https://leetcode.com/problems/reverse-nodes-in-k-group/,Hard,Linked List,,,X,X,,X,
+180,Flatten a Multilevel Doubly Linked List,https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/,Medium,Linked List,,,,,,,DFS
+181,Find the Duplicate Number,https://leetcode.com/problems/find-the-duplicate-number/,Medium,Linked List,,,X,,,X,Repeated in array section btw
+182,Partition List,https://leetcode.com/problems/partition-list/,Medium,Linked List,,,,,,,
+,,,,,,,,,,,
+184,Insert Interval,https://leetcode.com/problems/insert-interval/,Medium,Intervals,X,X,X,X,,X,"create empty results array
+iterate through intervals
+if newInterval's end time is before the current interval's start time, then we can just append newInterval and append the rest of intervalsto our output array and return
+if newInterval's start time is after the current interval's end time, then we can append the current interval we're at to the output array
+else, set newInterval's start to the minimum between newInterval's start and current one's start, and set newInterval's end to the maximum between newInterval's end and current one's end. DON'T APPEND TO RESULTS UNTIL AFTER FOR LOOP
+after for loop just append newInterval and then return"
+185,Merge Intervals,https://leetcode.com/problems/merge-intervals/,Medium,Intervals,X,X,X,X,X,X,"sort intervals first by starting time, 
+then if current start time is <= lastEnd time, update the output's end time to be the MAX of last end time and current end time.
+if not, then just append start, end to end of output"
+186,Non-Overlapping Intervals,https://leetcode.com/problems/non-overlapping-intervals/,Medium,Intervals,X,X,X,X,,X,"sort intervals first by starting time, keep track of lastEnd value
+iterate through intervals, if start < lastEnd, then res += 1 and set lastEnd = MIN(lastEnd, end) (this is the greedy approach, basically ""delete"" whichever end is larger)
+if not, just set lastEnd to end of current interval"
+187,Meeting Rooms,https://leetcode.com/problems/meeting-rooms/,Easy,Intervals,X,X,X,X,,X,
+188,Meeting Rooms 2,https://leetcode.com/problems/meeting-rooms-ii/,Medium,Intervals,X,X,X,X,X,X,"have two separate arrays for start and end times and sort both
+have a start counter and an end counter, keep count variable and res should track the max of count
+iterate through start array, while s < len(start)
+if start[s] < end[e], then increase count and s by one
+else, decrease count and increase e by one
+in while loop, just do res = max(res, count)
+return res at the end"
+189,Interval List Intersections,https://leetcode.com/problems/interval-list-intersections/,Medium,Intervals,,,,,,X,
+190,Employee Free Time,https://leetcode.com/problems/employee-free-time/,Hard,Intervals,,,,X,,X,"Sort, Heap"
+191,Minimum Interval to Include Each Query,https://leetcode.com/problems/minimum-interval-to-include-each-query/,Hard,Intervals,,,X,,,,
+,,,,,,,,,,,
+193,Top K Frequent Elements,https://leetcode.com/problems/top-k-frequent-elements/,Medium,Heap,X,X,X,,,X,
+194,Merge K Sorted Lists,https://leetcode.com/problems/merge-k-sorted-lists/,Hard,Heap,X,X,X,X,X,X,
+195,Find Median from Data Stream,https://leetcode.com/problems/find-median-from-data-stream/,Hard,Heap,X,X,X,X,X,X,
+196,Top K Frequent Words,https://leetcode.com/problems/top-k-frequent-words/,Medium,Heap,,,,X,,,
+197,Kth Largest Element in an Array,https://leetcode.com/problems/kth-largest-element-in-an-array/,Medium,Heap,,,X,X,,X,"Quickselect is better for average case time complexity, CHOOSE A RANDOM PIVOT!"
+198,Kth Largest Element in a Stream,https://leetcode.com/problems/kth-largest-element-in-a-stream/,Easy,Heap,,,X,,,,"to find kth largest, just keep a minheap and keep popping until you get to heap length of k"
+199,Last Stone Weight,https://leetcode.com/problems/last-stone-weight/,Easy,Heap,,,X,,,,
+200,The Skyline Problem,https://leetcode.com/problems/the-skyline-problem/discuss/61261/10-line-Python-solution-104-ms,Hard,Heap,,,,,X,,
+201,K Closest Points to Origin,https://leetcode.com/problems/k-closest-points-to-origin/,Medium,Heap,,,X,X,,X,Use minHeap with 3 element list. Python sorts for minHeap off of first element
+202,Course Schedule 3,https://leetcode.com/problems/course-schedule-iii/,Hard,Heap,,,,,,X,
+203,Find K Pairs with Smallest Sums,https://leetcode.com/problems/find-k-pairs-with-smallest-sums/,Medium,Heap,,,,,,X,
+204,Sort Characters By Frequency,https://leetcode.com/problems/sort-characters-by-frequency/,Medium,Heap,,,,,,X,
+205,"Smallest Range Covering Elements 
+from K Lists",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/,Hard,Heap,,,,X,,X,
+206,Sliding Window Median,https://leetcode.com/problems/sliding-window-median/,Hard,Heap,,,,,,X,
+,,,,,,,,,,,
+208,Binary Tree Paths,https://leetcode.com/problems/binary-tree-paths/,Easy,Tree,,,,,,,DFS
+209,Minimum Depth of Binary Tree,https://leetcode.com/problems/minimum-depth-of-binary-tree/,Easy,Tree,,X,,,,X,DFS
+210,Maximum Depth of Binary Tree,https://leetcode.com/problems/maximum-depth-of-binary-tree/,Easy,Tree,X,,X,X,X,X,DFS
+211,Invert Binary Tree,https://leetcode.com/problems/invert-binary-tree/,Easy,Tree,X,X,X,X,,X,DFS
+212,Binary Tree Level Order Traversal,https://leetcode.com/problems/binary-tree-level-order-traversal/,Medium,Tree,X,X,X,X,X,X,BFS
+213,Binary Tree Level Order Traversal 2,https://leetcode.com/problems/binary-tree-level-order-traversal-ii/,Medium,Tree,,,,,,X,BFS
+214,Binary Tree Zigzag Level Order Traversal,https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/,Medium,Tree,,,,X,,X,BFS
+215,Validate BST,https://leetcode.com/problems/validate-binary-search-tree/,Medium,Tree,X,X,X,X,X,X,"create valid helper which is a dfs and keep track of minimum bounds and maximum bounds, update maximum if you go left and update minimum if you go right"
+216,Same Tree,https://leetcode.com/problems/same-tree/,Easy,Tree,X,X,X,X,,X,"if both null, true, if one null and not other, return false, if values are not equal then return false, then recursive calls on left and right"
+217,Subtree of Another Tree,https://leetcode.com/problems/subtree-of-another-tree/,Easy,Tree,X,X,X,X,,X,"use sameTree function and recurse on left and right, set boolean statement to be or of two results"
+218,Symmetric Tree,https://leetcode.com/problems/symmetric-tree/,Easy,Tree,,,,X,,,
+219,Lowest Common Ancestor of BST,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/,Easy,Tree,X,X,X,X,,X,"it's a binary search tree, either recurse on left child of root or right child of root depending on whether root.val is greater than or less than both p.val and q.val"
+220,LCA of Binary Tree ,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/,Medium,Tree,,,,X,X,,
+221,LCA of Binary Tree 3,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/,Medium,Tree,,,,,X,,
+222,Kth Smallest Element in a BST,https://leetcode.com/problems/kth-smallest-element-in-a-bst/,Medium,Tree,X,X,X,X,,,DFS
+223,Convert Sorted Array to BST,https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/,Easy,Tree,,,,X,X,,DFS
+224,"Construct Binary Tree from 
+Preorder/Inorder Traversal",https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/,Medium,Tree,X,X,X,X,,X,"DFS, Hashtable"
+225,Serialize and Deserialize Binary Tree,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/,Hard,Tree,X,X,X,X,X,X,DFS
+226,Binary Tree Maximum Path Sum,https://leetcode.com/problems/binary-tree-maximum-path-sum/,Hard,Tree,X,X,X,X,,X,
+227,Implement Trie (Prefix Tree),https://leetcode.com/problems/implement-trie-prefix-tree/,Medium,Tree,X,X,X,X,X,X,"Design, Trie"
+228,Design Add and Search Words Data Structure,https://leetcode.com/problems/design-add-and-search-words-data-structure/,Medium,Tree,X,X,X,X,,,"Design, Trie"
+229,Binary Tree Inorder Traversal,https://leetcode.com/problems/binary-tree-inorder-traversal/,Easy,Tree,,,,,X,,DFS
+230,Inorder Successor in BST,https://leetcode.com/problems/inorder-successor-in-bst/,Medium,Tree,,,,,,,
+231,Populating Next Right Pointers in Each Node,https://leetcode.com/problems/populating-next-right-pointers-in-each-node/,Medium,Tree,,,,,X,X,BFS
+232,Populating Next Right Pointers 2,https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/,Medium,Tree,,,,,,X,BFS
+233,Path Sum,https://leetcode.com/problems/path-sum/,Easy,Tree,,,,,,X,DFS
+234,Path Sum 2,https://leetcode.com/problems/path-sum-ii/,Medium,Tree,,,,X,,X,DFS
+235,Path Sum 3,https://leetcode.com/problems/path-sum-iii/,Medium,Tree,,,,X,,X,
+236,Diameter of Binary Tree,https://leetcode.com/problems/diameter-of-binary-tree/,Easy,Tree,,,X,X,,X,"use dfs to keep track of BOTH HEIGHT AND DIAMETER! diameter = left height + right height, height = 1 + max(left, right)"
+237,Maximum Width of Binary Tree,https://leetcode.com/problems/maximum-width-of-binary-tree/,Medium,Tree,,,,X,,X,DFS
+238,Merge Two Binary Trees,https://leetcode.com/problems/merge-two-binary-trees/,Easy,Tree,,,,,,X,DFS
+239,Binary Tree Right Side View,https://leetcode.com/problems/binary-tree-right-side-view/,Medium,Tree,,,X,X,,X,"BFS, but instead of doing len(q) keep track of length of queue once at the beginning of each level so that q.appends dont make the len count weird, then just check if i == length - 1"
+240,All Nodes Distance K in Binary Tree,https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/,Medium,Tree,,,,X,,X,
+241,Average of Levels in Binary Tree,https://leetcode.com/problems/average-of-levels-in-binary-tree/,Easy,Tree,,,,,,X,BFS
+242,Maximum Binary Tree,https://leetcode.com/problems/maximum-binary-tree/,Medium,Tree,,,,,,X,
+243,Count Good Nodes in Binary Tree,https://leetcode.com/problems/count-good-nodes-in-binary-tree/,Medium,Tree,,,X,,,,"dfs but keep track of max value seen so far, if current node val is >= max val then add 1 to res, dfs on both left and right, and then finally call dfs(root, root.val)"
+244,Balanced Binary Tree,https://leetcode.com/problems/balanced-binary-tree/,Easy,Tree,,,X,X,,,do a dfs that returns both true/false and height of node in the tree
+245,Sum Root to Leaf Numbers,https://leetcode.com/problems/sum-root-to-leaf-numbers/,Medium,Tree,,,,,,,
+246,House Robber 3,https://leetcode.com/problems/house-robber-iii/,Medium,Tree,,,,,,,
+247,Flip Equivalent Binary Trees,https://leetcode.com/problems/flip-equivalent-binary-trees/,Medium,Tree,,,,,,,
+248,Flatten Binary Tree to Linked List,https://leetcode.com/problems/flatten-binary-tree-to-linked-list/,Medium,Tree,,,,,,,"DFS, Stack"
+249,Find Bottom Left Tree Value,https://leetcode.com/problems/find-bottom-left-tree-value/,Medium,Tree,,,,,,,
+250,Trim a Binary Search Tree,https://leetcode.com/problems/trim-a-binary-search-tree/,Medium,Tree,,,,,,,
+,,,,,,,,,,,
+252,Graph Algorithms,,,,,,,,,,"Most Common
+DFS - pre/post/inorder traversal (V + E)
+BFS - shortest path, unweighted graph (V + E)
+Topological Sort - find ordering of nodes, verifies if graph is DAG (V + E)
+Less Common
+Union Find - find/count disjoint sets, adding path compression is one line but improves runtime massively
+Dijkstra - shortest path, works for weighted, no negative weights allowed (E log V)
+Longest Path - brute force exhaustive DFS will work everytime; but if acyclic, there is also a solution involving topo sort/DP
+Cycle Detection - for directed graph, use topo sort; for undirected, can use DFS or union find
+Rare
+Bellman Ford - shortest path, weighted and negative weights allowed (E * V)
+Minimum Spanning Tree - use Prim's or Kruskal's algorithms"
+253,Clone Graph,https://leetcode.com/problems/clone-graph/,Medium,Graph,X,X,X,X,,X,"dfs, use a dictionary to map original node to copies, acts as a visited set as well!"
+254,Pacific Atlantic Water Flow,https://leetcode.com/problems/pacific-atlantic-water-flow/,Medium,Graph,X,X,X,X,,X,"dfs from pacific cells, dfs from atlantic cells, have two separate visited sets for both, and take the set intersection"
+255,Number of Islands,https://leetcode.com/problems/number-of-islands/,Medium,Graph,X,X,X,X,X,X,standard dfs/bfs
+256,Max Area of Island,https://leetcode.com/problems/max-area-of-island/,Medium,Graph,,,X,,,,"dfs, return 0 if out of bounds and return 1 + dfs in all directions"
+257,Graph Valid Tree,https://leetcode.com/problems/graph-valid-tree/,Medium,Graph,X,X,X,X,,X,"union find, make sure that everything is one component and no cycles, similar to redundant connection"
+258,Number of Connected Components in an Undirected Graph,https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/,Medium,Graph,X,X,X,X,,X,
+259,Word Search,https://leetcode.com/problems/word-search/,Medium,Graph,X,,X,X,,X,
+260,Word Search 2,https://leetcode.com/problems/word-search-ii/,Hard,Graph,X,X,X,X,X,X,Trie
+261,Word Squares,https://leetcode.com/problems/word-squares/,Hard,Graph,,,,,,X,
+262,Course Schedule,https://leetcode.com/problems/course-schedule/,Medium,Graph,X,X,X,X,X,X,"Topo Sort
+create adj list that has an edge from postreqs to prereqs
+then create dfs helper function with a cycle set AND visited set initialized before it
+if i in cycle, return false
+if i in visited, return true
+add i to visited and cycle, then loop through its neighbors to check if any dfs on them return false and if so, return false
+remove i from cycle, return true"
+263,Course Schedule II,https://leetcode.com/problems/course-schedule-ii/,Medium,Graph,,,X,X,,X,"Topo Sort, same thing as above
+only append to results array after looping through all neighbors and before returning true"
+264,Alien Dictionary,https://leetcode.com/problems/alien-dictionary/,Hard,Graph,X,X,X,X,X,X,Topo Sort
+265,Longest Increasing Path in a Matrix,https://leetcode.com/problems/longest-increasing-path-in-a-matrix/,Hard,Graph,,,,X,X,,Topo Sort
+266,Flood Fill,https://leetcode.com/problems/flood-fill/,Easy,Graph,,,,X,,,
+267,Shortest Path to Get Food,https://leetcode.com/problems/shortest-path-to-get-food/,Medium,Graph,,,,X,,,
+268,Minimum Height Trees,https://leetcode.com/problems/minimum-height-trees/,Medium,Graph,,,,X,,X,
+269,Sequence Reconstruction,https://leetcode.com/problems/sequence-reconstruction/,Medium,Graph,,,,,,X,
+270,"Sort Items by Groups Respecting 
+Dependencies",https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/,Hard,Graph,,,,,,X,
+271,Find the Celebrity,https://leetcode.com/problems/find-the-celebrity/,Medium,Graph,,,,,X,,
+272,Word Ladder,https://leetcode.com/problems/word-ladder/,Hard,Graph,,,X,X,X,,
+273,Word Ladder 2,https://leetcode.com/problems/word-ladder-ii/,Hard,Graph,,,,,,,
+274,Island Perimeter,https://leetcode.com/problems/island-perimeter/,Easy,Graph,,,,,,,
+275,Accounts Merge,https://leetcode.com/problems/accounts-merge/,Medium,Graph,,,,X,,,
+276,Minimum Knights Move,https://leetcode.com/problems/minimum-knight-moves/,Medium,Graph,,,,X,,,
+277,Redundant Connection,https://leetcode.com/problems/redundant-connection/,Medium,Graph,,,X,,,,
+278,Count Sub Islands,https://leetcode.com/problems/count-sub-islands/,Medium,Graph,,,,,,,
+279,Walls and Gates,https://leetcode.com/problems/walls-and-gates/,Medium,Graph,,,X,,,,
+280,Surrounded Regions,https://leetcode.com/problems/surrounded-regions/,Medium,Graph,,,X,,,,"dfs from every border cell that's an 'O', flip everything that isn't in visited"
+281,Reconstruct Itinerary,https://leetcode.com/problems/reconstruct-itinerary/,Hard,Graph,,,X,,,,
+282,Rotting Oranges,https://leetcode.com/problems/rotting-oranges/,Medium,Graph,,,X,X,,,"bfs from multiple sources, keep track of number of fresh oranges"
+283,Snakes and Ladders,https://leetcode.com/problems/snakes-and-ladders/,Medium,Graph,,,,,,,
+284,Open the Lock,https://leetcode.com/problems/open-the-lock/,Medium,Graph,,,,,,,
+285,Bus Routes,https://leetcode.com/problems/bus-routes/,Hard,Graph,,,,X,,,
+286,Reorder Routes to Make All Paths Lead to the City Zero,https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/,Medium,Graph,,,,,,,
+287,Network Delay Time,https://leetcode.com/problems/network-delay-time/,Medium,Graph,,,X,,,,"Dijkstra
+
+build adjacency list, store both weight and node as elems of list
+treat dijkstra like bfs but instead of popping and appending to queue, do to minH with cost + neighborCost when pushing neighbors
+AND keep track of max weight we've seen"
+288,Swim in Rising Water,https://leetcode.com/problems/swim-in-rising-water/,Hard,Graph,,,X,,,,Dijkstra
+289,Cheapest Flights within K Stops,https://leetcode.com/problems/cheapest-flights-within-k-stops/,Medium,Graph,,,X,X,,,Bellman Ford
+290,Min Cost to Connect all Points,https://leetcode.com/problems/min-cost-to-connect-all-points/,Medium,Graph,,,X,,,,"prims algo to find MST
+
+build adjacency list in which all points are connected to each other, and STORE THE WEIGHTS of each edge along w node in tuple
+use a minHeap initialized with [0, 0] and visited set, then enter a while loop
+while len(visited set) < len(points) (input given) <- important condition to remember
+extract the top of heap, check if it's already been visited
+if not, add the cost to result and add it to visited
+THEN traverse all of its neighbors, check if the neighbors havent been visited yet, if they havent, then add the edge [dist, point] into the heap 
+"
+,,,,,,,,,,,
+292,LC Explore Backtracking Template,https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2793/,,,,,,,,,
+293,Subsets,https://leetcode.com/problems/subsets/,Medium,Backtrack,,,X,X,X,X,Powerset - either include or don't. append a copy of subset (so it doesn't get modified)
+294,Subsets 2,https://leetcode.com/problems/subsets-ii/,Medium,Backtrack,,,X,,,X,"SORT INPUT ARRAY FIRST!!!!! that way, we can go through the decision tree and skip over any adjacent duplicate values in our input"
+295,Combinations,https://leetcode.com/problems/combinations/,Medium,Backtrack,,,,,X,X,
+296,Permutations,https://leetcode.com/problems/permutations/,Medium,Backtrack,,,X,X,X,X,
+297,Permutations 2,https://leetcode.com/problems/permutations-ii/,Medium,Backtrack,,,,,,X,
+298,Generate Parentheses,https://leetcode.com/problems/generate-parentheses/,Medium,Backtrack,,,X,X,X,X,"use stack, backtrack with open and close count with following conditions:
+- if open == close and both equal to n, just res.append("""".join(stack)) (basically forms string out of current stack)
+- if open < n then stack.append(""("") and backtrack with increased open count and REMEMBER TO POP AFTER
+- if close < open then stack.append("")"") and backtrack with increased close count and REMEMBER TO POP AFTER"
+299,Letter Combinations of Phone Number,https://leetcode.com/problems/letter-combinations-of-a-phone-number/,Medium,Backtrack,,,X,X,X,X,
+300,Remove Invalid Parentheses,https://leetcode.com/problems/remove-invalid-parentheses/,Hard,Backtrack,,,,,X,,
+301,N-Queens,https://leetcode.com/problems/n-queens/,Hard,Backtrack,,,X,X,,X,
+302,Sudoku Solver,https://leetcode.com/problems/sudoku-solver/,Hard,Backtrack,,,,X,,X,
+303,Letter Case Permutation,https://leetcode.com/problems/letter-case-permutation/,Medium,Backtrack,,,,,,X,
+304,Combination Sum,https://leetcode.com/problems/combination-sum/,Medium,Backtrack,,,X,X,,X,
+305,Combination Sum 2,https://leetcode.com/problems/combination-sum-ii/,Medium,Backtrack,,,X,,,X,
+306,Combination Sum 3,https://leetcode.com/problems/combination-sum-iii/,Medium,Backtrack,,,,,,X,
+307,Palindrome Partitioning,https://leetcode.com/problems/palindrome-partitioning/,Medium,Backtrack,,,X,,,X,
+308,Generalized Abbreviation,https://leetcode.com/problems/generalized-abbreviation/,Medium,Backtrack,,,,,,X,
+309,Partition to K Equal Sum Subsets,https://leetcode.com/problems/partition-to-k-equal-sum-subsets/,Medium,Backtrack,,,,,,X,"DP, memo"
+310,"Splitting a String into Descending 
+Consecutive Values",https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values/,Medium,Backtrack,,,,,,,
+311,Find Unique Binary String,https://leetcode.com/problems/find-unique-binary-string/,Medium,Backtrack,,,,,,,
+312,"Maximum Length of a Concatenated 
+String with Unique Characters",https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/,Medium,Backtrack,,,,,,,
+313,Restore IP Addresses,https://leetcode.com/problems/restore-ip-addresses/,Medium,Backtrack,,,,,,,
+314,Matchsticks to Squares,https://leetcode.com/problems/matchsticks-to-square/,Medium,Backtrack,,,,,,,
+,,,,,,,,,,,
+316,DP Thread on Leetcode,https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns,,,,,,,,,
+317,Coin Change,https://leetcode.com/problems/coin-change/,Medium,DP,X,X,X,X,X,X,Unbounded Knapsack
+318,Coin Change 2,https://leetcode.com/problems/coin-change-2/,Medium,DP,,,X,,,,"Unbounded Knapsack
+(for each coin; for i in range)
+(count combinations)"
+319,Combination Sum 4,https://leetcode.com/problems/combination-sum-iv/,Medium,DP,X,X,,X,,X,"Unbounded Knapsack
+(for i in range; for each num)
+(count permutations)"
+320,Partition Equal Subset Sum,https://leetcode.com/problems/partition-equal-subset-sum/,Medium,DP,,,X,X,,X,"0/1 Knapsack  (like Coin Change 2, 
+but reverse 2nd for loop)"
+321,Minimum Path Sum,https://leetcode.com/problems/minimum-path-sum/,Medium,DP,,,,,,,Min/Max Path to Target
+322,Min Cost Climbing Stairs,https://leetcode.com/problems/min-cost-climbing-stairs/,Easy,DP,,,X,,,,Min/Max Path to Target
+323,Climbing Stairs,https://leetcode.com/problems/climbing-stairs/,Easy,DP,X,X,X,X,X,X,Fibonacci/Distinct Ways
+324,House Robber,https://leetcode.com/problems/house-robber/,Medium,DP,X,X,X,X,,X,Fibonacci/Distinct Ways
+325,House Robber II,https://leetcode.com/problems/house-robber-ii/,Medium,DP,X,X,X,,,X,Fibonacci/Distinct Ways
+326,Decode Ways,https://leetcode.com/problems/decode-ways/,Medium,DP,X,X,X,X,,X,Fibonacci/Distinct Ways
+327,Unique Paths,https://leetcode.com/problems/unique-paths/,Medium,DP,X,,X,X,X,X,Fibonacci/Distinct Ways
+328,Unique Paths II,https://leetcode.com/problems/unique-paths-ii/,Medium,DP,,,,,,,Fibonacci/Distinct Ways
+329,Target Sum,https://leetcode.com/problems/target-sum/,Medium,DP,,,X,,,X,Fibonacci/Distinct Ways; DFS
+330,Number of Dice Rolls w/Target Sum,https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/,Medium,DP,,,,,,,Fibonacci/Distinct Ways
+331,Maximum Length of Repeated Subarray,https://leetcode.com/problems/maximum-length-of-repeated-subarray/,Medium,DP,,,,,,,Longest Common Substring
+332,Longest Common Subsequence,https://leetcode.com/problems/longest-common-subsequence/,Medium,DP,X,,X,,,,String
+333,Edit Distance,https://leetcode.com/problems/edit-distance/,Hard,DP,,,X,,,,"String; extension of  Longest 
+Common Subsequence problem"
+334,Longest Palindromic Subsequence,https://leetcode.com/problems/longest-palindromic-subsequence/,Medium,DP,,,,,,X,"String; find Long. Comm. Subseq.
+of original string and its reverse"
+335,Valid Palindrome 3,https://leetcode.com/problems/valid-palindrome-iii/solution/,Hard,DP,,,,,,,"String; find Long. Palind. Subseq.
+and it's now Edit Distance problem"
+336,Longest Increasing Subsequence,https://leetcode.com/problems/longest-increasing-subsequence/,Medium,DP,X,X,X,X,X,X,"String; alternate solution is a trick 
+involving binary search (yields the
+length but not actual sequence)"
+337,Number of Longest Increasing Subsequence,https://leetcode.com/problems/number-of-longest-increasing-subsequence/,Medium,DP,,,,,,X,
+338,Longest Increasing Path in Matrix,https://leetcode.com/problems/longest-increasing-path-in-a-matrix/,Hard,DP,,,X,,,,
+339,Jump Game,https://leetcode.com/problems/jump-game/,Medium,DP,X,X,X,X,,X,"start from the end and iterate backwards, initially set goal to the last element, update ""goal"" post if we know we can reach the last elem from there
+keep pushing goal post back if i + nums[i] >= goal, then just return whether goal == 0"
+340,Jump Game 2,https://leetcode.com/problems/jump-game-ii/,Medium,DP,,,X,,,,"Greedy
+start from the beginning and initialize left and right pointers to 0
+while r < len(nums) - 1
+check what the farthest value is by iterating through a for loop from l to r + 1 (exclusive)
+then after finding the max value, just set l = r + 1 and r = farthest"
+341,Word Break,https://leetcode.com/problems/word-break/,Medium,DP,X,X,X,X,X,X,Tabulation 
+342,Word Break 2,https://leetcode.com/problems/word-break-ii/,Hard,DP,,,,,,,Backtrack
+343,Concatenated Words,https://leetcode.com/problems/concatenated-words/,Hard,DP,,,,,,X,Trie
+344,Interleaving String,https://leetcode.com/problems/interleaving-string/,Medium,DP,,,X,,,,
+345,Paint House,https://leetcode.com/problems/paint-house/,Medium,DP,,,,,,,
+346,Maximal Square,https://leetcode.com/problems/maximal-square/,Medium,DP,,,,X,,,
+347,Distinct Subsequences,https://leetcode.com/problems/distinct-subsequences/,Hard,DP,,,X,,,,
+348,Burst Balloons,https://leetcode.com/problems/burst-balloons/,Hard,DP,,,X,,X,,
+349,Perfect Squares,https://leetcode.com/problems/perfect-squares/,Medium,DP,,,,,,,
+350,Minimum Cost Tree from Leaf Values,https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/,Medium,DP,,,,,,,Merging Intervals
+351,Unique BST's,https://leetcode.com/problems/unique-binary-search-trees/,Medium,DP,,,,,,,Merging Intervals
+352,Triangle,https://leetcode.com/problems/triangle/,Medium,DP,,,,,,,Tree
+353,All Possible Full Binary Trees,https://leetcode.com/problems/all-possible-full-binary-trees/,Medium,DP,,,,,,,Tree
+354,Minimum Cost for Tickets,https://leetcode.com/problems/minimum-cost-for-tickets/,Medium,DP,,,,,,,
+355,"Number of Ways to Rearrange Sticks 
+with K Sticks Visible",https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/,Hard,DP,,,,,,,
+356,Stickers to Spell Word,https://leetcode.com/problems/stickers-to-spell-word/,Hard,DP,,,,,,,
+357,Minimum Number of Days to Eat N Oranges,https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/,Hard,DP,,,,,,,
+358,Pascal's Triangle,https://leetcode.com/problems/pascals-triangle/,Easy,DP,,,,,,,
+359,Stone Game,https://leetcode.com/problems/stone-game/,Medium,DP,,,,,,,
+360,Integer Break,https://leetcode.com/problems/integer-break/,Medium,DP,,,,,,,
+361,Delete and Earn,https://leetcode.com/problems/delete-and-earn/,Medium,DP,,,,,,,
+,,,,,,,,,,,
+363,Happy Number,https://leetcode.com/problems/happy-number/,Easy,Math,,,X,,,,
+364,Plus One,https://leetcode.com/problems/plus-one/,Easy,Math,,,X,,,,
+365,Multiply Strings,https://leetcode.com/problems/multiply-strings/,Medium,Math,,,X,,,,
+366,Detect Squares,https://leetcode.com/problems/detect-squares/,Medium,Math,,,X,,,,
+367,Count Primes,https://leetcode.com/problems/count-primes/,Medium,Math,,,,,X,,
+368,Power of Three,https://leetcode.com/problems/power-of-three/,Easy,Math,,,,,X,,
+369,Excel Sheet Column Number,https://leetcode.com/problems/excel-sheet-column-number/,Easy,Math,,,,,X,,
+370,"Pow(x, n)",https://leetcode.com/problems/powx-n/,Medium,Math,,,X,X,X,,
+371,Task Scheduler,https://leetcode.com/problems/task-scheduler/,Medium,Math,,,X,X,X,X,"do the greedy approach where you use both a maxHeap and a queue.
+
+basically in maxHeap keep track of all negative count values, in queue append both the updated count AND the time it can get processed
+while maxHeap or q:
+increment time by 1
+if maxHeap, then pop from maxHeap, add 1 to the count popped, check if it's not 0, then push to queue with time it takes to get processed
+if q and q[0][1] == current time, push the count value from the popped queue value back to the heap
+
+after while loop, just return time"
+372,Max Points on a Line,https://leetcode.com/problems/max-points-on-a-line/,Hard,Math,,,,,X,,
+373,Integer to English Words,https://leetcode.com/problems/integer-to-english-words/,Hard,Math,,,,,,,
+,,,,,,,,,,,
+375,Add Binary,https://leetcode.com/problems/add-binary/,Easy,Binary,,,,X,,,String
+376,Number of 1 Bits,https://leetcode.com/problems/number-of-1-bits/,Easy,Binary,,,X,X,X,,
+377,Counting Bits,https://leetcode.com/problems/counting-bits/,Easy,Binary,,,X,X,,X,
+378,Reverse Bits,https://leetcode.com/problems/reverse-bits/,Easy,Binary,,,X,X,,,
+379,Reverse Integer,https://leetcode.com/problems/reverse-integer/,Medium,Binary,,,X,X,,,
+380,Sum of Two Integers,https://leetcode.com/problems/sum-of-two-integers/,Medium,Binary,,,X,,,,
+381,Divide Two Integers,https://leetcode.com/problems/divide-two-integers/,Medium,Binary,,,,,,,
+382,Maximum XOR of Two Numbers in an Array,https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/,Medium,Binary,,,,,,X,
