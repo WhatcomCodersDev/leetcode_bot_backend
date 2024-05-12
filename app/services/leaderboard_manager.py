@@ -1,8 +1,9 @@
 from constants import ATTEMPT_PT, EASY_PT, MEDIUM_PT, TTL, QUESTION_TTL_SECONDS, REDIS_SOLVED_KEY, REDIS_ATTEMPTED_KEY
 from app.services.firestore_wrapper import FirestoreWrapper
 from app.services.redis_client import RedisClient
-from typing import Dict, List
+from typing import Dict, List, Optional
 from datetime import datetime
+from util import get_ttl_for_next_monday_9am
 
 
 class LeaderboardManager:
@@ -16,7 +17,7 @@ class LeaderboardManager:
                                       question_title:str, 
                                       user_id: str, 
                                       difficulty: str,
-                                    ) -> float | None:
+                                    ) -> Optional[float]:
         difficulty = difficulty.lower()
 
 
@@ -34,7 +35,7 @@ class LeaderboardManager:
     def process_points_for_attempt(self,
                                    user_id: str,
                                    difficulty: str,
-                                   ) -> float | None:
+                                   ) -> Optional[float]:
         difficulty = difficulty.lower()
         """
             This function update user points for attempting and add them to cached list of attempters

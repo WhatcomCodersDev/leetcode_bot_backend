@@ -1,7 +1,3 @@
 runtime: python39 # Specify the Python runtime version.
-service: leetcode_backend # This will be replaced dynamically
-entrypoint: gunicorn -b :$PORT run:app # Define the command to start your application.
-
-handlers:
-  - url: /.*
-    script: auto
+service: leetcode-backend # This will be replaced dynamically
+entrypoint: python3 run.py # Define the command to start your application.

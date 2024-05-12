@@ -15,12 +15,14 @@ google-cloud-firestore==2.16.0
 googleapis-common-protos==1.63.0
 grpcio==1.63.0
 grpcio-status==1.62.2
+gunicorn==22.0.0
 idna==3.7
 itsdangerous==2.2.0
 Jinja2==3.1.4
 load-dotenv==0.1.0
 MarkupSafe==2.1.5
 numpy==1.26.4
+packaging==24.0
 pandas==2.2.2
 proto-plus==1.23.0
 protobuf==4.25.3

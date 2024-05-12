@@ -9,4 +9,4 @@ app.register_blueprint(problem_routes.bp)
 app.register_blueprint(leaderboard_routes.bp)
 app.register_blueprint(challenges_routes.bp)
 
-app.run(debug=True)
+app.run(debug=True, port=8080, host="0.0.0.0")
