@@ -108,13 +108,14 @@ def process_user_submission():
     return jsonify({'points': points}), 200
 
 @bp.route('/problem/thread/<submission_thread_id>', methods=['GET'])
-def get_problem_thread_id(submission_thread_id: str) -> dict:
+def get_problem_difficulty_thread_map(submission_thread_id: str) -> dict:
     print("submission_thread_id:", submission_thread_id)
     if not submission_thread_id:
         return jsonify({'error': 'thread id not provided'}), 400
     
-    thread_id = redis_client.get_decoded_value(int(submission_thread_id))
-    return jsonify({'thread_id': thread_id}), 200
+    difficulty_thread_map = redis_client.get_decoded_dict(submission_thread_id)
+    # Thread_id could be None or a map if the key exists
+    return jsonify({'difficulty_thread_map': difficulty_thread_map}), 200
 
 
 @bp.route('/problem/thread', methods=['POST'])
