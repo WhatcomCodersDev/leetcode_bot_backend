@@ -14,8 +14,8 @@ bp = Blueprint('challenges', __name__, url_prefix='/challenges')
 
 
 # Used by Leetcode bot to get a random problem of the week
-@bp.route('/problem', methods=['GET'])
-def get_problem():
+@bp.route('/problem/weekly', methods=['GET'])
+def get_weekly_problem():
     difficulty = request.args.get('difficulty')
     if not difficulty:
         return jsonify({'error': 'Difficulty not provided'}), 400
@@ -28,6 +28,24 @@ def get_problem():
         return jsonify({'error': 'No problem found'}), 404
     
     return jsonify(problem), 200
+
+# Used by Leetcode bot to get a random problem as per user request
+@bp.route('/problem/userrequest', methods=['GET'])
+def get_problem_user_request():
+    difficulty = request.args.get('difficulty')
+    if not difficulty:
+        return jsonify({'error': 'Difficulty not provided'}), 400
+    
+    if difficulty not in ['easy', 'medium', 'hard']:
+        return jsonify({'error': 'Invalid difficulty'}), 400
+
+    # select_problem_at_random() = no cache
+    problem = problem_manager.select_problem_at_random(difficulty)
+    if not problem:
+        return jsonify({'error': 'No problem found'}), 404
+    
+    return jsonify(problem), 200
+
 
 @bp.route('/user/<int:user_id>/<difficulty>/attempted', methods=['GET'])
 def get_user_attempted(user_id, difficulty):
