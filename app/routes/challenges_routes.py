@@ -7,8 +7,9 @@
 
 '''
 from flask import Blueprint, request, jsonify
-from app.services import redis_client, leaderboard_manager, problem_manager
+from app.services import redis_client, leaderboard_manager, problem_manager, firestore_wrapper
 from constants import REDIS_ATTEMPTED_KEY, REDIS_SOLVED_KEY
+from datetime import datetime
 
 bp = Blueprint('challenges', __name__, url_prefix='/challenges')
 
@@ -30,9 +31,8 @@ def get_weekly_problem():
     return jsonify(problem), 200
 
 # Used by Leetcode bot to get a random problem as per user request
-@bp.route('/problem/userrequest', methods=['GET'])
-def get_problem_user_request():
-    difficulty = request.args.get('difficulty')
+@bp.route('/problem/<difficulty>/request', methods=['GET'])
+def get_problem_user_request(difficulty):
     if not difficulty:
         return jsonify({'error': 'Difficulty not provided'}), 400
     
@@ -46,6 +46,16 @@ def get_problem_user_request():
     
     return jsonify(problem), 200
 
+# Used by Leetcode bot to set a problem as solved
+@bp.route('/problem/<int:problem_id>/solved', methods=['PUT'])
+def mark_problem_solved(problem_id):
+    if not problem_id:
+        return jsonify({'error': 'Problem ID not provided'}), 400
+
+    # TODO: check if this function succeed or not
+    firestore_wrapper.update_last_asked_timestamp(problem_id, datetime.now())
+
+    return jsonify({'message': f'Marked {problem_id} as solved'}), 200
 
 @bp.route('/user/<int:user_id>/<difficulty>/attempted', methods=['GET'])
 def get_user_attempted(user_id, difficulty):
