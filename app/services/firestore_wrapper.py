@@ -104,15 +104,17 @@ class FirestoreWrapper:
         except Exception as e:
             print(f"Problem adding question to db: {e}")
 
-    def update_last_asked_timestamp(self, question_id: str, new_timestamp: datetime):
+    def update_last_asked_timestamp(self, question_id: str, new_timestamp: datetime) -> bool:
         collection_ref = self.get_collection(self.leetcode_collection)
         doc_ref = self.get_doc_ref(collection_ref, question_id)
 
         try:
             doc_ref.update({TIMESTAMP:new_timestamp})
             print(f"Last asked timestamp updated to {new_timestamp}")
+            return True
         except Exception as e:
             print(f"Error updating last asked timestamp: {e}")
+            return False
 
     def add_user_solved(self, question_id: str, user_id: str):
         collection_ref = self.get_collection(self.leetcode_collection)
