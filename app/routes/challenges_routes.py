@@ -86,26 +86,24 @@ def process_user_submission():
 
     user_id = data['user_id']
     difficulty = data['difficulty']
+    problem_id = data['problem_id']
+    problem_name = data['problem_name']
 
     try:
-        # Todo - This indirectly gets the problem from the cache, but it should be done directly
-        problem_data = problem_manager.get_problem(difficulty) #TODO - fetch problem from cache?
-
-        if not problem_data:
-            return jsonify({'error': 'No problem found'}), 404
-
         points = leaderboard_manager.process_points_for_submission(
-            question_id=problem_data.id,
-            question_title=problem_data.name,
+            question_id=problem_id,
+            question_title=problem_name,
             user_id=user_id,
             difficulty=difficulty
         )
     except Exception as e:
+        print(e)
         return jsonify({'error': str(e)}), 400
 
     if not points:
-        return jsonify({'error': 'No points given'}), 400
-    return jsonify({'points': points}), 200
+        return jsonify({"points": points}), 200
+    
+    return jsonify({"points": points}), 200
 
 @bp.route('/problem/thread/<submission_thread_id>', methods=['GET'])
 def get_problem_difficulty_thread_map(submission_thread_id: str) -> dict:

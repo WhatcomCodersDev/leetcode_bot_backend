@@ -21,9 +21,11 @@ def get_problem_by_id(problem_id):
     except ValueError:
         return jsonify({'error': 'Invalid ID'}), 400
 
-    problem = problem_manager.get_problem_by_id(problem_id)
-    if not problem:
-        return jsonify({'error': 'No problem found'}), 404
-    
+    try:
+        problem = problem_manager.get_problem_by_id(problem_id)
+    except Exception as e:
+        print(e) #todo fix this later
+        return jsonify({f'error: No problem found'}), 400
+
     return jsonify(problem), 200
 

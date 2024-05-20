@@ -28,7 +28,7 @@ class LeaderboardManager:
             self.firestore_wrapper.add_or_update_user_score(user_id=user_id, score=points)
             self.firestore_wrapper.add_or_update_question(question_id, question_title, datetime.now(), user_id)
         except Exception as e:
-            return None
+            raise e
 
         return points
     
