@@ -1,14 +1,16 @@
 from constants import ATTEMPT_PT, EASY_PT, MEDIUM_PT, TTL, QUESTION_TTL_SECONDS, REDIS_SOLVED_KEY, REDIS_ATTEMPTED_KEY
-from app.services.firestore_wrapper import FirestoreWrapper
-from app.services.redis_client import RedisClient
+from app.services.databases.redis.redis_client import RedisClient
+from app.services.databases.firestore.leaderboard import LeaderboardCollectionManager
 from typing import Dict, List, Optional
 from datetime import datetime
 from util import get_ttl_for_next_monday_9am
 
 
 class LeaderboardManager:
-    def __init__(self, firestore_wrapper: FirestoreWrapper, redis_client: RedisClient):
-        self.firestore_wrapper = firestore_wrapper
+    def __init__(self, 
+                 firestore_client: LeaderboardCollectionManager, 
+                 redis_client: RedisClient):
+        self.firestore_client = firestore_client
         self.redis_client = redis_client
 
     # NOTE: difficulty must in lower case
@@ -25,8 +27,8 @@ class LeaderboardManager:
     
         # update user score and add them to solvers list in db
         try:
-            self.firestore_wrapper.add_or_update_user_score(user_id=user_id, score=points)
-            self.firestore_wrapper.add_or_update_question(question_id, question_title, datetime.now(), user_id)
+            self.firestore_client.add_or_update_user_score(user_id=user_id, score=points)
+            self.firestore_client.add_or_update_question(question_id, question_title, datetime.now(), user_id)
         except Exception as e:
             raise e
 
@@ -44,7 +46,7 @@ class LeaderboardManager:
         try:
             attempted_difficulty_map = self.redis_client.get_decoded_dict(REDIS_ATTEMPTED_KEY)
             self.add_user_id_to_cached_attempters_list(user_id,difficulty,attempted_difficulty_map)
-            self.firestore_wrapper.add_or_update_user_score(user_id, ATTEMPT_PT)
+            self.firestore_client.add_or_update_user_score(user_id, ATTEMPT_PT)
         except Exception as e:
             print(f"Error processing points for attempt: {e}")
             return None

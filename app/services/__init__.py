@@ -2,9 +2,17 @@ import os
 from dotenv import load_dotenv
 
 from app.services.problem_manager import ProblemManager
-from app.services.firestore_wrapper import FirestoreWrapper
-from app.services.leaderboard_manager import LeaderboardManager
-from app.services.redis_client import RedisClient
+from app.services.weekly_challenges.leaderboard_manager import LeaderboardManager
+
+from app.services.databases.firestore.leetcode_submissions import SubmissionCollectionManager
+from app.services.databases.firestore.users import UserCollectionManager
+from app.services.databases.firestore.leaderboard import LeaderboardCollectionManager
+from app.services.databases.firestore.leetcode_questions import LeetCodeCollectionManager
+
+from app.services.databases.redis.redis_client import RedisClient
+from app.services.space_repetition.scheduler import FSRSScheduler
+from app.services.space_repetition.similarity_score_adapter import SimilarityScoreAdapter
+from app.services.space_repetition.problem_ranker import ProblemRanker
 
 load_dotenv()
 
@@ -30,8 +38,19 @@ redis_port = int(os.getenv("REDIS_PORT"))
 redis_password = os.getenv("REDIS_PWD")
 
 
-firestore_wrapper = FirestoreWrapper(gc_project_name, environment) #TODO: pass in the firestore project name and environment based on configs
 redis_client = RedisClient(redis_host, redis_port, redis_password) #TODO: pass in the redis host, port, and password based on configs
 
-problem_manager = ProblemManager(firestore_wrapper, redis_client)
-leaderboard_manager = LeaderboardManager(firestore_wrapper, redis_client)
+# Firestore Managers
+submission_manager = SubmissionCollectionManager(gc_project_name, environment)
+user_manager = UserCollectionManager(gc_project_name, environment)
+leaderboard_collection_manager = LeaderboardCollectionManager(gc_project_name, environment)
+leetcode_collection_manager = LeetCodeCollectionManager(gc_project_name, environment)
+
+# Services - TODO - rename
+problem_manager = ProblemManager(leetcode_collection_manager, redis_client)
+leaderboard_manager = LeaderboardManager(leaderboard_collection_manager, redis_client)
+
+
+fsrs_scheduler = FSRSScheduler()
+# similarity_score_adapter = SimilarityScoreAdapter()
+# problem_ranker = ProblemRanker()
