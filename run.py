@@ -10,7 +10,7 @@ from flask_cors import CORS
 allowed_origins = [
     "http://localhost:3000",
     "https://www.whatcomcoders.com",
-    "https://whatcomcoders.com"
+    "https://whatcomcoders.com",
 ]
 
 app = Flask(__name__)
