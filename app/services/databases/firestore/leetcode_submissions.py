@@ -29,6 +29,54 @@ class SubmissionCollectionManager(FirestoreBase):
         super().__init__(project_name, environment, database)
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION
 
+    def get_user_submissions(self, uuid: str):
+        '''
+        The structure is 
+        1. users_leetcode_submissions
+            1. uuid
+                1. problems
+                    1. problem_id
+                        1. attempted_timestamp
+                        2. diffculty
+                        3. next_review_date
+        
+        We need to get the subcollections of problems for a user
+        
+        '''
+        collection_ref = self.get_collection(self.uuid_collection)
+        doc_ref = self.get_doc_ref(collection_ref, uuid)
+        try:
+            doc = doc_ref.get()
+            if doc.exists:
+                subcollection_ref = doc_ref.collection('problems')
+                docs = subcollection_ref.stream()
+                return docs
+            else:
+                return None
+        except Exception as e:
+            print(f"Error in get_user_submissions for user {uuid}: {e}")
+            raise e
+        
+    def get_user_submission_for_problem(self, uuid: str, problem_id: str):
+        '''
+        Get the user's submission for a specific problem
+        '''
+        collection_ref = self.get_collection(self.uuid_collection)
+        doc_ref = self.get_doc_ref(collection_ref, uuid)
+        try:
+            doc = doc_ref.get()
+            if doc.exists:
+                subcollection_ref = doc_ref.collection('problems')
+                subcollection_doc_ref = subcollection_ref.document(str(problem_id))
+                subcollection_doc = subcollection_doc_ref.get()
+                return subcollection_doc
+            else:
+                return None
+        except Exception as e:
+            print(f"Error in get_user_submission_for_problem for user {uuid}: {e}")
+            raise e
+
+    
     def update_leetcode_submission(self, 
                                    uuid: str,
                                    problem_id: str, 
