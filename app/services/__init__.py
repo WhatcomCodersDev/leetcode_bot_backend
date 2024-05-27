@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 from app.services.problem_manager import ProblemManager
 from app.services.weekly_challenges.leaderboard_manager import LeaderboardManager
+from app.services.user_problems_manager import UserProblemManager
 
 from app.services.databases.firestore.leetcode_submissions import SubmissionCollectionManager
 from app.services.databases.firestore.users import UserCollectionManager
@@ -49,7 +50,7 @@ leetcode_collection_manager = LeetCodeCollectionManager(gc_project_name, environ
 # Services - TODO - rename
 problem_manager = ProblemManager(leetcode_collection_manager, redis_client)
 leaderboard_manager = LeaderboardManager(leaderboard_collection_manager, redis_client)
-
+user_problem_manager = UserProblemManager(submission_manager, problem_manager)
 
 fsrs_scheduler = FSRSScheduler()
 # similarity_score_adapter = SimilarityScoreAdapter()
