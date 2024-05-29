@@ -11,6 +11,11 @@ from app.services import problem_manager
 
 bp = Blueprint('problems', __name__, url_prefix='/problems')
 
+@bp.route('/all', methods=['GET'])
+def get_all_problems():
+    problems = problem_manager.get_all_problems()
+    return jsonify(problems), 200
+
 @bp.route('/<problem_id>', methods=['GET'])
 def get_problem_by_id(problem_id):
     if not problem_id:

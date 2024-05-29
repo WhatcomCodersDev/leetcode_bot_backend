@@ -9,6 +9,7 @@ from app.services import fsrs_scheduler, submission_manager, user_manager
 
 bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 
+
 @bp.route('/<problem_id>/submit', methods=['POST'])
 def handle_problem_submission(problem_id):
     data = request.json

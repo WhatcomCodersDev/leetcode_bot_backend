@@ -93,6 +93,55 @@ class ProblemManager:
 
         return problem_data
     
+    def get_all_problems(self):
+        problems = []
+        for index, row in self.easy_problems.iterrows():
+            row['NOTES'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'], 
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            notes=row['NOTES'])
+            problems.append(problem)
+        
+        for index, row in self.medium_problems.iterrows():
+            row['NOTES'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'], 
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            notes=row['NOTES'])
+            problems.append(problem)
+        
+        for index, row in self.hard_problems.iterrows():
+            row['NOTES'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'], 
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            notes=row['NOTES'])
+            problems.append(problem)
+
+        return problems
+    
         
     def update_db(self, problem: Problem):
         self.db.update_question_document(question_id=str(problem.id), 
