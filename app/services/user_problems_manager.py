@@ -26,6 +26,8 @@ class UserProblemManager:
         new_problem = {} #todo - Good place to define a proto
 
         for problem_doc in problem_docs:
+            print("problem_doc:", problem_doc)
+
             new_problem['id'] = problem_doc.id
 
             if not problem_doc.exists:
@@ -35,10 +37,16 @@ class UserProblemManager:
             problem_info = self.problem_manager.get_problem_by_id(int(new_problem['id']))
 
             new_problem['name'] = problem_info.name
-            new_problem['problem_type'] = problem_info.tag #todo - rework           
-            new_problem['difficulty'] = problem_doc['difficulty']
-            new_problem['last_attempt_timestamp'] = problem_doc['last_attempt_timestamp']
-            new_problem['next_review_timestamp'] = problem_doc['next_review_timestamp']
+            new_problem['problem_type'] = problem_info.tag #todo - rework     
+
+            if 'difficulty' in problem_doc:    #this is an issu   
+                new_problem['difficulty'] = problem_doc['difficulty']
+
+            if 'last_asked_timestamp' in problem_doc:
+                new_problem['last_attempt_timestamp'] = problem_doc['last_attempt_timestamp']
+            
+            if 'next_review_timestamp' in problem_doc:
+                new_problem['next_review_timestamp'] = problem_doc['next_review_timestamp']
 
             problems_for_user.append(new_problem)
 

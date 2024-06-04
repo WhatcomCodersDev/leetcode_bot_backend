@@ -9,6 +9,7 @@ def get_problem_data_from_spreadsheet(id: int) -> Problem:
     converters_dict = {col: x_to_bool for col in ['B75', 'B50', 'NC.io', 'G75', 'LC', 'SP']}
 
     df = pd.read_csv(PROBLEM_SHEET_PATH, converters=converters_dict)
+    print(list(df))
 
     df_problem = df[df['ID'] == id]
     problem_dict = df_problem.to_dict(orient='records')[0]
@@ -16,6 +17,7 @@ def get_problem_data_from_spreadsheet(id: int) -> Problem:
     return Problem(id=int(problem_dict['ID']), 
                             name=problem_dict['PROBLEM'],
                             link=problem_dict['URL'], 
+                            type=problem_dict['TYPE'],
                             difficulty=problem_dict['LEVEL'].lower(), 
                             tag=problem_dict['TAG'], 
                             isInBlind75=problem_dict['B75'],
@@ -23,7 +25,8 @@ def get_problem_data_from_spreadsheet(id: int) -> Problem:
                             isInNeetcode=problem_dict['NC.io'],
                             isInGrind75=problem_dict['G75'],
                             isInSeanPrasadList=problem_dict['SP'],
-                            notes=problem_dict['NOTES'])
+                            # notes=problem_dict['NOTES']
+                            )
 
 def x_to_bool(value):
     if value == 'x':  # Adjust this if your true indicator is different
