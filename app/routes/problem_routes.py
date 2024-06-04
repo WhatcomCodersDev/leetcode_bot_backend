@@ -29,3 +29,23 @@ def get_problem_by_id(problem_id):
 
     return jsonify(problem), 200
 
+# Used by Leetcode bot to get a random problem as per user request
+@bp.route('/<difficulty>/request', methods=['GET'])
+def get_problem_user_request(difficulty):
+    if not difficulty:
+        return jsonify({'error': 'Difficulty not provided'}), 400
+
+    # TODO: use discord_id for something
+    discord_id = request.args.get('discord_id')
+    if not discord_id:
+        return jsonify({'error': 'User ID not provided'}), 400
+
+    if difficulty not in ['easy', 'medium', 'hard']:
+        return jsonify({'error': 'Invalid difficulty'}), 400
+
+    # select_problem_at_random() = no cache
+    problem = problem_manager.select_problem_at_random(difficulty)
+    if not problem:
+        return jsonify({'error': 'No problem found'}), 404
+    
+    return jsonify(problem), 200
