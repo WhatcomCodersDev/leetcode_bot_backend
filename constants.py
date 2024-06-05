@@ -17,6 +17,7 @@ USER_SCORES = "user_scores"
 # firestore collection
 LEETCODE_COLLECTION = "leetcode_questions"
 LEADERBOARD_COLLECTION = "leetcode_leaderboard"
+USER_PROBLEM_TYPES_FOR_REVIEW_COLLECTION = "users_problemtypes_for_review"
 UUID_COLLECTION = "uuid_mapping"
 USER_SUBMISSION_COLLECTION = "users_leetcode_submissions"
 TEST_LEETCODE_COLLECTION = "test_leetcode_questions"

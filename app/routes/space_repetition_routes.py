@@ -22,7 +22,8 @@ def handle_problem_submission(problem_id):
     if not problem_id:
         return jsonify({'error': 'Problem ID not provided'}), 400
     
-    diffculty = problem_manager.get_problem_by_id(int(problem_id)).difficulty
+    problem_data = problem_manager.get_problem_by_id(int(problem_id))
+    difficulty = problem_data.difficulty
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
@@ -58,7 +59,7 @@ def handle_problem_submission(problem_id):
         
         # Build submission data
         update_fields = {problem_id: {}}
-        update_fields[problem_id]['difficulty'] = diffculty
+        update_fields[problem_id]['difficulty'] = difficulty
         
         if data.get('solved'):
             update_fields[problem_id]['solved_timestamp'] = datetime.now()
@@ -67,6 +68,7 @@ def handle_problem_submission(problem_id):
             update_fields[problem_id]['attempted_timestamp'] = datetime.now()
         
         update_fields[problem_id]['next_review_date'] = review_data['next_review_date']
+        update_fields[problem_id]['type'] = problem_data.type
         
         # Update datastore
         submission_manager.update_leetcode_submission(user_uuid,

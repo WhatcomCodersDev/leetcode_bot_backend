@@ -23,9 +23,10 @@ class UserProblemManager:
 
         problems_for_user = []
 
-        new_problem = {} #todo - Good place to define a proto
 
         for problem_doc in problem_docs:
+            new_problem = {} #todo - Good place to define a proto
+
             print("problem_doc:", problem_doc)
 
             new_problem['id'] = problem_doc.id
@@ -37,7 +38,7 @@ class UserProblemManager:
             problem_info = self.problem_manager.get_problem_by_id(int(new_problem['id']))
 
             new_problem['name'] = problem_info.name
-            new_problem['problem_type'] = problem_info.tag #todo - rework     
+            new_problem['problem_type'] = problem_info.type #todo - rework     
 
             if 'difficulty' in problem_doc:    #this is an issu   
                 new_problem['difficulty'] = problem_doc['difficulty']
