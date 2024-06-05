@@ -26,10 +26,6 @@ def handle_problem_submission(problem_id):
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
-
-      if not (data.get('discord_id') or  data['user_id']):
-        print('discord id or user_id not provided')
-        return jsonify({'error': 'discord id or user_id not provided'}), 400
     
     if not data['difficulty']:
         print('User ID or difficulty not provided')
