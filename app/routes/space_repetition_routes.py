@@ -5,7 +5,7 @@
 '''
 from datetime import datetime
 from flask import Blueprint, request, jsonify
-from app.services import fsrs_scheduler, submission_manager, user_manager
+from app.services import fsrs_scheduler, submission_manager, user_manager, problem_manager
 
 bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 
@@ -19,9 +19,13 @@ def handle_problem_submission(problem_id):
         print('No data provided')
         return jsonify({'error': 'No data provided'}), 400
     
-    if not (data.get('discord_id') or  data['user_id']):
-        print('discord id or user_id not provided')
-        return jsonify({'error': 'discord id or user_id not provided'}), 400
+    if not problem_id:
+        return jsonify({'error': 'Problem ID not provided'}), 400
+    
+    diffculty = problem_manager.get_problem_by_id(int(problem_id)).difficulty
+
+    if not data.get('discord_id') and not data.get('user_id'):
+        return jsonify({'error': 'Discord ID or User ID not provided'}), 400
     
     if not data['difficulty']:
         print('User ID or difficulty not provided')
@@ -35,6 +39,9 @@ def handle_problem_submission(problem_id):
         print('ID not provided')
         return jsonify({'error': 'ID not provided'}), 400
     
+    if 'attempted' not in data and 'solved' not in data:
+        return jsonify({'error': 'Attempted or Solved not provided'}), 400
+
     try:
         # Get user UUID
         if data.get('discord_id'):
@@ -51,7 +58,7 @@ def handle_problem_submission(problem_id):
         
         # Build submission data
         update_fields = {problem_id: {}}
-        update_fields[problem_id]['difficulty'] = data.get('difficulty')
+        update_fields[problem_id]['difficulty'] = diffculty
         
         if data.get('solved'):
             update_fields[problem_id]['solved_timestamp'] = datetime.now()
