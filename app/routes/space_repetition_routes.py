@@ -9,11 +9,14 @@ from app.services import fsrs_scheduler, submission_manager, user_manager, probl
 
 bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 
+
 @bp.route('/<problem_id>/submit', methods=['POST'])
 def handle_problem_submission(problem_id):
     data = request.json
     print(data)
+
     if not data:
+        print('No data provided')
         return jsonify({'error': 'No data provided'}), 400
     
     if not problem_id:
@@ -23,6 +26,22 @@ def handle_problem_submission(problem_id):
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
+
+      if not (data.get('discord_id') or  data['user_id']):
+        print('discord id or user_id not provided')
+        return jsonify({'error': 'discord id or user_id not provided'}), 400
+    
+    if not data['difficulty']:
+        print('User ID or difficulty not provided')
+        return jsonify({'error': 'User ID or difficulty not provided'}), 400
+    
+    if not data.get('solved') and not data.get('attempted'):
+        print('Attempted or solved not provided')
+        return jsonify({'error': 'Attempted or solved not provided'}), 400
+
+    if not problem_id:
+        print('ID not provided')
+        return jsonify({'error': 'ID not provided'}), 400
     
     if 'attempted' not in data and 'solved' not in data:
         return jsonify({'error': 'Attempted or Solved not provided'}), 400
@@ -59,9 +78,11 @@ def handle_problem_submission(problem_id):
                                                       update_fields)
     
     except ValueError:
+        print('Invalid ID')
         return jsonify({'error': 'Invalid ID'}), 400
 
     if not review_data:
+        print('No problem found')
         return jsonify({'error': 'No problem found'}), 404
     
     return jsonify(review_data), 200

@@ -46,6 +46,7 @@ class ProblemManager:
         return Problem(id=int(problem_dict['ID']), 
                             name=problem_dict['PROBLEM'],
                             link=problem_dict['URL'], 
+                            type=problem_dict['TYPE'], 
                             difficulty=problem_dict['LEVEL'].lower(), 
                             tag=problem_dict['TAG'], 
                             isInBlind75=problem_dict['B75'],
@@ -53,7 +54,8 @@ class ProblemManager:
                             isInNeetcode=problem_dict['NC.io'],
                             isInGrind75=problem_dict['G75'],
                             isInSeanPrasadList=problem_dict['SP'],
-                            notes=problem_dict['NOTES'])
+                            # notes=problem_dict['NOTES']
+                            )
     
     def get_problem_by_id(self, problem_id: int) -> Problem:
         problem_data = get_problem_data_from_spreadsheet(problem_id)
@@ -92,6 +94,69 @@ class ProblemManager:
                 problem_data = get_problem_data_from_spreadsheet(problem_id)
 
         return problem_data
+    
+    def get_all_problems(self):
+        problems = []
+
+        self.easy_problems['TYPE'] = self.easy_problems['TYPE'].fillna('')#temp
+        self.medium_problems['TYPE'] = self.medium_problems['TYPE'].fillna('')#temp
+        self.hard_problems['TYPE'] = self.hard_problems['TYPE'].fillna('')#temp
+
+        for index, row in self.easy_problems.iterrows():
+            # row['NOTES'] = ''#temp
+            # row['TYPE'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'], 
+                            type=row['TYPE'],
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            # notes=row['NOTES']
+                            )
+            problems.append(problem)
+        
+        for index, row in self.medium_problems.iterrows():
+            # row['NOTES'] = ''
+            # row['TYPE'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'],
+                            type=row['TYPE'], 
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            # notes=row['NOTES']
+                            )
+            problems.append(problem)
+        
+        for index, row in self.hard_problems.iterrows():
+            # row['NOTES'] = ''
+            # row['TYPE'] = ''
+            problem = Problem(id=row['ID'], 
+                            name=row['PROBLEM'],
+                            link=row['URL'], 
+                            type=row['TYPE'], 
+                            difficulty=row['LEVEL'].lower(), 
+                            tag=row['TAG'], 
+                            isInBlind75=row['B75'],
+                            isInBlind50=row['B50'],
+                            isInNeetcode=row['NC.io'],
+                            isInGrind75=row['G75'],
+                            isInSeanPrasadList=row['SP'],
+                            # notes=row['NOTES']
+                            )
+            problems.append(problem)
+        print("Problems from get_all_problems", problems)
+        return problems
     
         
     def update_db(self, problem: Problem):

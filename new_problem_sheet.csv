@@ -1,4 +1,4 @@
-ID,PROBLEM,URL,DESCRIPTIONS,EXAMPLES,LEVEL,TAG,Similar Questions ID,Accepted,Submissions,Acceptance Rate,Discussion Count,B75,NC.io,B50,G75,LC,SP
+ID,PROBLEM,URL,DESCRIPTIONS,EXAMPLES,LEVEL,TYPE,TAG,Similar Questions ID,Accepted,Submissions,Acceptance Rate,Discussion Count,B75,NC.io,B50,G75,LC,SP
 1,LRU Cache,https://leetcode.com/problems/lru-cache/,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 Implement the LRUCache class:
@@ -24,7 +24,7 @@ lRUCache.get(2);    // returns -1 (not found)
 lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
 lRUCache.get(1);    // return -1 (not found)
 lRUCache.get(3);    // return 3
-lRUCache.get(4);    // return 4",Medium,"Design/OOD, Hash Table, Linked List, Doubly-Linked List",383,1.6M,3.8M,42.50%,190,,X,,X,X,
+lRUCache.get(4);    // return 4",Medium,Linked List,"Design/OOD, Hash Table, Linked List, Doubly-Linked List",383,1.6M,3.8M,42.50%,190,,X,,X,X,
 2,Min Stack,https://leetcode.com/problems/min-stack/,"Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
 Implement the MinStack class:
@@ -51,7 +51,7 @@ minStack.push(-3);
 minStack.getMin(); // return -3
 minStack.pop();
 minStack.top();    // return 0
-minStack.getMin(); // return -2",Easy,"Design/OOD, Stack",68,1.7M,3.1M,54.20%,105,,X,,X,X,
+minStack.getMin(); // return -2",Easy,Stack,"Design/OOD, Stack",68,1.7M,3.1M,54.20%,105,,X,,X,X,
 3,Implement Queue Using Stacks,https://leetcode.com/problems/implement-queue-using-stacks/,"Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
 
 Implement the MyQueue class:
@@ -77,7 +77,7 @@ boolean empty() Returns true if the queue is empty, false otherwise.
 Notes:
 
 You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
-Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.",Easy,"Design/OOD, Stack, Queue",4,928.6K,1.4M,66.30%,93,,,,X,,
+Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.",Easy,Stack,"Design/OOD, Stack, Queue",4,928.6K,1.4M,66.30%,93,,,,X,,
 4,Implement Stack Using Queues,https://leetcode.com/problems/implement-stack-using-queues/,"Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
 
 Implement the MyStack class:
@@ -109,7 +109,7 @@ Constraints:
 
 1 <= x <= 9
 At most 100 calls will be made to push, pop, top, and empty.
-All the calls to pop and top are valid.",Easy,"Design/OOD, Stack, Queue",3,668.7K,1M,63.80%,54,,,,,,
+All the calls to pop and top are valid.",Easy,Stack,"Design/OOD, Stack, Queue",3,668.7K,1M,63.80%,54,,,,,,
 5,Insert Delete GetRandom O(1),https://leetcode.com/problems/insert-delete-getrandom-o1/,"Implement the RandomizedSet class:
 
 RandomizedSet() Initializes the RandomizedSet object.
@@ -139,7 +139,7 @@ Constraints:
 
 -231 <= val <= 231 - 1
 At most 2 * 105 calls will be made to insert, remove, and getRandom.
-There will be at least one element in the data structure when getRandom is called.",Medium,Design/OOD,,908.4K,1.7M,54.40%,143,,,,X,X,
+There will be at least one element in the data structure when getRandom is called.",Medium,,Design/OOD,,908.4K,1.7M,54.40%,143,,,,X,X,
 6,Insert Delete GetRandom O(1) Duplicates,https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/,"RandomizedCollection is a data structure that contains a collection of numbers, possibly duplicates (i.e., a multiset). It should support inserting and removing specific elements and also reporting a random element.
 
 Implement the RandomizedCollection class:
@@ -178,7 +178,7 @@ Constraints:
 
 -231 <= val <= 231 - 1
 At most 2 * 105 calls in total will be made to insert, remove, and getRandom.
-There will be at least one element in the data structure when getRandom is called.",Hard,Design/OOD,,142.4K,401.5K,35.50%,21,,,,,,
+There will be at least one element in the data structure when getRandom is called.",Hard,,Design/OOD,,142.4K,401.5K,35.50%,21,,,,,,
 7,Shuffle an Array,https://leetcode.com/problems/shuffle-an-array/,"Given an integer array nums, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.
 
 Implement the Solution class:
@@ -208,7 +208,7 @@ Constraints:
 1 <= nums.length <= 50
 -106 <= nums[i] <= 106
 All the elements of nums are unique.
-At most 104 calls in total will be made to reset and shuffle.",Medium,Design/OOD,,335.3K,574.9K,58.30%,21,,,,,X,
+At most 104 calls in total will be made to reset and shuffle.",Medium,,Design/OOD,,335.3K,574.9K,58.30%,21,,,,,X,
 8,Random Pick with Weight,https://leetcode.com/problems/random-pick-with-weight/,"You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
 
 You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
@@ -255,7 +255,7 @@ Constraints:
 
 1 <= w.length <= 104
 1 <= w[i] <= 105
-pickIndex will be called at most 104 times.",Medium,Design/OOD,,454.8K,970.8K,46.80%,62,,,,X,,
+pickIndex will be called at most 104 times.",Medium,,Design/OOD,,454.8K,970.8K,46.80%,62,,,,X,,
 9,Time-Based Key Value Store,https://leetcode.com/problems/time-based-key-value-store/,"Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
 
 Implement the TimeMap class:
@@ -287,9 +287,9 @@ Constraints:
 key and value consist of lowercase English letters and digits.
 1 <= timestamp <= 107
 All the timestamps timestamp of set are strictly increasing.
-At most 2 * 105 calls will be made to set and get.",Medium,Design/OOD,,437.6K,886K,49.40%,62,,X,,X,,
-10,Logger Rate Limiter,https://leetcode.com/problems/logger-rate-limiter/,,,Easy,Design/OOD,,,,,,,,,,,
-11,Design Hit Counter,https://leetcode.com/problems/design-hit-counter/,,,Medium,Design/OOD,,,,,,,,,X,,
+At most 2 * 105 calls will be made to set and get.",Medium,,Design/OOD,,437.6K,886K,49.40%,62,,X,,X,,
+10,Logger Rate Limiter,https://leetcode.com/problems/logger-rate-limiter/,,,Easy,,Design/OOD,,,,,,,,,,,
+11,Design Hit Counter,https://leetcode.com/problems/design-hit-counter/,,,Medium,,Design/OOD,,,,,,,,,X,,
 12,Design Twitter,https://leetcode.com/problems/design-twitter/,"Design a simplified version of Twitter where users can post tweets, follow/unfollow another user, and is able to see the 10 most recent tweets in the user's news feed.
 
 Implement the Twitter class:
@@ -322,7 +322,7 @@ Constraints:
 1 <= userId, followerId, followeeId <= 500
 0 <= tweetId <= 104
 All the tweets have unique IDs.
-At most 3 * 104 calls will be made to postTweet, getNewsFeed, follow, and unfollow.",Medium,"Design/OOD, Hash Table, Linked List, Heap",,177.8K,449.6K,39.50%,56,,X,,,,
+At most 3 * 104 calls will be made to postTweet, getNewsFeed, follow, and unfollow.",Medium,,"Design/OOD, Hash Table, Linked List, Heap",,177.8K,449.6K,39.50%,56,,X,,,,
 13,Maximum Frequency Stack,https://leetcode.com/problems/maximum-frequency-stack/,"Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
 
 Implement the FreqStack class:
@@ -357,7 +357,7 @@ Constraints:
 
 0 <= val <= 109
 At most 2 * 104 calls will be made to push and pop.
-It is guaranteed that there will be at least one element in the stack before calling pop.",Hard,"Design/OOD, Hash Table, Stack, Ordered Set",,173.1K,260.9K,66.40%,15,,,,X,,X
+It is guaranteed that there will be at least one element in the stack before calling pop.",Hard,,"Design/OOD, Hash Table, Stack, Ordered Set",,173.1K,260.9K,66.40%,15,,,,X,,X
 14,Prefix and Suffix Search,https://leetcode.com/problems/prefix-and-suffix-search/,"Design a special dictionary that searches the words in it by a prefix and a suffix.
 
 Implement the WordFilter class:
@@ -381,9 +381,9 @@ Constraints:
 1 <= words[i].length <= 7
 1 <= pref.length, suff.length <= 7
 words[i], pref and suff consist of lowercase English letters only.
-At most 104 calls will be made to the function f.",Hard,"Design/OOD, Array, Hash Table, Trie",,96.5K,234.5K,41.20%,8,,,,,,X
-15,Design Search Autocomplete System,https://leetcode.com/problems/design-search-autocomplete-system/,,,Hard,Design/OOD,,,,,,,,,,,X
-16,Design In-Memory File System,https://leetcode.com/problems/design-in-memory-file-system/,,,Hard,Design/OOD,,,,,,,,,X,,
+At most 104 calls will be made to the function f.",Hard,,"Design/OOD, Array, Hash Table, Trie",,96.5K,234.5K,41.20%,8,,,,,,X
+15,Design Search Autocomplete System,https://leetcode.com/problems/design-search-autocomplete-system/,,,Hard,,Design/OOD,,,,,,,,,,,X
+16,Design In-Memory File System,https://leetcode.com/problems/design-in-memory-file-system/,,,Hard,,Design/OOD,,,,,,,,,X,,
 17,Operations on Tree,https://leetcode.com/problems/operations-on-tree/,"You are given a tree with n nodes numbered from 0 to n - 1 in the form of a parent array parent where parent[i] is the parent of the ith node. The root of the tree is node 0, so parent[0] = -1 since it has no parent. You want to design a data structure that allows users to lock, unlock, and upgrade nodes in the tree.
 
 The data structure should support the following functions:
@@ -431,7 +431,7 @@ parent[0] == -1
 0 <= num <= n - 1
 1 <= user <= 104
 parent represents a valid tree.
-At most 2000 calls in total will be made to lock, unlock, and upgrade.",Medium,Design/OOD,,15.6K,34K,45.70%,7,,,,,,
+At most 2000 calls in total will be made to lock, unlock, and upgrade.",Medium,,Design/OOD,,15.6K,34K,45.70%,7,,,,,,
 18,Rank Teams by Votes,https://leetcode.com/problems/rank-teams-by-votes/,"In a special ranking system, each voter gives a rank from highest to lowest to all teams participating in the competition.
 
 The ordering of teams is decided by who received the most position-one votes. If two or more teams tie in the first position, we consider the second position to resolve the conflict, if they tie again, we continue this process until the ties are resolved. If two or more teams are still tied after considering all positions, we rank them alphabetically based on their team letter.
@@ -469,7 +469,7 @@ Constraints:
 votes[i].length == votes[j].length for 0 <= i, j < votes.length.
 votes[i][j] is an English uppercase letter.
 All characters of votes[i] are unique.
-All the characters that occur in votes[0] also occur in votes[j] where 1 <= j < votes.length.",Medium,Design/OOD,,72K,123.5K,58.30%,13,,,,,,
+All the characters that occur in votes[0] also occur in votes[j] where 1 <= j < votes.length.",Medium,,Design/OOD,,72K,123.5K,58.30%,13,,,,,,
 19,Design Underground System,https://leetcode.com/problems/design-underground-system/,"An underground railway system is keeping track of customer travel times between different stations. They are using this data to calculate the average time it takes to travel from one station to another.
 
 Implement the UndergroundSystem class:
@@ -484,8 +484,8 @@ Returns the average time it takes to travel from startStation to endStation.
 The average time is computed from all the previous traveling times from startStation to endStation that happened directly, meaning a check in at startStation followed by a check out from endStation.
 The time it takes to travel from startStation to endStation may be different from the time it takes to travel from endStation to startStation.
 There will be at least one customer that has traveled from startStation to endStation before getAverageTime is called.
-You may assume all calls to the checkIn and checkOut methods are consistent. If a customer checks in at time t1 then checks out at time t2, then t1 < t2. All events happen in chronological order.",,Medium,Design/OOD,,,,,,,,,,,
-20,Design Excel Sum Formula,https://leetcode.com/problems/design-excel-sum-formula/description/,,,,Design/OOD,,,,,,,,,,,
+You may assume all calls to the checkIn and checkOut methods are consistent. If a customer checks in at time t1 then checks out at time t2, then t1 < t2. All events happen in chronological order.",,Medium,,Design/OOD,,,,,,,,,,,
+20,Design Excel Sum Formula,https://leetcode.com/problems/design-excel-sum-formula/description/,,,,,Design/OOD,,,,,,,,,,,
 21,Online Stock Span,https://leetcode.com/problems/online-stock-span/,"Design an algorithm that collects daily price quotes for some stock and returns the span of that stock's price for the current day.
 
 The span of the stock's price in one day is the maximum number of consecutive days (starting from that day and going backward) for which the stock price was less than or equal to the price of that day.
@@ -546,7 +546,7 @@ Constraints:
 1 <= stationName.length, startStation.length, endStation.length <= 10
 All strings consist of uppercase and lowercase English letters and digits.
 There will be at most 2 * 104 calls in total to checkIn, checkOut, and getAverageTime.
-Answers within 10-5 of the actual value will be accepted.",Medium,Design/OOD,,230.7K,308.9K,74.70%,58,,,,,,
+Answers within 10-5 of the actual value will be accepted.",Medium,,Design/OOD,,230.7K,308.9K,74.70%,58,,,,,,
 22,Design Circular Queue,https://leetcode.com/problems/design-circular-queue/,"Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called ""Ring Buffer"".
 
 One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
@@ -585,7 +585,7 @@ Constraints:
 
 1 <= k <= 1000
 0 <= value <= 1000
-At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and isFull.",Medium,Design/OOD,,315K,612.3K,51.40%,24,,,,,,
+At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and isFull.",Medium,,Design/OOD,,315K,612.3K,51.40%,24,,,,,,
 23,Serialize/Deserialize Nested JSON ,https://leetcode.com/discuss/interview-question/124708/Print-JSON-format-String,"This was a recent interview question. Suppose we have given following string:
 
 ""{""id"": ""0001"", ""type"": ""donut"",""name"": ""Cake"",""ppu"": 0.55, ""batters"":{""batter"":[{ ""id"": ""1001"", ""type"": ""Regular"" },{ ""id"": ""1002"", ""type"": ""Chocolate"" }]},""topping"":[{ ""id"": ""5001"", ""type"": ""None"" },{ ""id"": ""5002"", ""type"": ""Glazed"" }]}""
@@ -610,8 +610,8 @@ we need to print it in following order:
                         { ""id"": ""5002"", ""type"": ""Glazed"" }
                 ]
 }
-",No example,Hard,Design/OOD,,0,0,0%,27,,,,,,
-,,,,,,,,,,,,,,,,,
+",No example,Hard,,Design/OOD,,0,0,0%,27,,,,,,
+,,,,,,,,,,,,,,,,,,
 25,Two Sum,https://leetcode.com/problems/two-sum/,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -642,7 +642,7 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 Only one valid answer exists.
-",Easy,Array,,13.2M,25.1M,52.60%,835,X,X,X,X,X,X
+",Easy,Arrays & Hashing,Array,,13.2M,25.1M,52.60%,835,X,X,X,X,X,X
 26,Two Sum 2,https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/,"Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
 
 Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
@@ -672,7 +672,7 @@ Constraints:
 -1000 <= numbers[i] <= 1000
 numbers is sorted in non-decreasing order.
 -1000 <= target <= 1000
-The tests are generated such that there is exactly one solution.",Medium,Array,,2M,3.3M,61.40%,153,,X,,,,
+The tests are generated such that there is exactly one solution.",Medium,Arrays & Hashing,Array,,2M,3.3M,61.40%,153,,X,,,,
 27,Best Time to Buy and Sell Stock,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
 You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
@@ -688,7 +688,7 @@ Example 2:
 Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
- ",Easy,Array,,4.7M,8.7M,53.70%,329,X,X,X,X,X,X
+ ",Easy,Sliding Window,Array,,4.7M,8.7M,53.70%,329,X,X,X,X,X,X
 28,Best Time to Buy and Sell Stock w/Cooldown,https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
 Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:
@@ -704,7 +704,7 @@ Explanation: transactions = [buy, sell, cooldown, buy, sell]
 Example 2:
 
 Input: prices = [1]
-Output: 0",Medium,Array,,507.9K,872.5K,58.20%,45,,X,,,X,X
+Output: 0",Medium,Sliding Window,Array,,507.9K,872.5K,58.20%,45,,X,,,X,X
 29,Longest Consecutive Sequence,https://leetcode.com/problems/longest-consecutive-sequence/,"Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
 
 You must write an algorithm that runs in O(n) time.","Example 1:
@@ -715,7 +715,7 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 Example 2:
 
 Input: nums = [0,3,7,2,5,8,4,6,0,1]
-Output: 9",Medium,Array,,1.8M,3.7M,47.30%,173,X,X,X,X,,X
+Output: 9",Medium,Arrays & Hashing,Array,,1.8M,3.7M,47.30%,173,X,X,X,X,,X
 30,Contains Duplicate,https://leetcode.com/problems/contains-duplicate/,"Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.","Example 1:
 
 Input: nums = [1,2,3,1]
@@ -727,7 +727,7 @@ Output: false
 Example 3:
 
 Input: nums = [1,1,1,3,3,4,3,2,4,2]
-Output: true",Easy,Array,,4M,6.5M,61.80%,260,X,X,X,X,,X
+Output: true",Easy,Arrays & Hashing,Array,,4M,6.5M,61.80%,260,X,X,X,X,,X
 31,Product of Array Except Self,https://leetcode.com/problems/product-of-array-except-self/,"Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)","xample 1:
@@ -744,7 +744,7 @@ Constraints:
 
 2 <= nums.length <= 105
 -30 <= nums[i] <= 30
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.",Medium,Array,,2.6M,4M,66.30%,293,X,X,X,X,X,X
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.",Medium,Arrays & Hashing,Array,,2.6M,4M,66.30%,293,X,X,X,X,X,X
 32,Maximum Subarray,https://leetcode.com/problems/maximum-subarray/,"Given an integer array nums, find the subarray with the largest sum, and return its sume
 
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
@@ -764,7 +764,7 @@ Example 3:
 Input: nums = [5,4,-1,7,8]
 Output: 23
 Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
-",Easy,Array,,3.9M,7.7M,50.80%,211,X,X,X,X,X,
+",Easy,,Array,,3.9M,7.7M,50.80%,211,X,X,X,X,X,
 33,Maximum Product Subarray,https://leetcode.com/problems/maximum-product-subarray/,"Given an integer array nums, find a subarray that has the largest product, and return the product","Example 1:
 
 Input: nums = [2,3,-2,4]
@@ -781,7 +781,7 @@ Constraints:
 
 1 <= nums.length <= 2 * 104
 -10 <= nums[i] <= 10
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.",Medium,Array,,1.3M,3.6M,35.10%,116,X,X,X,X,,X
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.",Medium,,Array,,1.3M,3.6M,35.10%,116,X,X,X,X,,X
 34,Single Number,https://leetcode.com/problems/single-number/,"Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
 You must implement a solution with a linear runtime complexity and use only constant extra space.","Example 1:
@@ -802,7 +802,7 @@ Constraints:
 
 1 <= nums.length <= 3 * 104
 -3 * 104 <= nums[i] <= 3 * 104
-Each element in the array appears twice except for one element which appears only once.",Easy,Array,,2.8M,3.8M,73.00%,133,,X,,X,X,X
+Each element in the array appears twice except for one element which appears only once.",Easy,Bit Manipulation,Array,,2.8M,3.8M,73.00%,133,,X,,X,X,X
 35,Missing Number,https://leetcode.com/problems/missing-number/,"Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
 Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
@@ -829,7 +829,7 @@ Constraints:
 n == nums.length
 1 <= n <= 104
 0 <= nums[i] <= n
-All the numbers of nums are unique.",Easy,Array,,2.2M,3.3M,66.90%,207,,X,,X,,X
+All the numbers of nums are unique.",Easy,Bit Manipulation,Array,,2.2M,3.3M,66.90%,207,,X,,X,,X
 36,Find all Numbers Disappeared in an Array,https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/,"Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
 Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
@@ -843,7 +843,7 @@ Output: [5,6]
 Example 2:
 
 Input: nums = [1,1]
-Output: [2]",Easy,Array,,885.6K,1.5M,61.00%,50,,,,,,X
+Output: [2]",Easy,,Array,,885.6K,1.5M,61.00%,50,,,,,,X
 37,Find all Duplicates in Array,https://leetcode.com/problems/find-all-duplicates-in-an-array/,"Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice. You must write an algorithm that runs in O(n) time and uses only constant extra space.","Example 1:
 
 Input: nums = [4,3,2,7,8,2,3,1]
@@ -855,7 +855,7 @@ Output: [1]
 Example 3:
 
 Input: nums = [1]
-Output: []",Medium,Array,,,,,,,,,,,X
+Output: []",Medium,,Array,,,,,,,,,,,X
 38,First Missing Positive,https://leetcode.com/problems/first-missing-positive/,"Given an unsorted integer array nums. Return the smallest positive integer that is not present in nums.
 
 You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.","Example 1:
@@ -872,7 +872,7 @@ Example 3:
 
 Input: nums = [7,8,9,11,12]
 Output: 1
-Explanation: The smallest positive integer 1 is missing.",Hard,Array,,,,,,,,,X,X,X
+Explanation: The smallest positive integer 1 is missing.",Hard,,Array,,,,,,,,,X,X,X
 39,Rotate Array,https://leetcode.com/problems/rotate-array/,"Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 
 ","Example 1:
@@ -889,7 +889,7 @@ Input: nums = [-1,-100,3,99], k = 2
 Output: [3,99,-1,-100]
 Explanation: 
 rotate 1 steps to the right: [99,-1,-100,3]
-rotate 2 steps to the right: [3,99,-1,-100]",Easy,Array,,,,,,,,,X,X,
+rotate 2 steps to the right: [3,99,-1,-100]",Easy,,Array,,,,,,,,,X,X,
 40,Contiguous Array,https://leetcode.com/problems/contiguous-array/,"Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.
 
 ","Example 1:
@@ -901,8 +901,8 @@ Example 2:
 
 Input: nums = [0,1,0]
 Output: 2
-Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.",Medium,Array,,,,,,,,,X,,
-41,Missing Ranges,https://leetcode.com/problems/missing-ranges/,,,Easy,Array,,,,,,,,,,X,
+Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.",Medium,,Array,,,,,,,,,X,,
+41,Missing Ranges,https://leetcode.com/problems/missing-ranges/,,,Easy,,Array,,,,,,,,,,X,
 42,Majority Element,https://leetcode.com/problems/majority-element/,"Given an array nums of size n, return the majority element.
 
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.","Example 1:
@@ -912,7 +912,7 @@ Output: 3
 Example 2:
 
 Input: nums = [2,2,1,1,1,2,2]
-Output: 2",Easy,Array,,,,,,,,,X,X,
+Output: 2",Easy,,Array,,,,,,,,,X,X,
 43,Range Sum Query,https://leetcode.com/problems/range-sum-query-immutable/,"Given an integer array nums, handle multiple queries of the following type:
 
 Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
@@ -932,7 +932,7 @@ Explanation
 NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
 numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1
 numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
-numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3",Easy,Array,,,,,,,,,,,X
+numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3",Easy,,Array,,,,,,,,,,,X
 44,Subarray Sum Equals K,https://leetcode.com/problems/subarray-sum-equals-k/,"Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
 
 A subarray is a contiguous non-empty sequence of elements within an array.","Example 1:
@@ -942,8 +942,8 @@ Output: 2
 Example 2:
 
 Input: nums = [1,2,3], k = 3
-Output: 2",Medium,Array,,,,,,,,,X,,
-45,Two City Scheduling,https://leetcode.com/problems/two-city-scheduling/solution/,,,Medium,Array,,,,,,,,,,,
+Output: 2",Medium,,Array,,,,,,,,,X,,
+45,Two City Scheduling,https://leetcode.com/problems/two-city-scheduling/solution/,,,Medium,,Array,,,,,,,,,,,
 46,Maximum Profit in Job Scheduling,https://leetcode.com/problems/maximum-profit-in-job-scheduling/,"We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
 
 You're given the startTime, endTime and profit arrays, return the maximum profit you can take such that there are no two jobs in the subset with overlapping time range.
@@ -962,7 +962,7 @@ Profit obtained 150 = 20 + 70 + 60.
 
 Example 3:
 Input: startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
-Output: 6",Hard,Array,,,,,,,,,X,,
+Output: 6",Hard,,Array,,,,,,,,,X,,
 47,"Minimum Number of Arrows 
 to Burst Balloons",https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/,"There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array points where points[i] = [xstart, xend] denotes a balloon whose horizontal diameter stretches between xstart and xend. You do not know the exact y-coordinates of the balloons.
 
@@ -987,7 +987,7 @@ Output: 2
 Explanation: The balloons can be burst by 2 arrows:
 - Shoot an arrow at x = 2, bursting the balloons [1,2] and [2,3].
 - Shoot an arrow at x = 4, bursting the balloons [3,4] and [4,5].
-",Medium,Array,,,,,,,,,,,X
+",Medium,,Array,,,,,,,,,,,X
 48,Gas Station,https://leetcode.com/problems/gas-station/,"There are n gas stations along a circular route, where the amount of gas at the ith station is gas[i].
 
 You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from the ith station to its next (i + 1)th station. You begin the journey with an empty tank at one of the gas stations.
@@ -1016,7 +1016,7 @@ Let's start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
 Travel to station 0. Your tank = 4 - 3 + 2 = 3
 Travel to station 1. Your tank = 3 - 3 + 3 = 3
 You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.
-Therefore, you can't travel around the circuit once no matter where you start.",Medium,Array,,,,,,,X,,X,,
+Therefore, you can't travel around the circuit once no matter where you start.",Medium,,Array,,,,,,,X,,X,,
 49,Hand of Straights,https://leetcode.com/problems/hand-of-straights/,"Alice has some number of cards and she wants to rearrange the cards into groups so that each group is of size groupSize, and consists of groupSize consecutive cards.
 
 Given an integer array hand where hand[i] is the value written on the ith card and an integer groupSize, return true if she can rearrange the cards, or false otherwise.","Example 1:
@@ -1028,7 +1028,7 @@ Example 2:
 
 Input: hand = [1,2,3,4,5], groupSize = 4
 Output: false
-Explanation: Alice's hand can not be rearranged into groups of 4.",Medium,Array,,,,,,,X,,,,
+Explanation: Alice's hand can not be rearranged into groups of 4.",Medium,,Array,,,,,,,X,,,,
 50,Merge Triplets to Form Target Triplet,https://leetcode.com/problems/merge-triplets-to-form-target-triplet/,"A triplet is an array of three integers. You are given a 2D integer array triplets, where triplets[i] = [ai, bi, ci] describes the ith triplet. You are also given an integer array target = [x, y, z] that describes the triplet you want to obtain.
 
 To obtain target, you may apply the following operation on triplets any number of times (possibly zero):
@@ -1054,8 +1054,8 @@ Output: true
 Explanation: Perform the following operations:
 - Choose the first and third triplets [[2,5,3],[2,3,4],[1,2,5],[5,2,3]]. Update the third triplet to be [max(2,1), max(5,2), max(3,5)] = [2,5,5]. triplets = [[2,5,3],[2,3,4],[2,5,5],[5,2,3]].
 - Choose the third and fourth triplets [[2,5,3],[2,3,4],[2,5,5],[5,2,3]]. Update the fourth triplet to be [max(2,5), max(5,2), max(5,3)] = [5,5,5]. triplets = [[2,5,3],[2,3,4],[2,5,5],[5,5,5]].
-The target triplet [5,5,5] is now an element of triplets.",Medium,Array,,,,,,,X,,,,
-,,,,,,,,,,,,,,,,,
+The target triplet [5,5,5] is now an element of triplets.",Medium,,Array,,,,,,,X,,,,
+,,,,,,,,,,,,,,,,,,
 52,3Sum,https://leetcode.com/problems/3sum/,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.","Example 1:
@@ -1077,7 +1077,7 @@ Example 3:
 
 Input: nums = [0,0,0]
 Output: [[0,0,0]]
-Explanation: The only possible triplet sums up to 0.",Medium,2 Pointers,,,,,,X,X,X,X,,X
+Explanation: The only possible triplet sums up to 0.",Medium,Two Pointers,2 Pointers,,,,,,X,X,X,X,,X
 53,3Sum Closest,https://leetcode.com/problems/3sum-closest/,"Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
 
 Return the sum of the three integers.
@@ -1091,7 +1091,7 @@ Example 2:
 
 Input: nums = [0,0,0], target = 1
 Output: 0
-Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).",Medium,2 Pointers,,,,,,,,,X,,X
+Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).",Medium,Two Pointers,2 Pointers,,,,,,,,,X,,X
 54,Container With Most Water,https://leetcode.com/problems/container-with-most-water/,"You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 
 Find two lines that together with the x-axis form a container, such that the container contains the most water.
@@ -1105,12 +1105,30 @@ Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,
 
 Example 2:
 Input: height = [1,1]
-Output: 1",Medium,2 Pointers,,,,,,X,X,X,X,,X
-55,Trapping Rain Water,https://leetcode.com/problems/trapping-rain-water/,,,Hard,2 Pointers,,,,,,,X,,X,X,X
-56,Intersection of Two Arrays 2,https://leetcode.com/problems/intersection-of-two-arrays-ii/,,,Easy,2 Pointers,,,,,,,,,,X,
-57,Sort Colors,https://leetcode.com/problems/sort-colors/,,,Medium,2 Pointers,,,,,,,,,X,X,X
-58,Squares of a Sorted Array,https://leetcode.com/problems/squares-of-a-sorted-array/,,,Easy,2 Pointers,,,,,,,,,X,,X
-59,Move Zeroes,https://leetcode.com/problems/move-zeroes/,,,Easy,2 Pointers,,,,,,,,,X,,
+Output: 1",Medium,Two Pointers,2 Pointers,,,,,,X,X,X,X,,X
+55,Trapping Rain Water,https://leetcode.com/problems/trapping-rain-water/,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+
+","Example 1:
+
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+Example 2:
+
+Input: height = [4,2,0,3,2,5]
+Output: 9
+ 
+
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105",Hard,Two Pointers,2 Pointers,,,,,,,X,,X,X,X
+56,Intersection of Two Arrays 2,https://leetcode.com/problems/intersection-of-two-arrays-ii/,,,Easy,Two Pointers,2 Pointers,,,,,,,,,,X,
+57,Sort Colors,https://leetcode.com/problems/sort-colors/,,,Medium,Two Pointers,2 Pointers,,,,,,,,,X,X,X
+58,Squares of a Sorted Array,https://leetcode.com/problems/squares-of-a-sorted-array/,,,Easy,Two Pointers,2 Pointers,,,,,,,,,X,,X
+59,Move Zeroes,https://leetcode.com/problems/move-zeroes/,,,Easy,Two Pointers,2 Pointers,,,,,,,,,X,,
 60,Find the Duplicate Number,https://leetcode.com/problems/find-the-duplicate-number/,"Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 
 There is only one repeated number in nums, return this repeated number.
@@ -1139,11 +1157,11 @@ Constraints:
 1 <= n <= 105
 nums.length == n + 1
 1 <= nums[i] <= n
-All the integers in nums appear only once except for precisely one integer which appears two or more times.",Medium,"2 Pointers, Binary Search, Bit Manipulatio",,1.7M,2.8M,60.80%,274,,X,,X,,X
-61,Subarray Product Less Than K,https://leetcode.com/problems/subarray-product-less-than-k/,,,Medium,2 Pointers,,,,,,,,,,,X
-62,Next Permutation,https://leetcode.com/problems/next-permutation/,,,Medium,2 Pointers,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
-64,Longest Substring w/out Repeating Chars,https://leetcode.com/problems/longest-substring-without-repeating-characters/,,,Medium,Sliding Window,,,,,,X,X,X,X,X,X
+All the integers in nums appear only once except for precisely one integer which appears two or more times.",Medium,,"2 Pointers, Binary Search, Bit Manipulatio",,1.7M,2.8M,60.80%,274,,X,,X,,X
+61,Subarray Product Less Than K,https://leetcode.com/problems/subarray-product-less-than-k/,,,Medium,Two Pointers,2 Pointers,,,,,,,,,,,X
+62,Next Permutation,https://leetcode.com/problems/next-permutation/,,,Medium,Two Pointers,2 Pointers,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+64,Longest Substring w/out Repeating Chars,https://leetcode.com/problems/longest-substring-without-repeating-characters/,,,Medium,Sliding Window,Sliding Window,,,,,,X,X,X,X,X,X
 65,Longest Repeating Character Replacement,https://leetcode.com/problems/longest-repeating-character-replacement/,"You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
 
 Return the length of the longest substring containing the same letter you can get after performing the above operations.
@@ -1166,11 +1184,11 @@ Constraints:
 
 1 <= s.length <= 105
 s consists of only uppercase English letters.
-0 <= k <= s.length",Medium,"Sliding Window, Hash Table",,730.9K,1.4M,53.90%,90,X,X,X,X,,X
-66,Minimum Window Substring,https://leetcode.com/problems/minimum-window-substring/,,,Hard,Sliding Window,,,,,,X,X,X,X,X,X
-67,Longest Substring w/at most K Distinct Chars,https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/,,,Hard,Sliding Window,,,,,,,,,,X,
-68,Sliding Window Maximum,https://leetcode.com/problems/sliding-window-maximum/,,,Hard,Sliding Window,,,,,,,X,,X,X,X
-69,Minimum Size Subarray Sum,https://leetcode.com/problems/minimum-size-subarray-sum/,,,Medium,Sliding Window,,,,,,,,,,,X
+0 <= k <= s.length",Medium,Sliding Window,"Sliding Window, Hash Table",,730.9K,1.4M,53.90%,90,X,X,X,X,,X
+66,Minimum Window Substring,https://leetcode.com/problems/minimum-window-substring/,,,Hard,Sliding Window,Sliding Window,,,,,,X,X,X,X,X,X
+67,Longest Substring w/at most K Distinct Chars,https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/,,,Hard,Sliding Window,Sliding Window,,,,,,,,,,X,
+68,Sliding Window Maximum,https://leetcode.com/problems/sliding-window-maximum/,,,Hard,Sliding Window,Sliding Window,,,,,,,X,,X,X,X
+69,Minimum Size Subarray Sum,https://leetcode.com/problems/minimum-size-subarray-sum/,,,Medium,Sliding Window,Sliding Window,,,,,,,,,,,X
 70,Fruit Into Baskets,https://leetcode.com/problems/fruit-into-baskets/,"You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array fruits where fruits[i] is the type of fruit the ith tree produces.
 
 You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
@@ -1194,11 +1212,11 @@ Example 3:
 Input: fruits = [1,2,3,2,2]
 Output: 4
 Explanation: We can pick from trees [2,3,2,2].
-If we had started at the first tree, we would only pick from trees [1,2].",Medium,"Sliding Window, Hash Table",,403K,910.2K,44.30%,90,,,,,,X
-71,Permutation in String,https://leetcode.com/problems/permutation-in-string/,,,Medium,Sliding Window,,,,,,,X,,,,X
-72,Minimum Number of K Consecutive Bit Flips,https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/,,,Hard,Sliding Window,,,,,,,,,,,X
+If we had started at the first tree, we would only pick from trees [1,2].",Medium,Sliding Window,"Sliding Window, Hash Table",,403K,910.2K,44.30%,90,,,,,,X
+71,Permutation in String,https://leetcode.com/problems/permutation-in-string/,,,Medium,Sliding Window,Sliding Window,,,,,,,X,,,,X
+72,Minimum Number of K Consecutive Bit Flips,https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/,,,Hard,Sliding Window,Sliding Window,,,,,,,,,,,X
 73,"Count Unique Characters of 
-All Substrings of a Given String",https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/,,,Hard,Sliding Window,,,,,,,,,,,X
+All Substrings of a Given String",https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/,,,Hard,Sliding Window,Sliding Window,,,,,,,,,,,X
 74,Substring with Concatenation of All Words,https://leetcode.com/problems/substring-with-concatenation-of-all-words/,"You are given a string s and an array of strings words. All the strings of words are of the same length.
 
 A concatenated string is a string that exactly contains all the strings of any permutation of words concatenated.
@@ -1244,12 +1262,12 @@ Constraints:
 1 <= s.length <= 104
 1 <= words.length <= 5000
 1 <= words[i].length <= 30
-s and words[i] consist of lowercase English letters.",Hard,"Sliding Window, String, Hash Table",,449.8K,1.4M,32.70%,115,,,,,,X
-75,Find all Anagrams in a String,https://leetcode.com/problems/find-all-anagrams-in-a-string/,,,Medium,Sliding Window,,,,,,,,,X,,
-76,Frequency of the Most Frequent Element,https://leetcode.com/problems/frequency-of-the-most-frequent-element/,,,Medium,Sliding Window,,,,,,,,,,,
+s and words[i] consist of lowercase English letters.",Hard,Sliding Window,"Sliding Window, String, Hash Table",,449.8K,1.4M,32.70%,115,,,,,,X
+75,Find all Anagrams in a String,https://leetcode.com/problems/find-all-anagrams-in-a-string/,,,Medium,Sliding Window,Sliding Window,,,,,,,,,X,,
+76,Frequency of the Most Frequent Element,https://leetcode.com/problems/frequency-of-the-most-frequent-element/,,,Medium,Sliding Window,Sliding Window,,,,,,,,,,,
 77,"Minimum Number of Flips to 
-Make Binary Strings Alternating",https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/,,,Medium,Sliding Window,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
+Make Binary Strings Alternating",https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/,,,Medium,Sliding Window,Sliding Window,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
 79,Valid Anagram,https://leetcode.com/problems/valid-anagram/,"Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
@@ -1269,10 +1287,10 @@ Output: false
 Constraints:
 
 1 <= s.length, t.length <= 5 * 104
-s and t consist of lowercase English letters.",Easy,"String, Hash Table, Sorting",,3.5M,5.4M,64.60%,183,X,X,X,X,,
-80,Group Anagrams,https://leetcode.com/problems/group-anagrams/,,,Medium,String,,,,,,X,X,X,X,X,
-81,Valid Palindrome,https://leetcode.com/problems/valid-palindrome/,,,Easy,String,,,,,,X,X,,X,,
-82,Valid Palindrome 2,https://leetcode.com/problems/valid-palindrome-ii/,,,Easy,String,,,,,,X,,,,,
+s and t consist of lowercase English letters.",Easy,Arrays & Hashing,"String, Hash Table, Sorting",,3.5M,5.4M,64.60%,183,X,X,X,X,,
+80,Group Anagrams,https://leetcode.com/problems/group-anagrams/,,,Medium,Arrays & Hashing,String,,,,,,X,X,X,X,X,
+81,Valid Palindrome,https://leetcode.com/problems/valid-palindrome/,,,Easy,Two Pointers,String,,,,,,X,X,,X,,
+82,Valid Palindrome 2,https://leetcode.com/problems/valid-palindrome-ii/,,,Easy,Two Pointers,String,,,,,,X,,,,,
 83,Longest Palindromic Substring,https://leetcode.com/problems/longest-palindromic-substring/,"Given a string s, return the longest palindromic substring in s.","Example 1:
 
 Input: s = ""babad""
@@ -1287,10 +1305,10 @@ Output: ""bb""
 Constraints:
 
 1 <= s.length <= 1000
-s consist of only digits and English letters.",Medium,"String, Two Pointers, DP",,3.1M,9M,33.90%,288,X,X,,X,X,
-84,Palindromic Substrings,https://leetcode.com/problems/palindromic-substrings/,,,Medium,String,,,,,,X,X,X,,,X
-85,Encode and Decode Strings,https://leetcode.com/problems/encode-and-decode-strings/,,,Medium,String,,,,,,X,X,X,X,,
-86,Ransom Note,https://leetcode.com/problems/ransom-note/,,,Easy,String,,,,,,,,,X,,
+s consist of only digits and English letters.",Medium,,"String, Two Pointers, DP",,3.1M,9M,33.90%,288,X,X,,X,X,
+84,Palindromic Substrings,https://leetcode.com/problems/palindromic-substrings/,,,Medium,,String,,,,,,X,X,X,,,X
+85,Encode and Decode Strings,https://leetcode.com/problems/encode-and-decode-strings/,,,Medium,Arrays & Hashing,String,,,,,,X,X,X,X,,
+86,Ransom Note,https://leetcode.com/problems/ransom-note/,,,Easy,,String,,,,,,,,,X,,
 87,Palindrome Number,https://leetcode.com/problems/palindrome-number/,"Given an integer x, return true if x is a palindrome, and false otherwise.
 
 Follow up: Could you solve it without converting the integer to a string?
@@ -1310,10 +1328,10 @@ Example 3:
 Input: x = 10
 Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-",Easy,String,,4.6M,8.2M,56.40%,366,,,,X,,
-88,Longest Common Prefix,https://leetcode.com/problems/longest-common-prefix/,,,Easy,String,,,,,,,,,X,,
-89,Backspace String Compare,https://leetcode.com/problems/backspace-string-compare/,,,Easy,String,,,,,,,,,X,,X
-90,Find First Palindrome in Array,https://leetcode.com/problems/find-first-palindromic-string-in-the-array/,,,Easy,String,,,,,,,,,,,
+",Easy,,String,,4.6M,8.2M,56.40%,366,,,,X,,
+88,Longest Common Prefix,https://leetcode.com/problems/longest-common-prefix/,,,Easy,,String,,,,,,,,,X,,
+89,Backspace String Compare,https://leetcode.com/problems/backspace-string-compare/,,,Easy,,String,,,,,,,,,X,,X
+90,Find First Palindrome in Array,https://leetcode.com/problems/find-first-palindromic-string-in-the-array/,,,Easy,,String,,,,,,,,,,,
 91,Longest Palindrome,https://leetcode.com/problems/longest-palindrome/,"Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
 
 Letters are case sensitive, for example, ""Aa"" is not considered a palindrome here.","Example 1:
@@ -1331,10 +1349,10 @@ Explanation: The longest palindrome that can be built is ""a"", whose length is 
 Constraints:
 
 1 <= s.length <= 2000
-s consists of lowercase and/or uppercase English letters only.",Easy,"String, Greedy, Hash Table",,634.3K,1.2M,53.90%,51,,,,X,,
-92,Reverse String,https://leetcode.com/problems/reverse-string/,,,Easy,String,,,,,,,,,,X,
-93,First Unique Character in a String,https://leetcode.com/problems/first-unique-character-in-a-string/,,,Easy,String,,,,,,,,,,X,
-94,String to Integer (atoi),https://leetcode.com/problems/string-to-integer-atoi/,,,Medium,String,,,,,,,,,X,X,
+s consists of lowercase and/or uppercase English letters only.",Easy,,"String, Greedy, Hash Table",,634.3K,1.2M,53.90%,51,,,,X,,
+92,Reverse String,https://leetcode.com/problems/reverse-string/,,,Easy,,String,,,,,,,,,,X,
+93,First Unique Character in a String,https://leetcode.com/problems/first-unique-character-in-a-string/,,,Easy,,String,,,,,,,,,,X,
+94,String to Integer (atoi),https://leetcode.com/problems/string-to-integer-atoi/,,,Medium,,String,,,,,,,,,X,X,
 95,Implement strStr(),https://leetcode.com/problems/implement-strstr/,"Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.","Example 1:
 
 Input: haystack = ""sadbutsad"", needle = ""sad""
@@ -1351,10 +1369,10 @@ Explanation: ""leeto"" did not occur in ""leetcode"", so we return -1.
 Constraints:
 
 1 <= haystack.length, needle.length <= 104
-haystack and needle consist of only lowercase English characters.",Easy,"String, Two Pointers, String Matching",,2.5M,5.8M,42.40%,212,,,,,X,
-96,Largest Number,https://leetcode.com/problems/largest-number/,,,Medium,String,,,,,,,,,X,,
-97,Reorganize String,https://leetcode.com/problems/reorganize-string/,,,Medium,String,,,,,,,,,,,X
-98,Reorganize String K Distance Apart,https://leetcode.com/problems/rearrange-string-k-distance-apart/,,,Hard,String,,,,,,,,,,,X
+haystack and needle consist of only lowercase English characters.",Easy,,"String, Two Pointers, String Matching",,2.5M,5.8M,42.40%,212,,,,,X,
+96,Largest Number,https://leetcode.com/problems/largest-number/,,,Medium,,String,,,,,,,,,X,,
+97,Reorganize String,https://leetcode.com/problems/reorganize-string/,,,Medium,,String,,,,,,,,,,,X
+98,Reorganize String K Distance Apart,https://leetcode.com/problems/rearrange-string-k-distance-apart/,,,Hard,,String,,,,,,,,,,,X
 99,Regular Expression Matching,https://leetcode.com/problems/regular-expression-matching/,"Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
 
 '.' Matches any single character.​​​​
@@ -1382,10 +1400,10 @@ Constraints:
 1 <= p.length <= 20
 s contains only lowercase English letters.
 p contains only lowercase English letters, '.', and '*'.
-It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.",Hard,"String, DP",,958.8K,3.4M,28.20%,303,,X,,,X,
-100,Wildcard Matching,https://leetcode.com/problems/wildcard-matching/,,,Hard,String,,,,,,,,,,,
-101,Index Pairs of a String,https://leetcode.com/problems/index-pairs-of-a-string/,,,Easy,String,,,,,,,,,,,X
-102,Longest Word in Dictionary,https://leetcode.com/problems/longest-word-in-dictionary/,,,Medium,String,,,,,,,,,,,X
+It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.",Hard,,"String, DP",,958.8K,3.4M,28.20%,303,,X,,,X,
+100,Wildcard Matching,https://leetcode.com/problems/wildcard-matching/,,,Hard,,String,,,,,,,,,,,
+101,Index Pairs of a String,https://leetcode.com/problems/index-pairs-of-a-string/,,,Easy,,String,,,,,,,,,,,X
+102,Longest Word in Dictionary,https://leetcode.com/problems/longest-word-in-dictionary/,,,Medium,,String,,,,,,,,,,,X
 103,Palindrome Pairs,https://leetcode.com/problems/palindrome-pairs/,"You are given a 0-indexed array of unique strings words.
 
 A palindrome pair is a pair of integers (i, j) such that:
@@ -1418,10 +1436,10 @@ Constraints:
 
 1 <= words.length <= 5000
 0 <= words[i].length <= 300
-words[i] consists of lowercase English letters.",Hard,"String, Trie",,205.7K,582.1K,35.30%,31,,,,X,,X
-104,Text Justification,https://leetcode.com/problems/text-justification/,,,Hard,String,,,,,,,,,,,
-105,Parition Labels,https://leetcode.com/problems/partition-labels/,,,Medium,String,,,,,,,X,,,,
-106,Valid Parenthesis String,https://leetcode.com/problems/valid-parenthesis-string/,,,Medium,String,,,,,,,X,,,,
+words[i] consists of lowercase English letters.",Hard,,"String, Trie",,205.7K,582.1K,35.30%,31,,,,X,,X
+104,Text Justification,https://leetcode.com/problems/text-justification/,,,Hard,,String,,,,,,,,,,,
+105,Parition Labels,https://leetcode.com/problems/partition-labels/,,,Medium,,String,,,,,,,X,,,,
+106,Valid Parenthesis String,https://leetcode.com/problems/valid-parenthesis-string/,,,Medium,,String,,,,,,,X,,,,
 107,Verifying an Alien Dictionary,https://leetcode.com/problems/verifying-an-alien-dictionary/,"In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
 
 Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographically in this alien language.
@@ -1448,10 +1466,10 @@ Constraints:
 1 <= words.length <= 100
 1 <= words[i].length <= 20
 order.length == 26
-All characters in words[i] and order are English lowercase letters.",Easy,"String, Hash Table",,504K,916.5K,55.00%,120,,,,,,
-,,,,,,,,,,,,,,,,,
-109,Valid Parentheses,https://leetcode.com/problems/valid-parentheses/,,,Easy,Stack,,,,,,X,X,X,X,X,
-110,Longest Valid Parenthesis,https://leetcode.com/problems/longest-valid-parentheses/,,,Hard,Stack,,,,,,,,,X,,
+All characters in words[i] and order are English lowercase letters.",Easy,,"String, Hash Table",,504K,916.5K,55.00%,120,,,,,,
+,,,,,,,,,,,,,,,,,,
+109,Valid Parentheses,https://leetcode.com/problems/valid-parentheses/,,,Easy,Stack,Stack,,,,,,X,X,X,X,X,
+110,Longest Valid Parenthesis,https://leetcode.com/problems/longest-valid-parentheses/,,,Hard,Stack,Stack,,,,,,,,,X,,
 111,Largest Rectangle in Histogram,https://leetcode.com/problems/largest-rectangle-in-histogram/,"Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
 
 ","Example 1:
@@ -1466,9 +1484,9 @@ Example 2:
 
 Input: heights = [2,4]
 Output: 4
-",Hard,"Stack, Monotonic Stack",,890.5K,2M,44.50%,110,,X,,X,X,
-112,Daily Temperatures,https://leetcode.com/problems/daily-temperatures/,,,Medium,Stack,,,,,,,X,,X,,
-113,Asteroid Collision,https://leetcode.com/problems/asteroid-collision/,,,Medium,Stack,,,,,,,,,X,,
+",Hard,Stack,"Stack, Monotonic Stack",,890.5K,2M,44.50%,110,,X,,X,X,
+112,Daily Temperatures,https://leetcode.com/problems/daily-temperatures/,,,Medium,Stack,Stack,,,,,,,X,,X,,
+113,Asteroid Collision,https://leetcode.com/problems/asteroid-collision/,,,Medium,Stack,Stack,,,,,,,,,X,,
 114,Car Fleet,https://leetcode.com/problems/car-fleet/,"There are n cars going to the same destination along a one-lane road. The destination is target miles away.
 
 You are given two integer array position and speed, both of length n, where position[i] is the position of the ith car and speed[i] is the speed of the ith car (in miles per hour).
@@ -1509,10 +1527,10 @@ n == position.length == speed.length
 0 < target <= 106
 0 <= position[i] < target
 All the values of position are unique.
-0 < speed[i] <= 106",Medium,"Stack, Monotonic Stack, Sorting",,253.1K,495.6K,51.10%,82,,X,,,,
-115,"Basic Calculator (+, -, parentheses, space)",https://leetcode.com/problems/basic-calculator/,,,Hard,Stack,,,,,,,,,X,,
-116,"Basic Calculator 2 (+, -, *, /)",https://leetcode.com/problems/basic-calculator-ii/,,,Medium,Stack,,,,,,,,,X,,
-117,Evaluate Reverse Polish Notation,https://leetcode.com/problems/evaluate-reverse-polish-notation/,,,Medium,Stack,,,,,,,X,,X,,
+0 < speed[i] <= 106",Medium,Stack,"Stack, Monotonic Stack, Sorting",,253.1K,495.6K,51.10%,82,,X,,,,
+115,"Basic Calculator (+, -, parentheses, space)",https://leetcode.com/problems/basic-calculator/,,,Hard,Stack,Stack,,,,,,,,,X,,
+116,"Basic Calculator 2 (+, -, *, /)",https://leetcode.com/problems/basic-calculator-ii/,,,Medium,Stack,Stack,,,,,,,,,X,,
+117,Evaluate Reverse Polish Notation,https://leetcode.com/problems/evaluate-reverse-polish-notation/,,,Medium,Stack,Stack,,,,,,,X,,X,,
 118,Parse Lisp Expression,https://leetcode.com/problems/parse-lisp-expression/,"You are given a string expression representing a Lisp-like expression to return the integer value of.
 
 The syntax for these expressions is given as follows.
@@ -1549,10 +1567,10 @@ Constraints:
 There are no leading or trailing spaces in expression.
 All tokens are separated by a single space in expression.
 The answer and all intermediate calculations of that answer are guaranteed to fit in a 32-bit integer.
-The expression is guaranteed to be legal and evaluate to an integer.",Hard,"Stack, Recursio",,22.1K,42.8K,51.80%,6,,,,,,
-119,Remove All Adjacent Duplicates in String 2,https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/,,,Medium,Stack,,,,,,,,,,,
-120,Simplify Path,https://leetcode.com/problems/simplify-path/,,,Medium,Stack,,,,,,,,,,,
-121,Decode String,https://leetcode.com/problems/decode-string/,,,Medium,Stack,,,,,,,,,,,
+The expression is guaranteed to be legal and evaluate to an integer.",Hard,,"Stack, Recursio",,22.1K,42.8K,51.80%,6,,,,,,
+119,Remove All Adjacent Duplicates in String 2,https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/,,,Medium,Stack,Stack,,,,,,,,,,,
+120,Simplify Path,https://leetcode.com/problems/simplify-path/,,,Medium,Stack,Stack,,,,,,,,,,,
+121,Decode String,https://leetcode.com/problems/decode-string/,,,Medium,Stack,Stack,,,,,,,,,,,
 122,Remove K Digits,https://leetcode.com/problems/remove-k-digits/,"Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.
 
 ","Example 1:
@@ -1576,11 +1594,11 @@ Constraints:
 
 1 <= k <= num.length <= 105
 num consists of only digits.
-num does not have any leading zeros except for the zero itself.",Medium,"Stack, Greedy, Monotonic Stack",,481.1K,1.4M,33.60%,192,,,,,,
-,,,,,,,,,,,,,,,,,
-124,Custom Binary Search Implementation (bisect in Python),https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/702162/python-lets-implement-pythons-bisect-algorithm,,,,,,,,,,,,,,,
-125,Powerful Binary Search Template for Problem Solving,https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template-solved-many-problems,,,,,,,,,,,,,,,
-126,Binary Search for Beginners,https://leetcode.com/discuss/general-discussion/691825/Binary-Search-for-Beginners-Problems-or-Patterns-or-Sample-solutions,,,,,,,,,,,,,,,
+num does not have any leading zeros except for the zero itself.",Medium,,"Stack, Greedy, Monotonic Stack",,481.1K,1.4M,33.60%,192,,,,,,
+,,,,,,,,,,,,,,,,,,
+124,Custom Binary Search Implementation (bisect in Python),https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/702162/python-lets-implement-pythons-bisect-algorithm,,,,,,,,,,,,,,,,
+125,Powerful Binary Search Template for Problem Solving,https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template-solved-many-problems,,,,,,,,,,,,,,,,
+126,Binary Search for Beginners,https://leetcode.com/discuss/general-discussion/691825/Binary-Search-for-Beginners-Problems-or-Patterns-or-Sample-solutions,,,,,,,,,,,,,,,,
 127,Binary Search,https://leetcode.com/problems/binary-search/,"Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 You must write an algorithm with O(log n) runtime complexity.","Example 1:
@@ -1600,10 +1618,10 @@ Constraints:
 1 <= nums.length <= 104
 -104 < nums[i], target < 104
 All the integers in nums are unique.
-nums is sorted in ascending order.",Easy,Binary Search,,2.4M,4.2M,57.50%,107,,X,,X,,X
-128,Find Minimum in Rotated Sorted Array,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/,,,Medium,Binary Search,,,,,,X,X,X,X,,X
-129,Search in Rotated Sorted Array,https://leetcode.com/problems/search-in-rotated-sorted-array/,,,Medium,Binary Search,,,,,,X,X,X,X,X,X
-130,Search in Rotated Sorted Array 2,https://leetcode.com/problems/search-in-rotated-sorted-array-ii/,,,Medium,Binary Search,,,,,,,,,,,X
+nums is sorted in ascending order.",Easy,Binary Search,Binary Search,,2.4M,4.2M,57.50%,107,,X,,X,,X
+128,Find Minimum in Rotated Sorted Array,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/,,,Medium,Binary Search,Binary Search,,,,,,X,X,X,X,,X
+129,Search in Rotated Sorted Array,https://leetcode.com/problems/search-in-rotated-sorted-array/,,,Medium,Binary Search,Binary Search,,,,,,X,X,X,X,X,X
+130,Search in Rotated Sorted Array 2,https://leetcode.com/problems/search-in-rotated-sorted-array-ii/,,,Medium,Binary Search,Binary Search,,,,,,,,,,,X
 131,First Bad Version,https://leetcode.com/problems/first-bad-version/,"You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
 
 Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
@@ -1621,11 +1639,11 @@ Example 2:
 
 Input: n = 1, bad = 1
 Output: 1
-",Easy,Binary Search,,1.7M,3.8M,44.40%,148,,,,X,X,
-132,Search for a Range,https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/,,,Medium,Binary Search,,,,,,,,,,X,
-133,Median of Two Sorted Arrays,https://leetcode.com/problems/median-of-two-sorted-arrays/,,,Hard,Binary Search,,,,,,,X,,X,X,X
-134,Find Smallest Letter Greater than Target,https://leetcode.com/problems/find-smallest-letter-greater-than-target/,,,Easy,Binary Search,,,,,,,,,,,X
-135,Peak Index in a Mountain Array,https://leetcode.com/problems/peak-index-in-a-mountain-array/,,,Easy,Binary Search,,,,,,,,,,,X
+",Easy,Binary Search,Binary Search,,1.7M,3.8M,44.40%,148,,,,X,X,
+132,Search for a Range,https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/,,,Medium,Binary Search,Binary Search,,,,,,,,,,X,
+133,Median of Two Sorted Arrays,https://leetcode.com/problems/median-of-two-sorted-arrays/,,,Hard,Binary Search,Binary Search,,,,,,,X,,X,X,X
+134,Find Smallest Letter Greater than Target,https://leetcode.com/problems/find-smallest-letter-greater-than-target/,,,Easy,Binary Search,Binary Search,,,,,,,,,,,X
+135,Peak Index in a Mountain Array,https://leetcode.com/problems/peak-index-in-a-mountain-array/,,,Easy,Binary Search,Binary Search,,,,,,,,,,,X
 136,Kth Smallest Element in a Sorted Matrix,https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/,"Given an n x n matrix where each of the rows and columns is sorted in ascending order, return the kth smallest element in the matrix.
 
 Note that it is the kth smallest element in the sorted order, not the kth distinct element.
@@ -1654,10 +1672,10 @@ n == matrix.length == matrix[i].length
 1 <= n <= 300
 -109 <= matrix[i][j] <= 109
 All the rows and columns of matrix are guaranteed to be sorted in non-decreasing order.
-1 <= k <= n2",Medium,"Binary Search, Heap, Matrix",,614K,982.7K,62.50%,31,,,,,,X
-137,Search a 2D Matrix,https://leetcode.com/problems/search-a-2d-matrix/,,,Medium,Binary Search,,,,,,,X,,X,,X
-138,Search a 2D Matrix 2,https://leetcode.com/problems/search-a-2d-matrix-ii/,,,Medium,Binary Search,,,,,,,,,,X,X
-139,Find K Closest Elements,https://leetcode.com/problems/find-k-closest-elements/,,,Medium,Binary Search,,,,,,,,,X,,X
+1 <= k <= n2",Medium,Matrix,"Binary Search, Heap, Matrix",,614K,982.7K,62.50%,31,,,,,,X
+137,Search a 2D Matrix,https://leetcode.com/problems/search-a-2d-matrix/,,,Medium,Matrix,Binary Search,,,,,,,X,,X,,X
+138,Search a 2D Matrix 2,https://leetcode.com/problems/search-a-2d-matrix-ii/,,,Medium,Matrix,Binary Search,,,,,,,,,,X,X
+139,Find K Closest Elements,https://leetcode.com/problems/find-k-closest-elements/,,,Medium,Binary Search,Binary Search,,,,,,,,,X,,X
 140,Count of Range Sum,https://leetcode.com/problems/count-of-range-sum/,"Given an integer array nums and two integers lower and upper, return the number of range sums that lie in [lower, upper] inclusive.
 
 Range sum S(i, j) is defined as the sum of the elements in nums between indices i and j inclusive, where i <= j.
@@ -1671,10 +1689,10 @@ Example 2:
 
 Input: nums = [0], lower = 0, upper = 0
 Output: 1
-",Hard,"Binary Search, Divide and Conquer, Binary Indexed Tree, Segment Tree, Merge Sort, Ordered Set",,76.8K,213.8K,35.90%,14,,,,,,X
-141,Find Peak Element,https://leetcode.com/problems/find-peak-element/,,,Medium,Binary Search,,,,,,,,,,,X
-142,Koko Eating Bananas,https://leetcode.com/problems/koko-eating-bananas/,,,Medium,Binary Search,,,,,,,X,,,,
-143,Search Insert Position,https://leetcode.com/problems/search-insert-position/,,,Easy,Binary Search,,,,,,,,,,,
+",Hard,Binary Search,"Binary Search, Divide and Conquer, Binary Indexed Tree, Segment Tree, Merge Sort, Ordered Set",,76.8K,213.8K,35.90%,14,,,,,,X
+141,Find Peak Element,https://leetcode.com/problems/find-peak-element/,,,Medium,Binary Search,Binary Search,,,,,,,,,,,X
+142,Koko Eating Bananas,https://leetcode.com/problems/koko-eating-bananas/,,,Medium,Binary Search,Binary Search,,,,,,,X,,,,
+143,Search Insert Position,https://leetcode.com/problems/search-insert-position/,,,Easy,Binary Search,Binary Search,,,,,,,,,,,
 144,"Find First and Last Position of 
 Element in Sorted Array",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/,"Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
 
@@ -1693,11 +1711,11 @@ Output: [-1,-1]
 Example 3:
 
 Input: nums = [], target = 0
-Output: [-1,-1]",Medium,Binary Search,,2M,4.6M,44.30%,163,,,,,,
-145,Valid Perfect Square,https://leetcode.com/problems/valid-perfect-square/,,,Easy,Binary Search,,,,,,,,,,,
-146,Guess Number Higher or Lower,https://leetcode.com/problems/guess-number-higher-or-lower/,,,Easy,Binary Search,,,,,,,,,,,
-147,Maximum Number of Removable Characters,https://leetcode.com/problems/maximum-number-of-removable-characters/,,,Medium,Binary Search,,,,,,,,,,,
-148,Leftmost Column with at Least a One,https://leetcode.com/problems/leftmost-column-with-at-least-a-one/,,,Medium,Binary Search,,,,,,,,,,,
+Output: [-1,-1]",Medium,Binary Search,Binary Search,,2M,4.6M,44.30%,163,,,,,,
+145,Valid Perfect Square,https://leetcode.com/problems/valid-perfect-square/,,,Easy,Binary Search,Binary Search,,,,,,,,,,,
+146,Guess Number Higher or Lower,https://leetcode.com/problems/guess-number-higher-or-lower/,,,Easy,Binary Search,Binary Search,,,,,,,,,,,
+147,Maximum Number of Removable Characters,https://leetcode.com/problems/maximum-number-of-removable-characters/,,,Medium,Binary Search,Binary Search,,,,,,,,,,,
+148,Leftmost Column with at Least a One,https://leetcode.com/problems/leftmost-column-with-at-least-a-one/,,,Medium,Binary Search,Binary Search,,,,,,,,,,,
 149,Capacity to Ship Packages Within D Days,https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/,"A conveyor belt has packages that must be shipped from one port to another within days days.
 
 The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights). We may not load more weight than the maximum weight capacity of the ship.
@@ -1731,11 +1749,11 @@ Explanation:
 2nd day: 2
 3rd day: 3
 4th day: 1, 1
-",Medium,Binary Search,,377.7K,543.6K,69.50%,124,,,,,,
-150,Cutting Ribbons,https://leetcode.com/problems/cutting-ribbons/,,,Medium,Binary Search,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
-152,Convert 1D Array into 2D Array,https://leetcode.com/problems/convert-1d-array-into-2d-array/,,,Easy,Matrix,,,,,,,,,,,X
-153,Set Matrix Zeroes,https://leetcode.com/problems/set-matrix-zeroes/,,,Medium,Matrix,,,,,,X,X,,X,,X
+",Medium,Binary Search,Binary Search,,377.7K,543.6K,69.50%,124,,,,,,
+150,Cutting Ribbons,https://leetcode.com/problems/cutting-ribbons/,,,Medium,Binary Search,Binary Search,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+152,Convert 1D Array into 2D Array,https://leetcode.com/problems/convert-1d-array-into-2d-array/,,,Easy,Matrix,Matrix,,,,,,,,,,,X
+153,Set Matrix Zeroes,https://leetcode.com/problems/set-matrix-zeroes/,,,Medium,Math,Matrix,,,,,,X,X,,X,,X
 154,Spiral Matrix,https://leetcode.com/problems/spiral-matrix/,"Given an m x n matrix, return all elements of the matrix in spiral order.
 
 ","Example 1:
@@ -1747,11 +1765,11 @@ Example 2:
 
 
 Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]",Medium,Matrix,,1.4M,2.9M,49.60%,116,X,X,,X,X,X
-155,Rotate Image,https://leetcode.com/problems/rotate-image/,,,Medium,Matrix,,,,,,X,X,,X,,X
-156,Valid Sudoku,https://leetcode.com/problems/valid-sudoku/,,,Medium,Matrix,,,,,,,X,,X,,
-157,01 Matrix,https://leetcode.com/problems/01-matrix/,,,Medium,Matrix,,,,,,,,,X,,
-,,,,,,,,,,,,,,,,,
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]",Medium,Math,Matrix,,1.4M,2.9M,49.60%,116,X,X,,X,X,X
+155,Rotate Image,https://leetcode.com/problems/rotate-image/,,,Medium,Math,Matrix,,,,,,X,X,,X,,X
+156,Valid Sudoku,https://leetcode.com/problems/valid-sudoku/,,,Medium,Arrays & Hashing,Matrix,,,,,,,X,,X,,
+157,01 Matrix,https://leetcode.com/problems/01-matrix/,,,Medium,Matrix,Matrix,,,,,,,,,X,,
+,,,,,,,,,,,,,,,,,,
 159,Reverse a Linked List,https://leetcode.com/problems/reverse-linked-list/,"Given the head of a singly linked list, reverse the list, and return the reversed list.
 
 Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
@@ -1771,11 +1789,11 @@ Example 3:
 
 Input: head = []
 Output: []
-",Easy,Linked List,,4.1M,5.4M,76.60%,197,X,X,X,X,X,X
-160,Reverse Linked List 2,https://leetcode.com/problems/reverse-linked-list-ii/,,,Medium,Linked List,,,,,,,,,,,X
-161,Linked List Cycle (detect if exists),https://leetcode.com/problems/linked-list-cycle/,,,Easy,Linked List,,,,,,X,X,X,x,,X
-162,Linked List Cycle 2 (find cycle entry point),https://leetcode.com/problems/linked-list-cycle-ii/,,,Medium,Linked List,,,,,,X,,,,,X
-163,Merge Two Sorted Lists,https://leetcode.com/problems/merge-two-sorted-lists/,,,Easy,Linked List,,,,,,X,X,,X,X,X
+",Easy,Linked List,Linked List,,4.1M,5.4M,76.60%,197,X,X,X,X,X,X
+160,Reverse Linked List 2,https://leetcode.com/problems/reverse-linked-list-ii/,,,Medium,Linked List,Linked List,,,,,,,,,,,X
+161,Linked List Cycle (detect if exists),https://leetcode.com/problems/linked-list-cycle/,,,Easy,Linked List,Linked List,,,,,,X,X,X,x,,X
+162,Linked List Cycle 2 (find cycle entry point),https://leetcode.com/problems/linked-list-cycle-ii/,,,Medium,Linked List,Linked List,,,,,,X,,,,,X
+163,Merge Two Sorted Lists,https://leetcode.com/problems/merge-two-sorted-lists/,,,Easy,Linked List,Linked List,,,,,,X,X,,X,X,X
 164,Remove Nth Node from End of List,https://leetcode.com/problems/remove-nth-node-from-end-of-list/,"Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
 Follow up: Could you do this in one pass?
@@ -1801,11 +1819,11 @@ The number of nodes in the list is sz.
 1 <= sz <= 30
 0 <= Node.val <= 100
 1 <= n <= sz
- ",Medium,"Linked List, Two Pointers",,2.7M,6M,45.40%,175,X,X,X,X,,X
-165,Reorder List,https://leetcode.com/problems/reorder-list/,,,Medium,Linked List,,,,,,X,X,,X,,X
-166,Palindrome Linked List,https://leetcode.com/problems/palindrome-linked-list/,,,Easy,Linked List,,,,,,,,,X,X,X
-167,Intersection of two Linked Lists,https://leetcode.com/problems/intersection-of-two-linked-lists/,,,Easy,Linked List,,,,,,,,,,X,
-168,Copy Linked List with Random Pointer,https://leetcode.com/problems/copy-list-with-random-pointer/,,,Medium,Linked List,,,,,,,X,,,X,
+ ",Medium,,"Linked List, Two Pointers",,2.7M,6M,45.40%,175,X,X,X,X,,X
+165,Reorder List,https://leetcode.com/problems/reorder-list/,,,Medium,Linked List,Linked List,,,,,,X,X,,X,,X
+166,Palindrome Linked List,https://leetcode.com/problems/palindrome-linked-list/,,,Easy,Linked List,Linked List,,,,,,,,,X,X,X
+167,Intersection of two Linked Lists,https://leetcode.com/problems/intersection-of-two-linked-lists/,,,Easy,Linked List,Linked List,,,,,,,,,,X,
+168,Copy Linked List with Random Pointer,https://leetcode.com/problems/copy-list-with-random-pointer/,,,Medium,Linked List,Linked List,,,,,,,X,,,X,
 169,Sort List,https://leetcode.com/problems/sort-list/,"Given the head of a linked list, return the list after sorting it in ascending order.
 
 Follow up: Can you sort the linked list in O(n logn) time and O(1) memory (i.e. constant space)?
@@ -1823,10 +1841,10 @@ Output: [-1,0,3,4,5]
 Example 3:
 
 Input: head = []
-Output: []",Medium,"Linked List, Two Pointers, Divide and Conquer, Sorting",,788.7K,1.4M,58.00%,71,,,,X,X,X
-170,Middle of the Linked List,https://leetcode.com/problems/middle-of-the-linked-list/,,,Easy,Linked List,,,,,,,,,X,,X
-171,Remove Linked List Elements,https://leetcode.com/problems/remove-linked-list-elements/Z,,,Easy,Linked List,,,,,,,,,,,X
-172,Remove Duplicates from Sorted List,https://leetcode.com/problems/remove-duplicates-from-sorted-list/,,,Easy,Linked List,,,,,,,,,,,X
+Output: []",Medium,Linked List,"Linked List, Two Pointers, Divide and Conquer, Sorting",,788.7K,1.4M,58.00%,71,,,,X,X,X
+170,Middle of the Linked List,https://leetcode.com/problems/middle-of-the-linked-list/,,,Easy,Linked List,Linked List,,,,,,,,,X,,X
+171,Remove Linked List Elements,https://leetcode.com/problems/remove-linked-list-elements/Z,,,Easy,Linked List,Linked List,,,,,,,,,,,X
+172,Remove Duplicates from Sorted List,https://leetcode.com/problems/remove-duplicates-from-sorted-list/,,,Easy,Linked List,Linked List,,,,,,,,,,,X
 173,Add Two Numbers,https://leetcode.com/problems/add-two-numbers/,"You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.","Example 1:
@@ -1849,12 +1867,12 @@ Constraints:
 
 The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
-It is guaranteed that the list represents a number that does not have leading zeros.",Medium,"Linked List, Math, Recursion",,4.6M,10.6M,42.90%,566,,X,,X,X,X
-174,Add Two Numbers 2,https://leetcode.com/problems/add-two-numbers-ii/,,,Medium,Linked List,,,,,,,,,,,
-175,Sort List,https://leetcode.com/problems/sort-list/,,,Medium,Linked List,,,,,,,,,,,X
-176,Rotate List,https://leetcode.com/problems/rotate-list/,,,Medium,Linked List,,,,,,,,,X,,X
-177,Swap Nodes in Pairs,https://leetcode.com/problems/swap-nodes-in-pairs/,,,Medium,Linked List,,,,,,,,,X,,X
-178,Odd Even Linked List,https://leetcode.com/problems/odd-even-linked-list/,,,Medium,Linked List,,,,,,,,,X,,X
+It is guaranteed that the list represents a number that does not have leading zeros.",Medium,,"Linked List, Math, Recursion",,4.6M,10.6M,42.90%,566,,X,,X,X,X
+174,Add Two Numbers 2,https://leetcode.com/problems/add-two-numbers-ii/,,,Medium,Linked List,Linked List,,,,,,,,,,,
+175,Sort List,https://leetcode.com/problems/sort-list/,,,Medium,Linked List,Linked List,,,,,,,,,,,X
+176,Rotate List,https://leetcode.com/problems/rotate-list/,,,Medium,Linked List,Linked List,,,,,,,,,X,,X
+177,Swap Nodes in Pairs,https://leetcode.com/problems/swap-nodes-in-pairs/,,,Medium,Linked List,Linked List,,,,,,,,,X,,X
+178,Odd Even Linked List,https://leetcode.com/problems/odd-even-linked-list/,,,Medium,Linked List,Linked List,,,,,,,,,X,,X
 179,Reverse Nodes in K Group,https://leetcode.com/problems/reverse-nodes-in-k-group/,"Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
 
 k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
@@ -1873,11 +1891,11 @@ Example 2:
 
 Input: head = [1,2,3,4,5], k = 3
 Output: [3,2,1,4,5]
-",Hard,Linked List,,925.1K,1.6M,58.80%,96,,X,,X,,X
-180,Flatten a Multilevel Doubly Linked List,https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/,,,Medium,Linked List,,,,,,,,,,,
-181,Find the Duplicate Number,https://leetcode.com/problems/find-the-duplicate-number/,,,Medium,Linked List,,,,,,,X,,,,X
-182,Partition List,https://leetcode.com/problems/partition-list/,,,Medium,Linked List,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
+",Hard,Linked List,Linked List,,925.1K,1.6M,58.80%,96,,X,,X,,X
+180,Flatten a Multilevel Doubly Linked List,https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/,,,Medium,Linked List,Linked List,,,,,,,,,,,
+181,Find the Duplicate Number,https://leetcode.com/problems/find-the-duplicate-number/,,,Medium,Linked List,Linked List,,,,,,,X,,,,X
+182,Partition List,https://leetcode.com/problems/partition-list/,,,Medium,Linked List,Linked List,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
 184,Insert Interval,https://leetcode.com/problems/insert-interval/,"You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
 
 Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
@@ -1902,13 +1920,13 @@ intervals[i].length == 2
 0 <= starti <= endi <= 105
 intervals is sorted by starti in ascending order.
 newInterval.length == 2
-0 <= start <= end <= 105",Medium,Intervals,,1.1M,2.7M,41.50%,216,X,X,X,X,,X
-185,Merge Intervals,https://leetcode.com/problems/merge-intervals/,,,Medium,Intervals,,,,,,X,X,X,X,X,X
-186,Non-Overlapping Intervals,https://leetcode.com/problems/non-overlapping-intervals/,,,Medium,Intervals,,,,,,X,X,X,X,,X
-187,Meeting Rooms,https://leetcode.com/problems/meeting-rooms/,,,Easy,Intervals,,,,,,X,X,X,X,,X
-188,Meeting Rooms 2,https://leetcode.com/problems/meeting-rooms-ii/,,,Medium,Intervals,,,,,,X,X,X,X,X,X
-189,Interval List Intersections,https://leetcode.com/problems/interval-list-intersections/,,,Medium,Intervals,,,,,,,,,,,X
-190,Employee Free Time,https://leetcode.com/problems/employee-free-time/,,,Hard,Intervals,,,,,,,,,X,,X
+0 <= start <= end <= 105",Medium,Intervals,Intervals,,1.1M,2.7M,41.50%,216,X,X,X,X,,X
+185,Merge Intervals,https://leetcode.com/problems/merge-intervals/,,,Medium,Intervals,Intervals,,,,,,X,X,X,X,X,X
+186,Non-Overlapping Intervals,https://leetcode.com/problems/non-overlapping-intervals/,,,Medium,Intervals,Intervals,,,,,,X,X,X,X,,X
+187,Meeting Rooms,https://leetcode.com/problems/meeting-rooms/,,,Easy,Intervals,Intervals,,,,,,X,X,X,X,,X
+188,Meeting Rooms 2,https://leetcode.com/problems/meeting-rooms-ii/,,,Medium,Intervals,Intervals,,,,,,X,X,X,X,X,X
+189,Interval List Intersections,https://leetcode.com/problems/interval-list-intersections/,,,Medium,Intervals,Intervals,,,,,,,,,,,X
+190,Employee Free Time,https://leetcode.com/problems/employee-free-time/,,,Hard,Intervals,Intervals,,,,,,,,,X,,X
 191,Minimum Interval to Include Each Query,https://leetcode.com/problems/minimum-interval-to-include-each-query/,"You are given a 2D integer array intervals, where intervals[i] = [lefti, righti] describes the ith interval starting at lefti and ending at righti (inclusive). The size of an interval is defined as the number of integers it contains, or more formally righti - lefti + 1.
 
 You are also given an integer array queries. The answer to the jth query is the size of the smallest interval i such that lefti <= queries[j] <= righti. If no such interval exists, the answer is -1.
@@ -1931,13 +1949,13 @@ Explanation: The queries are processed as follows:
 - Query = 19: None of the intervals contain 19. The answer is -1.
 - Query = 5: The interval [2,5] is the smallest interval containing 5. The answer is 5 - 2 + 1 = 4.
 - Query = 22: The interval [20,25] is the smallest interval containing 22. The answer is 25 - 20 + 1 = 6.
-",Hard,"Intervals, Heaps, Line Sweep, Binary Search",,32.3K,65.2K,49.40%,8,,X,,,,
-,,,,,,,,,,,,,,,,,
-193,Top K Frequent Elements,https://leetcode.com/problems/top-k-frequent-elements/,,,Medium,Heap,,,,,,X,X,X,,,X
-194,Merge K Sorted Lists,https://leetcode.com/problems/merge-k-sorted-lists/,,,Hard,Heap,,,,,,X,X,X,X,X,X
-195,Find Median from Data Stream,https://leetcode.com/problems/find-median-from-data-stream/,,,Hard,Heap,,,,,,X,X,X,X,X,X
-196,Top K Frequent Words,https://leetcode.com/problems/top-k-frequent-words/,,,Medium,Heap,,,,,,,,,X,,
-197,Kth Largest Element in an Array,https://leetcode.com/problems/kth-largest-element-in-an-array/,,,Medium,Heap,,,,,,,X,,X,,X
+",Hard,Intervals,"Intervals, Heaps, Line Sweep, Binary Search",,32.3K,65.2K,49.40%,8,,X,,,,
+,,,,,,,,,,,,,,,,,,
+193,Top K Frequent Elements,https://leetcode.com/problems/top-k-frequent-elements/,,,Medium,Arrays & Hashing,Heap,,,,,,X,X,X,,,X
+194,Merge K Sorted Lists,https://leetcode.com/problems/merge-k-sorted-lists/,,,Hard,Heap,Heap,,,,,,X,X,X,X,X,X
+195,Find Median from Data Stream,https://leetcode.com/problems/find-median-from-data-stream/,,,Hard,Heap,Heap,,,,,,X,X,X,X,X,X
+196,Top K Frequent Words,https://leetcode.com/problems/top-k-frequent-words/,,,Medium,Heap,Heap,,,,,,,,,X,,
+197,Kth Largest Element in an Array,https://leetcode.com/problems/kth-largest-element-in-an-array/,,,Medium,Heap,Heap,,,,,,,X,,X,,X
 198,Kth Largest Element in a Stream,https://leetcode.com/problems/kth-largest-element-in-a-stream/,"Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
 Implement KthLargest class:
@@ -1967,12 +1985,12 @@ Constraints:
 -104 <= nums[i] <= 104
 -104 <= val <= 104
 At most 104 calls will be made to add.
-It is guaranteed that there will be at least k elements in the array when you search for the kth element.",Easy,"Heap, Data Stream",,541.2K,952.6K,56.80%,76,,X,,,,
-199,Last Stone Weight,https://leetcode.com/problems/last-stone-weight/,,,Easy,Heap,,,,,,,X,,,,
-200,The Skyline Problem,https://leetcode.com/problems/the-skyline-problem/discuss/61261/10-line-Python-solution-104-ms,,,Hard,Heap,,,,,,,,,,X,
-201,K Closest Points to Origin,https://leetcode.com/problems/k-closest-points-to-origin/,,,Medium,Heap,,,,,,,X,,X,,X
-202,Course Schedule 3,https://leetcode.com/problems/course-schedule-iii/,,,Hard,Heap,,,,,,,,,,,X
-203,Find K Pairs with Smallest Sums,https://leetcode.com/problems/find-k-pairs-with-smallest-sums/,,,Medium,Heap,,,,,,,,,,,X
+It is guaranteed that there will be at least k elements in the array when you search for the kth element.",Easy,Heap,"Heap, Data Stream",,541.2K,952.6K,56.80%,76,,X,,,,
+199,Last Stone Weight,https://leetcode.com/problems/last-stone-weight/,,,Easy,Heap,Heap,,,,,,,X,,,,
+200,The Skyline Problem,https://leetcode.com/problems/the-skyline-problem/discuss/61261/10-line-Python-solution-104-ms,,,Hard,Heap,Heap,,,,,,,,,,X,
+201,K Closest Points to Origin,https://leetcode.com/problems/k-closest-points-to-origin/,,,Medium,Heap,Heap,,,,,,,X,,X,,X
+202,Course Schedule 3,https://leetcode.com/problems/course-schedule-iii/,,,Hard,Heap,Heap,,,,,,,,,,,X
+203,Find K Pairs with Smallest Sums,https://leetcode.com/problems/find-k-pairs-with-smallest-sums/,,,Medium,Heap,Heap,,,,,,,,,,,X
 204,Sort Characters By Frequency,https://leetcode.com/problems/sort-characters-by-frequency/,"Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.
 
 Return the sorted string. If there are multiple answers, return any of them.
@@ -2000,13 +2018,13 @@ Note that 'A' and 'a' are treated as two different characters.
 Constraints:
 
 1 <= s.length <= 5 * 105
-s consists of uppercase and lowercase English letters and digits.",Medium,"Heap, Bucket Sort, Hash Table",,732.5K,1M,72.60%,105,,,,,,X
+s consists of uppercase and lowercase English letters and digits.",Medium,Heap,"Heap, Bucket Sort, Hash Table",,732.5K,1M,72.60%,105,,,,,,X
 205,"Smallest Range Covering Elements 
-from K Lists",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/,,,Hard,Heap,,,,,,,,,X,,X
-206,Sliding Window Median,https://leetcode.com/problems/sliding-window-median/,,,Hard,Heap,,,,,,,,,,,X
-,,,,,,,,,,,,,,,,,
-208,Binary Tree Paths,https://leetcode.com/problems/binary-tree-paths/,,,Easy,Tree,,,,,,,,,,,
-209,Minimum Depth of Binary Tree,https://leetcode.com/problems/minimum-depth-of-binary-tree/,,,Easy,Tree,,,,,,,,X,,,X
+from K Lists",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/,,,Hard,Heap,Heap,,,,,,,,,X,,X
+206,Sliding Window Median,https://leetcode.com/problems/sliding-window-median/,,,Hard,Heap,Heap,,,,,,,,,,,X
+,,,,,,,,,,,,,,,,,,
+208,Binary Tree Paths,https://leetcode.com/problems/binary-tree-paths/,,,Easy,Tree,Tree,,,,,,,,,,,
+209,Minimum Depth of Binary Tree,https://leetcode.com/problems/minimum-depth-of-binary-tree/,,,Easy,Tree,Tree,,,,,,,,X,,,X
 210,Maximum Depth of Binary Tree,https://leetcode.com/problems/maximum-depth-of-binary-tree/,"Given the root of a binary tree, return its maximum depth.
 
 A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.","Example 1:
@@ -2018,11 +2036,11 @@ Example 2:
 
 Input: root = [1,null,2]
 Output: 2
-",Easy,"Tree, DFS, BFS",,3.1M,4.1M,75.40%,120,X,X,,X,X,X
-211,Invert Binary Tree,https://leetcode.com/problems/invert-binary-tree/,,,Easy,Tree,,,,,,X,X,X,X,,X
-212,Binary Tree Level Order Traversal,https://leetcode.com/problems/binary-tree-level-order-traversal/,,,Medium,Tree,,,,,,X,X,X,X,X,X
-213,Binary Tree Level Order Traversal 2,https://leetcode.com/problems/binary-tree-level-order-traversal-ii/,,,Medium,Tree,,,,,,,,,,,X
-214,Binary Tree Zigzag Level Order Traversal,https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/,,,Medium,Tree,,,,,,,,,X,,X
+",Easy,Tree,"Tree, DFS, BFS",,3.1M,4.1M,75.40%,120,X,X,,X,X,X
+211,Invert Binary Tree,https://leetcode.com/problems/invert-binary-tree/,,,Easy,Tree,Tree,,,,,,X,X,X,X,,X
+212,Binary Tree Level Order Traversal,https://leetcode.com/problems/binary-tree-level-order-traversal/,,,Medium,Tree,Tree,,,,,,X,X,X,X,X,X
+213,Binary Tree Level Order Traversal 2,https://leetcode.com/problems/binary-tree-level-order-traversal-ii/,,,Medium,Tree,Tree,,,,,,,,,,,X
+214,Binary Tree Zigzag Level Order Traversal,https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/,,,Medium,Tree,Tree,,,,,,,,,X,,X
 215,Validate BST,https://leetcode.com/problems/validate-binary-search-tree/,"Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
 A valid BST is defined as follows:
@@ -2039,11 +2057,11 @@ Example 2:
 
 Input: root = [5,1,4,null,null,3,6]
 Output: false
-Explanation: The root node's value is 5 but its right child's value is 4.",Medium,"Tree, DFS, BST",,2.3M,7.1M,33.00%,146,X,X,X,X,X,X
-216,Same Tree,https://leetcode.com/problems/same-tree/,,,Easy,Tree,,,,,,X,X,X,X,,X
-217,Subtree of Another Tree,https://leetcode.com/problems/subtree-of-another-tree/,,,Easy,Tree,,,,,,X,X,X,X,,X
-218,Symmetric Tree,https://leetcode.com/problems/symmetric-tree/,,,Easy,Tree,,,,,,,,,X,,
-219,Lowest Common Ancestor of BST,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/,,,Easy,Tree,,,,,,X,X,X,X,,X
+Explanation: The root node's value is 5 but its right child's value is 4.",Medium,Tree,"Tree, DFS, BST",,2.3M,7.1M,33.00%,146,X,X,X,X,X,X
+216,Same Tree,https://leetcode.com/problems/same-tree/,,,Easy,Tree,Tree,,,,,,X,X,X,X,,X
+217,Subtree of Another Tree,https://leetcode.com/problems/subtree-of-another-tree/,,,Easy,Tree,Tree,,,,,,X,X,X,X,,X
+218,Symmetric Tree,https://leetcode.com/problems/symmetric-tree/,,,Easy,Tree,Tree,,,,,,,,,X,,
+219,Lowest Common Ancestor of BST,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/,,,Easy,Tree,Tree,,,,,,X,X,X,X,,X
 220,LCA of Binary Tree ,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/,"Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
 According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”","Example 1:
@@ -2070,10 +2088,10 @@ The number of nodes in the tree is in the range [2, 105].
 -109 <= Node.val <= 109
 All Node.val are unique.
 p != q
-p and q will exist in the tree.",Medium,"Tree, DFS",,1.6M,2.6M,62.30%,70,,,,X,X,
-221,LCA of Binary Tree 3,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/,,,Medium,Tree,,,,,,,,,,X,
-222,Kth Smallest Element in a BST,https://leetcode.com/problems/kth-smallest-element-in-a-bst/,,,Medium,Tree,,,,,,X,X,X,X,,
-223,Convert Sorted Array to BST,https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/,,,Easy,Tree,,,,,,,,,X,X,
+p and q will exist in the tree.",Medium,Tree,"Tree, DFS",,1.6M,2.6M,62.30%,70,,,,X,X,
+221,LCA of Binary Tree 3,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/,,,Medium,Tree,Tree,,,,,,,,,,X,
+222,Kth Smallest Element in a BST,https://leetcode.com/problems/kth-smallest-element-in-a-bst/,,,Medium,Tree,Tree,,,,,,X,X,X,X,,
+223,Convert Sorted Array to BST,https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/,,,Easy,Tree,Tree,,,,,,,,,X,X,
 224,"Construct Binary Tree from 
 Preorder/Inorder Traversal",https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/,"Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
 
@@ -2093,10 +2111,10 @@ inorder.length == preorder.length
 preorder and inorder consist of unique values.
 Each value of inorder also appears in preorder.
 preorder is guaranteed to be the preorder traversal of the tree.
-inorder is guaranteed to be the inorder traversal of the tree.",Medium,"Tree, Hash Table, Divide and Conquer, Binary Tree",,1.2M,1.9M,64.00%,79,X,X,X,X,,X
-225,Serialize and Deserialize Binary Tree,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/,,,Hard,Tree,,,,,,X,X,X,X,X,X
-226,Binary Tree Maximum Path Sum,https://leetcode.com/problems/binary-tree-maximum-path-sum/,,,Hard,Tree,,,,,,X,X,X,X,,X
-227,Implement Trie (Prefix Tree),https://leetcode.com/problems/implement-trie-prefix-tree/,,,Medium,Tree,,,,,,X,X,X,X,X,X
+inorder is guaranteed to be the inorder traversal of the tree.",Medium,Tree,"Tree, Hash Table, Divide and Conquer, Binary Tree",,1.2M,1.9M,64.00%,79,X,X,X,X,,X
+225,Serialize and Deserialize Binary Tree,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/,,,Hard,Tree,Tree,,,,,,X,X,X,X,X,X
+226,Binary Tree Maximum Path Sum,https://leetcode.com/problems/binary-tree-maximum-path-sum/,,,Hard,Tree,Tree,,,,,,X,X,X,X,,X
+227,Implement Trie (Prefix Tree),https://leetcode.com/problems/implement-trie-prefix-tree/,,,Medium,Tree,Tree,,,,,,X,X,X,X,X,X
 228,Design Add and Search Words Data Structure,https://leetcode.com/problems/design-add-and-search-words-data-structure/,"Design a data structure that supports adding new words and finding if a string matches any previously added string.
 
 Implement the WordDictionary class:
@@ -2128,9 +2146,9 @@ Constraints:
 word in addWord consists of lowercase English letters.
 word in search consist of '.' or lowercase English letters.
 There will be at most 2 dots in word for search queries.
-At most 104 calls will be made to addWord and search.",Medium,"Tree, Trie, DFS, Design/OOD",,635.9K,1.4M,45.30%,71,X,X,X,X,,
-229,Binary Tree Inorder Traversal,https://leetcode.com/problems/binary-tree-inorder-traversal/,,,Easy,Tree,,,,,,,,,,X,
-230,Inorder Successor in BST,https://leetcode.com/problems/inorder-successor-in-bst/,,,Medium,Tree,,,,,,,,,,,
+At most 104 calls will be made to addWord and search.",Medium,Trie,"Tree, Trie, DFS, Design/OOD",,635.9K,1.4M,45.30%,71,X,X,X,X,,
+229,Binary Tree Inorder Traversal,https://leetcode.com/problems/binary-tree-inorder-traversal/,,,Easy,Tree,Tree,,,,,,,,,,X,
+230,Inorder Successor in BST,https://leetcode.com/problems/inorder-successor-in-bst/,,,Medium,Tree,Tree,,,,,,,,,,,
 231,Populating Next Right Pointers in Each Node,https://leetcode.com/problems/populating-next-right-pointers-in-each-node/,"You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
 
 struct Node {
@@ -2155,10 +2173,10 @@ Explanation: Given the above perfect binary tree (Figure A), your function shoul
 Example 2:
 
 Input: root = []
-Output: []",Medium,"Tree, Linked List, DFS, BFS",,1M,1.7M,62.80%,52,,,,,X,X
-232,Populating Next Right Pointers 2,https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/,,,Medium,Tree,,,,,,,,,,,X
-233,Path Sum,https://leetcode.com/problems/path-sum/,,,Easy,Tree,,,,,,,,,,,X
-234,Path Sum 2,https://leetcode.com/problems/path-sum-ii/,,,Medium,Tree,,,,,,,,,X,,X
+Output: []",Medium,Tree,"Tree, Linked List, DFS, BFS",,1M,1.7M,62.80%,52,,,,,X,X
+232,Populating Next Right Pointers 2,https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/,,,Medium,Tree,Tree,,,,,,,,,,,X
+233,Path Sum,https://leetcode.com/problems/path-sum/,,,Easy,Tree,Tree,,,,,,,,,,,X
+234,Path Sum 2,https://leetcode.com/problems/path-sum-ii/,,,Medium,Tree,Tree,,,,,,,,,X,,X
 235,Path Sum 3,https://leetcode.com/problems/path-sum-iii/,"Given the root of a binary tree and an integer targetSum, return the number of paths where the sum of the values along the path equals targetSum.
 
 The path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only from parent nodes to child nodes).
@@ -2173,10 +2191,10 @@ Example 2:
 
 Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
 Output: 3
-",Medium,"Tree, DFS, Binary Tree",,558.9K,1.2M,46.30%,72,,,,X,,X
-236,Diameter of Binary Tree,https://leetcode.com/problems/diameter-of-binary-tree/,,,Easy,Tree,,,,,,,X,,X,,X
-237,Maximum Width of Binary Tree,https://leetcode.com/problems/maximum-width-of-binary-tree/,,,Medium,Tree,,,,,,,,,X,,X
-238,Merge Two Binary Trees,https://leetcode.com/problems/merge-two-binary-trees/,,,Easy,Tree,,,,,,,,,,,X
+",Medium,,"Tree, DFS, Binary Tree",,558.9K,1.2M,46.30%,72,,,,X,,X
+236,Diameter of Binary Tree,https://leetcode.com/problems/diameter-of-binary-tree/,,,Easy,Tree,Tree,,,,,,,X,,X,,X
+237,Maximum Width of Binary Tree,https://leetcode.com/problems/maximum-width-of-binary-tree/,,,Medium,Tree,Tree,,,,,,,,,X,,X
+238,Merge Two Binary Trees,https://leetcode.com/problems/merge-two-binary-trees/,,,Easy,Tree,Tree,,,,,,,,,,,X
 239,Binary Tree Right Side View,https://leetcode.com/problems/binary-tree-right-side-view/,"Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.","Example 1:
 
 
@@ -2189,11 +2207,11 @@ Output: [1,3]
 Example 3:
 
 Input: root = []
-Output: []",Medium,"Tree, DFS, BFS",,1.3M,2.1M,63.10%,108,,X,,X,,X
-240,All Nodes Distance K in Binary Tree,https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/,,,Medium,Tree,,,,,,,,,X,,X
-241,Average of Levels in Binary Tree,https://leetcode.com/problems/average-of-levels-in-binary-tree/,,,Easy,Tree,,,,,,,,,,,X
-242,Maximum Binary Tree,https://leetcode.com/problems/maximum-binary-tree/,,,Medium,Tree,,,,,,,,,,,X
-243,Count Good Nodes in Binary Tree,https://leetcode.com/problems/count-good-nodes-in-binary-tree/,,,Medium,Tree,,,,,,,X,,,,
+Output: []",Medium,Tree,"Tree, DFS, BFS",,1.3M,2.1M,63.10%,108,,X,,X,,X
+240,All Nodes Distance K in Binary Tree,https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/,,,Medium,Tree,Tree,,,,,,,,,X,,X
+241,Average of Levels in Binary Tree,https://leetcode.com/problems/average-of-levels-in-binary-tree/,,,Easy,Tree,Tree,,,,,,,,,,,X
+242,Maximum Binary Tree,https://leetcode.com/problems/maximum-binary-tree/,,,Medium,Tree,Tree,,,,,,,,,,,X
+243,Count Good Nodes in Binary Tree,https://leetcode.com/problems/count-good-nodes-in-binary-tree/,,,Medium,Tree,Tree,,,,,,,X,,,,
 244,Balanced Binary Tree,https://leetcode.com/problems/balanced-binary-tree/,"Given a binary tree, determine if it is 
 height-balanced
 
@@ -2211,7 +2229,7 @@ Output: false
 Example 3:
 
 Input: root = []
-Output: true",Easy,"Tree, DFS, Binary Tree",210,1.5M,2.8M,52.20%,79,,X,,X,,
+Output: true",Easy,Tree,"Tree, DFS, Binary Tree",210,1.5M,2.8M,52.20%,79,,X,,X,,
 245,Sum Root to Leaf Numbers,https://leetcode.com/problems/sum-root-to-leaf-numbers/,"You are given the root of a binary tree containing digits from 0 to 9 only.
 
 Each root-to-leaf path in the tree represents a number.
@@ -2237,7 +2255,7 @@ Explanation:
 The root-to-leaf path 4->9->5 represents the number 495.
 The root-to-leaf path 4->9->1 represents the number 491.
 The root-to-leaf path 4->0 represents the number 40.
-Therefore, sum = 495 + 491 + 40 = 1026.",Medium,"Tree, DFS, Binary Tree","233, 226",879.8K,1.3M,65.90%,119,,,,,,
+Therefore, sum = 495 + 491 + 40 = 1026.",Medium,Tree,"Tree, DFS, Binary Tree","233, 226",879.8K,1.3M,65.90%,119,,,,,,
 246,House Robber 3,https://leetcode.com/problems/house-robber-iii/,"The thief has found himself a new place for his thievery again. There is only one entrance to this area, called root.
 
 Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if two directly-linked houses were broken into on the same night.
@@ -2253,7 +2271,7 @@ Example 2:
 
 Input: root = [3,4,5,1,3,null,1]
 Output: 9
-Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.",Medium,"Tree, DP, DFS, Binary Tree","324, 325",381K,702.1K,54.30%,48,,,,,,
+Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.",Medium,1D DP,"Tree, DP, DFS, Binary Tree","324, 325",381K,702.1K,54.30%,48,,,,,,
 247,Flip Equivalent Binary Trees,https://leetcode.com/problems/flip-equivalent-binary-trees/,"For a binary tree T, we can define a flip operation as follows: choose any node, and swap the left and right child subtrees.
 
 A binary tree X is flip equivalent to a binary tree Y if and only if we can make X equal to Y after some number of flip operations.
@@ -2279,7 +2297,7 @@ Output: false
 Constraints:
 
 The number of nodes in each tree is in the range [0, 100].
-Each tree will have unique node values in the range [0, 99].",Medium,Tree,,146.6K,219K,67.00%,8,,,,,,
+Each tree will have unique node values in the range [0, 99].",Medium,Tree,Tree,,146.6K,219K,67.00%,8,,,,,,
 248,Flatten Binary Tree to Linked List,https://leetcode.com/problems/flatten-binary-tree-to-linked-list/,"Given the root of a binary tree, flatten the tree into a ""linked list"":
 
 The ""linked list"" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
@@ -2305,7 +2323,7 @@ Constraints:
 
 The number of nodes in the tree is in the range [0, 2000].
 -100 <= Node.val <= 100
- ",Medium,Tree,,949.3K,1.5M,65.00%,57,,,,,,
+ ",Medium,Tree,Tree,,949.3K,1.5M,65.00%,57,,,,,,
 249,Find Bottom Left Tree Value,https://leetcode.com/problems/find-bottom-left-tree-value/,"Given the root of a binary tree, return the leftmost value in the last row of the tree.
 
 ","Example 1:
@@ -2323,7 +2341,7 @@ Output: 7
 Constraints:
 
 The number of nodes in the tree is in the range [1, 104].
--231 <= Node.val <= 231 - 1",Medium,Tree,,357.7K,502.7K,71.20%,114,,,,,,
+-231 <= Node.val <= 231 - 1",Medium,Tree,Tree,,357.7K,502.7K,71.20%,114,,,,,,
 250,Trim a Binary Search Tree,https://leetcode.com/problems/trim-a-binary-search-tree/,"Given the root of a binary search tree and the lowest and highest boundaries as low and high, trim the tree so that all its elements lies in [low, high]. Trimming the tree should not change the relative structure of the elements that will remain in the tree (i.e., any node's descendant should remain a descendant). It can be proven that there is a unique answer.
 
 Return the root of the trimmed binary search tree. Note that the root may change depending on the given bounds.","Example 1:
@@ -2344,9 +2362,9 @@ The number of nodes in the tree is in the range [1, 104].
 0 <= Node.val <= 104
 The value of each node in the tree is unique.
 root is guaranteed to be a valid binary search tree.
-0 <= low <= high <= 104",Medium,Tree,,293.3K,442.7K,66.30%,19,,,,,,
-,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
+0 <= low <= high <= 104",Medium,Tree,Tree,,293.3K,442.7K,66.30%,19,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
 253,Clone Graph,https://leetcode.com/problems/clone-graph/,"Given a reference of a node in a connected undirected graph.
 
 Return a deep copy (clone) of the graph.
@@ -2394,7 +2412,7 @@ The number of nodes in the graph is in the range [0, 100].
 1 <= Node.val <= 100
 Node.val is unique for each node.
 There are no repeated edges and no self-loops in the graph.
-The Graph is connected and all nodes can be visited starting from the given node.",Medium,"Graph, DFS, BFS, Union Find, Hash Table",,1.2M,2.2M,57.50%,128,X,X,X,X,,X
+The Graph is connected and all nodes can be visited starting from the given node.",Medium,Graph,"Graph, DFS, BFS, Union Find, Hash Table",,1.2M,2.2M,57.50%,128,X,X,X,X,,X
 254,Pacific Atlantic Water Flow,https://leetcode.com/problems/pacific-atlantic-water-flow/,"There is an m x n rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges.
 
 The island is partitioned into a grid of square cells. You are given an m x n integer matrix heights where heights[r][c] represents the height above sea level of the cell at coordinate (r, c).
@@ -2436,7 +2454,7 @@ Constraints:
 m == heights.length
 n == heights[r].length
 1 <= m, n <= 200
-0 <= heights[r][c] <= 105",Medium,Graph,,467.4K,845.4K,55.30%,72,X,X,X,X,,X
+0 <= heights[r][c] <= 105",Medium,Graph,Graph,,467.4K,845.4K,55.30%,72,X,X,X,X,,X
 255,Number of Islands,https://leetcode.com/problems/number-of-islands/,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
 
 An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.","Example 1:
@@ -2464,7 +2482,7 @@ Constraints:
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 300
-grid[i][j] is '0' or '1'.",Medium,Graph,,2.7M,4.6M,59.60%,184,X,X,X,X,X,X
+grid[i][j] is '0' or '1'.",Medium,Graph,Graph,,2.7M,4.6M,59.60%,184,X,X,X,X,X,X
 256,Max Area of Island,https://leetcode.com/problems/max-area-of-island/,"You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
 
 The area of an island is the number of cells with a value 1 in the island.
@@ -2488,9 +2506,9 @@ Constraints:
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 50
-grid[i][j] is either 0 or 1.",Medium,Graph,,863.4K,1.2M,72.00%,41,,X,,,,
-257,Graph Valid Tree,https://leetcode.com/problems/graph-valid-tree/,,,Medium,Graph,,,,,,X,X,X,X,,X
-258,Number of Connected Components in an Undirected Graph,https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/,,,Medium,Graph,,,,,,X,X,X,X,,X
+grid[i][j] is either 0 or 1.",Medium,Graph,Graph,,863.4K,1.2M,72.00%,41,,X,,,,
+257,Graph Valid Tree,https://leetcode.com/problems/graph-valid-tree/,,,Medium,Graph,Graph,,,,,,X,X,X,X,,X
+258,Number of Connected Components in an Undirected Graph,https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/,,,Medium,Graph,Graph,,,,,,X,X,X,X,,X
 259,Word Search,https://leetcode.com/problems/word-search/,"Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
@@ -2521,7 +2539,7 @@ n = board[i].length
 1 <= m, n <= 6
 1 <= word.length <= 15
 board and word consists of only lowercase and uppercase English letters.
-",Medium,"Graph, Matrix, Backtracking",,1.7M,3.9M,42.80%,198,X,X,,X,,X
+",Medium,Graph,"Graph, Matrix, Backtracking",,1.7M,3.9M,42.80%,198,X,X,,X,,X
 260,Word Search 2,https://leetcode.com/problems/word-search-ii/,"Given an m x n board of characters and a list of strings words, return all words on the board.
 
 Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
@@ -2547,8 +2565,8 @@ board[i][j] is a lowercase English letter.
 1 <= words.length <= 3 * 104
 1 <= words[i].length <= 10
 words[i] consists of lowercase English letters.
-All the strings of words are unique.",Hard,Graph,,657.3K,1.8M,36.30%,78,X,X,X,X,X,X
-261,Word Squares,https://leetcode.com/problems/word-squares/,,,Hard,Graph,,,,,,,,,,,X
+All the strings of words are unique.",Hard,Graph,Graph,,657.3K,1.8M,36.30%,78,X,X,X,X,X,X
+261,Word Squares,https://leetcode.com/problems/word-squares/,,,Hard,Graph,Graph,,,,,,,,,,,X
 262,Course Schedule,https://leetcode.com/problems/course-schedule/,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
 
 For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
@@ -2574,7 +2592,7 @@ Constraints:
 0 <= prerequisites.length <= 5000
 prerequisites[i].length == 2
 0 <= ai, bi < numCourses
-All the pairs prerequisites[i] are unique.",Medium,Graph,,1.6M,3.3M,46.80%,148,X,X,X,X,X,X
+All the pairs prerequisites[i] are unique.",Medium,Graph,Graph,,1.6M,3.3M,46.80%,148,X,X,X,X,X,X
 263,Course Schedule II,https://leetcode.com/problems/course-schedule-ii/,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
 
 For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
@@ -2602,8 +2620,8 @@ Constraints:
 prerequisites[i].length == 2
 0 <= ai, bi < numCourses
 ai != bi
-All the pairs [ai, bi] are distinct.",Medium,Graph,,1M,3M,50.60%,,,X,,X,,X
-264,Alien Dictionary,https://leetcode.com/problems/alien-dictionary/,,,Hard,Graph,,,,,,X,X,X,X,X,X
+All the pairs [ai, bi] are distinct.",Medium,Graph,Graph,,1M,3M,50.60%,,,X,,X,,X
+264,Alien Dictionary,https://leetcode.com/problems/alien-dictionary/,,,Hard,Advanced Graph,Graph,,,,,,X,X,X,X,X,X
 265,Longest Increasing Path in a Matrix,https://leetcode.com/problems/longest-increasing-path-in-a-matrix/,"Given an m x n integers matrix, return the length of the longest increasing path in matrix.
 
 From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary (i.e., wrap-around is not allowed).","Example 1:
@@ -2621,7 +2639,7 @@ Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is n
 Example 3:
 
 Input: matrix = [[1]]
-Output: 1",Hard,"Graph, DP, DFS, BFS, Topological Sort, Memoization, Matrix",,524.3K,977.3K,53.70%,36,,,,X,X,
+Output: 1",Hard,Graph,"Graph, DP, DFS, BFS, Topological Sort, Memoization, Matrix",,524.3K,977.3K,53.70%,36,,,,X,X,
 266,Flood Fill,https://leetcode.com/problems/flood-fill/,"An image is represented by an m x n integer grid image where image[i][j] represents the pixel value of the image.
 
 You are also given three integers sr, sc, and color. You should perform a flood fill on the image starting from the pixel image[sr][sc].
@@ -2651,8 +2669,8 @@ n == image[i].length
 1 <= m, n <= 50
 0 <= image[i][j], color < 216
 0 <= sr < m
-0 <= sc < n",Easy,Graph,,899.99K,1.4M,64.00%,113,,,,X,,
-267,Shortest Path to Get Food,https://leetcode.com/problems/shortest-path-to-get-food/,,,Medium,Graph,,,,,,,,,X,,
+0 <= sc < n",Easy,Graph,Graph,,899.99K,1.4M,64.00%,113,,,,X,,
+267,Shortest Path to Get Food,https://leetcode.com/problems/shortest-path-to-get-food/,,,Medium,Graph,Graph,,,,,,,,,X,,
 268,Minimum Height Trees,https://leetcode.com/problems/minimum-height-trees/,"A tree is an undirected graph in which any two vertices are connected by exactly one path. In other words, any connected graph without simple cycles is a tree.
 
 Given a tree of n nodes labelled from 0 to n - 1, and an array of n - 1 edges where edges[i] = [ai, bi] indicates that there is an undirected edge between the two nodes ai and bi in the tree, you can choose any node of the tree as the root. When you select a node x as the root, the result tree has height h. Among all possible rooted trees, those with minimum height (i.e. min(h))  are called minimum height trees (MHTs).
@@ -2679,8 +2697,8 @@ edges.length == n - 1
 0 <= ai, bi < n
 ai != bi
 All the pairs (ai, bi) are distinct.
-The given input is guaranteed to be a tree and there will be no repeated edges.",Medium,Graph,,371.5K,899.6K,41.80%,121,,,,X,,X
-269,Sequence Reconstruction,https://leetcode.com/problems/sequence-reconstruction/,,,Medium,Graph,,,,,,,,,,,X
+The given input is guaranteed to be a tree and there will be no repeated edges.",Medium,Graph,Graph,,371.5K,899.6K,41.80%,121,,,,X,,X
+269,Sequence Reconstruction,https://leetcode.com/problems/sequence-reconstruction/,,,Medium,Graph,Graph,,,,,,,,,,,X
 270,"Sort Items by Groups Respecting 
 Dependencies",https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/,"There are n items each belonging to zero or one of m groups where group[i] is the group that the i-th item belongs to and it's equal to -1 if the i-th item belongs to no group. The items and the groups are zero indexed. A group can have no item belonging to it.
 
@@ -2711,8 +2729,8 @@ group.length == beforeItems.length == n
 0 <= beforeItems[i].length <= n - 1
 0 <= beforeItems[i][j] <= n - 1
 i != beforeItems[i][j]
-beforeItems[i] does not contain duplicates elements.",Hard,Graph,,53.9K,81.1K,66.50%,61,,,,,,X
-271,Find the Celebrity,https://leetcode.com/problems/find-the-celebrity/,,,Medium,Graph,,,,,,,,,,X,
+beforeItems[i] does not contain duplicates elements.",Hard,Graph,Graph,,53.9K,81.1K,66.50%,61,,,,,,X
+271,Find the Celebrity,https://leetcode.com/problems/find-the-celebrity/,,,Medium,Graph,Graph,,,,,,,,,,X,
 272,Word Ladder,https://leetcode.com/problems/word-ladder/,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
 
 Every adjacent pair of words differs by a single letter.
@@ -2738,7 +2756,7 @@ endWord.length == beginWord.length
 wordList[i].length == beginWord.length
 beginWord, endWord, and wordList[i] consist of lowercase English letters.
 beginWord != endWord
-All the words in wordList are unique.",Hard,"Graph, Hash Table, String, BFS",,1.1M,2.7M,39.30%,131,,X,,X,X,
+All the words in wordList are unique.",Hard,Graph,"Graph, Hash Table, String, BFS",,1.1M,2.7M,39.30%,131,,X,,X,X,
 273,Word Ladder 2,https://leetcode.com/problems/word-ladder-ii/,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
 
 Every adjacent pair of words differs by a single letter.
@@ -2769,7 +2787,7 @@ wordList[i].length == beginWord.length
 beginWord, endWord, and wordList[i] consist of lowercase English letters.
 beginWord != endWord
 All the words in wordList are unique.
-The sum of all shortest transformation sequences does not exceed 105.",Hard,Graph,,366.5K,1.3M,27.30%,40,,,,,,
+The sum of all shortest transformation sequences does not exceed 105.",Hard,Graph,Graph,,366.5K,1.3M,27.30%,40,,,,,,
 274,Island Perimeter,https://leetcode.com/problems/island-perimeter/,"You are given row x col grid representing a map where grid[i][j] = 1 represents land and grid[i][j] = 0 represents water.
 
 Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells).
@@ -2796,7 +2814,7 @@ row == grid.length
 col == grid[i].length
 1 <= row, col <= 100
 grid[i][j] is 0 or 1.
-There is exactly one island in grid.",Easy,Graph,,625.8K,861.8K,72.60%,128,,,,,,
+There is exactly one island in grid.",Easy,Graph,Graph,,625.8K,861.8K,72.60%,128,,,,,,
 275,Accounts Merge,https://leetcode.com/problems/accounts-merge/,"Given a list of accounts where each element accounts[i] is a list of strings, where the first element accounts[i][0] is a name, and the rest of the elements are emails representing emails of the account.
 
 Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.
@@ -2822,8 +2840,8 @@ Constraints:
 2 <= accounts[i].length <= 10
 1 <= accounts[i][j].length <= 30
 accounts[i][0] consists of English letters.
-accounts[i][j] (for j > 0) is a valid email.",Medium,Graph,,388.3K,678.5K,57.20%,59,,,,X,,
-276,Minimum Knights Move,https://leetcode.com/problems/minimum-knight-moves/,,,Medium,Graph,,,,,,,,,X,,
+accounts[i][j] (for j > 0) is a valid email.",Medium,Graph,Graph,,388.3K,678.5K,57.20%,59,,,,X,,
+276,Minimum Knights Move,https://leetcode.com/problems/minimum-knight-moves/,,,Medium,Graph,Graph,,,,,,,,,X,,
 277,Redundant Connection,https://leetcode.com/problems/redundant-connection/,"In this problem, a tree is an undirected graph that is connected and has no cycles.
 
 You are given a graph that started as a tree with n nodes labeled from 1 to n, with one additional edge added. The added edge has two different vertices chosen from 1 to n, and was not an edge that already existed. The graph is represented as an array edges of length n where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the graph.
@@ -2848,7 +2866,7 @@ edges[i].length == 2
 1 <= ai < bi <= edges.length
 ai != bi
 There are no repeated edges.
-The given graph is connected.",Medium,"Graph, DFS, BFS, Union Find",,356.9K,567.4K,62.90%,33,,X,,,,
+The given graph is connected.",Medium,Graph,"Graph, DFS, BFS, Union Find",,356.9K,567.4K,62.90%,33,,X,,,,
 278,Count Sub Islands,https://leetcode.com/problems/count-sub-islands/,"You are given two m x n binary matrices grid1 and grid2 containing only 0's (representing water) and 1's (representing land). An island is a group of 1's connected 4-directionally (horizontal or vertical). Any cells outside of the grid are considered water cells.
 
 An island in grid2 is considered a sub-island if there is an island in grid1 that contains all the cells that make up this island in grid2.
@@ -2874,8 +2892,8 @@ Constraints:
 m == grid1.length == grid2.length
 n == grid1[i].length == grid2[i].length
 1 <= m, n <= 500
-grid1[i][j] and grid2[i][j] are either 0 or 1.",Medium,Graph,,91.2K,135.5K,67.30%,16,,,,,,
-279,Walls and Gates,https://leetcode.com/problems/walls-and-gates/,,,Medium,Graph,,,,,,,X,,,,
+grid1[i][j] and grid2[i][j] are either 0 or 1.",Medium,Graph,Graph,,91.2K,135.5K,67.30%,16,,,,,,
+279,Walls and Gates,https://leetcode.com/problems/walls-and-gates/,,,Medium,Graph,Graph,,,,,,,X,,,,
 280,Surrounded Regions,https://leetcode.com/problems/surrounded-regions/,"Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
 
 A region is captured by flipping all 'O's into 'X's in that surrounded region.","Example 1:
@@ -2899,7 +2917,7 @@ Constraints:
 m == board.length
 n == board[i].length
 1 <= m, n <= 200
-board[i][j] is 'X' or 'O'.",Medium,Graph,,705.2K,1.8M,39.60%,95,,X,,,,
+board[i][j] is 'X' or 'O'.",Medium,Graph,Graph,,705.2K,1.8M,39.60%,95,,X,,,,
 281,Reconstruct Itinerary,https://leetcode.com/problems/reconstruct-itinerary/,"You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.
 
 All of the tickets belong to a man who departs from ""JFK"", thus, the itinerary must begin with ""JFK"". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.
@@ -2925,7 +2943,7 @@ tickets[i].length == 2
 fromi.length == 3
 toi.length == 3
 fromi and toi consist of uppercase English letters.
-fromi != toi",Hard,Graph,,428.6K,991.1K,43.20%,99,,X,,,,
+fromi != toi",Hard,Advanced Graph,Graph,,428.6K,991.1K,43.20%,99,,X,,,,
 282,Rotting Oranges,https://leetcode.com/problems/rotting-oranges/,"You are given an m x n grid where each cell can have one of three values:
 
 0 representing an empty cell,
@@ -2955,7 +2973,7 @@ Constraints:
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 10
-grid[i][j] is 0, 1, or 2.",Medium,Graph,,843.7K,1.6M,54.10%,70,,X,,X,,
+grid[i][j] is 0, 1, or 2.",Medium,Graph,Graph,,843.7K,1.6M,54.10%,70,,X,,X,,
 283,Snakes and Ladders,https://leetcode.com/problems/snakes-and-ladders/,"You are given an n x n integer matrix board where the cells are labeled from 1 to n2 in a Boustrophedon style starting from the bottom left of the board (i.e. board[n - 1][0]) and alternating direction each row.
 
 You start on square 1 of the board. In each move, starting from square curr, do the following:
@@ -2992,7 +3010,7 @@ Constraints:
 n == board.length == board[i].length
 2 <= n <= 20
 board[i][j] is either -1 or in the range [1, n2].
-The squares labeled 1 and n2 do not have any ladders or snakes.",Medium,Graph,,184.7K,421.9K,43.80%,158,,,,,,
+The squares labeled 1 and n2 do not have any ladders or snakes.",Medium,Graph,Graph,,184.7K,421.9K,43.80%,158,,,,,,
 284,Open the Lock,https://leetcode.com/problems/open-the-lock/,"You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move consists of turning one wheel one slot.
 
 The lock initially starts at '0000', a string representing the state of the 4 wheels.
@@ -3027,7 +3045,7 @@ Constraints:
 deadends[i].length == 4
 target.length == 4
 target will not be in the list deadends.
-target and deadends[i] consist of digits only.",Medium,Graph,,317.6K,526.9K,60.30%,112,,,,,,
+target and deadends[i] consist of digits only.",Medium,Graph,Graph,,317.6K,526.9K,60.30%,112,,,,,,
 285,Bus Routes,https://leetcode.com/problems/bus-routes/,"You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats forever.
 
 For example, if routes[0] = [1, 5, 7], this means that the 0th bus travels in the sequence 1 -> 5 -> 7 -> 1 -> 5 -> 7 -> 1 -> ... forever.
@@ -3055,7 +3073,7 @@ Constraints:
 All the values of routes[i] are unique.
 sum(routes[i].length) <= 105
 0 <= routes[i][j] < 106
-0 <= source, target < 106",Hard,"Graph, Array, Hash Table",,201.5K,421K,47.90%,81,,,,X,,
+0 <= source, target < 106",Hard,Graph,"Graph, Array, Hash Table",,201.5K,421K,47.90%,81,,,,X,,
 286,Reorder Routes to Make All Paths Lead to the City Zero,https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/,"There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.
 
 Roads are represented by connections where connections[i] = [ai, bi] represents a road from city ai to city bi.
@@ -3088,7 +3106,7 @@ Constraints:
 connections.length == n - 1
 connections[i].length == 2
 0 <= ai, bi <= n - 1
-ai != bi",Medium,Graph,,184.6K,286.5K,64.40%,63,,,,,,
+ai != bi",Medium,Graph,Graph,,184.6K,286.5K,64.40%,63,,,,,,
 287,Network Delay Time,https://leetcode.com/problems/network-delay-time/,"You are given a network of n nodes, labeled from 1 to n. You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi), where ui is the source node, vi is the target node, and wi is the time it takes for a signal to travel from source to target.
 
 We will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return -1.
@@ -3116,7 +3134,7 @@ times[i].length == 3
 1 <= ui, vi <= n
 ui != vi
 0 <= wi <= 100
-All the pairs (ui, vi) are unique. (i.e., no multiple edges.)",Medium,Graph,,491K,911.4K,53.90%,37,,X,,,,
+All the pairs (ui, vi) are unique. (i.e., no multiple edges.)",Medium,Advanced Graph,Graph,,491K,911.4K,53.90%,37,,X,,,,
 288,Swim in Rising Water,https://leetcode.com/problems/swim-in-rising-water/,"You are given an n x n integer matrix grid where each value grid[i][j] represents the elevation at that point (i, j).
 
 The rain starts to fall. At time t, the depth of the water everywhere is t. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most t. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim.
@@ -3146,7 +3164,7 @@ n == grid.length
 n == grid[i].length
 1 <= n <= 50
 0 <= grid[i][j] < n2
-Each value grid[i][j] is unique.",Hard,Graph,,160.4K,263.8K,60.80%,29,,X,,,,
+Each value grid[i][j] is unique.",Hard,Advanced Graph,Graph,,160.4K,263.8K,60.80%,29,,X,,,,
 289,Cheapest Flights within K Stops,https://leetcode.com/problems/cheapest-flights-within-k-stops/,"There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
 
 You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.","Example 1:
@@ -3186,7 +3204,7 @@ fromi != toi
 1 <= pricei <= 104
 There will not be any multiple flights between two cities.
 0 <= src, dst, k < n
-src != dst",Medium,Graph,,558K,1.4M,39.30%,155,,X,,X,,
+src != dst",Medium,Advanced Graph,Graph,,558K,1.4M,39.30%,155,,X,,X,,
 290,Min Cost to Connect all Points,https://leetcode.com/problems/min-cost-to-connect-all-points/,"You are given an array points representing integer coordinates of some points on a 2D-plane, where points[i] = [xi, yi].
 
 The cost of connecting two points [xi, yi] and [xj, yj] is the manhattan distance between them: |xi - xj| + |yi - yj|, where |val| denotes the absolute value of val.
@@ -3210,9 +3228,9 @@ Constraints:
 
 1 <= points.length <= 1000
 -106 <= xi, yi <= 106
-All pairs (xi, yi) are distinct.",Medium,"Graph, Union Find, Minimum Spanning Tree",,284.8K,426.8K,66.70%,52,,X,,,,
-,,,,,,,,,,,,,,,,,
-292,LC Explore Backtracking Template,https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2793/,,,,,,,,,,,,,,,
+All pairs (xi, yi) are distinct.",Medium,Advanced Graph,"Graph, Union Find, Minimum Spanning Tree",,284.8K,426.8K,66.70%,52,,X,,,,
+,,,,,,,,,,,,,,,,,,
+292,LC Explore Backtracking Template,https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2793/,,,,,,,,,,,,,,,,
 293,Subsets,https://leetcode.com/problems/subsets/,"Given an integer array nums of unique elements, return all possible 
 subsets
  (the power set).
@@ -3233,7 +3251,7 @@ Constraints:
 
 1 <= nums.length <= 10
 -10 <= nums[i] <= 10
-All the numbers of nums are unique.",Medium,Backtrack,,1.9M,2.5M,78.30%,132,,X,,X,X,X
+All the numbers of nums are unique.",Medium,Backtracking,Backtrack,,1.9M,2.5M,78.30%,132,,X,,X,X,X
 294,Subsets 2,https://leetcode.com/problems/subsets-ii/,"Given an integer array nums that may contain duplicates, return all possible 
 subsets
  (the power set).
@@ -3248,7 +3266,7 @@ Example 2:
 
 Input: nums = [0]
 Output: [[],[0]]
-",Medium,Backtrack,,920.9K,1.5M,57.40%,60,,X,,,,X
+",Medium,Backtracking,Backtrack,,920.9K,1.5M,57.40%,60,,X,,,,X
 295,Combinations,https://leetcode.com/problems/combinations/,"Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].
 
 You may return the answer in any order.","Example 1:
@@ -3267,7 +3285,7 @@ Explanation: There is 1 choose 1 = 1 total combination.
 Constraints:
 
 1 <= n <= 20
-1 <= k <= n",Medium,Backtrack,,902.6K,1.3M,70.50%,68,,,,,X,X
+1 <= k <= n",Medium,Backtracking,Backtrack,,902.6K,1.3M,70.50%,68,,,,,X,X
 296,Permutations,https://leetcode.com/problems/permutations/,"Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.","Example 1:
 
 Input: nums = [1,2,3]
@@ -3286,7 +3304,7 @@ Constraints:
 
 1 <= nums.length <= 6
 -10 <= nums[i] <= 10
-All the integers of nums are unique.",Medium,Backtrack,,2.1M,2.6M,78.40%,95,,X,,X,X,X
+All the integers of nums are unique.",Medium,Backtracking,Backtrack,,2.1M,2.6M,78.40%,95,,X,,X,X,X
 297,Permutations 2,https://leetcode.com/problems/permutations-ii/,"Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
 
 ","Example 1:
@@ -3305,7 +3323,7 @@ Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 Constraints:
 
 1 <= nums.length <= 8
--10 <= nums[i] <= 10",Medium,Backtrack,,929.6K,1.6M,59.30%,28,,,,,,X
+-10 <= nums[i] <= 10",Medium,Backtracking,Backtrack,,929.6K,1.6M,59.30%,28,,,,,,X
 298,Generate Parentheses,https://leetcode.com/problems/generate-parentheses/,"Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
 ","Example 1:
@@ -3315,7 +3333,7 @@ Output: [""((()))"",""(()())"",""(())()"",""()(())"",""()()()""]
 Example 2:
 
 Input: n = 1
-Output: [""()""]",Medium,Backtrack,,1.8M,2.5M,74.60%,97,,X,,X,X,X
+Output: [""()""]",Medium,Backtracking,Backtrack,,1.8M,2.5M,74.60%,97,,X,,X,X,X
 299,Letter Combinations of Phone Number,https://leetcode.com/problems/letter-combinations-of-a-phone-number/,"Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
 
 A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.","Example 1:
@@ -3335,7 +3353,7 @@ Output: [""a"",""b"",""c""]
 Constraints:
 
 0 <= digits.length <= 4
-digits[i] is a digit in the range ['2', '9'].",Medium,Backtrack,,2M,3.3M,60.50%,156,,X,,X,X,X
+digits[i] is a digit in the range ['2', '9'].",Medium,Backtracking,Backtrack,,2M,3.3M,60.50%,156,,X,,X,X,X
 300,Remove Invalid Parentheses,https://leetcode.com/problems/remove-invalid-parentheses/,"Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
 
 Return a list of unique strings that are valid with the minimum number of removals. You may return the answer in any order.","Example 1:
@@ -3356,7 +3374,7 @@ Constraints:
 
 1 <= s.length <= 25
 s consists of lowercase English letters and parentheses '(' and ')'.
-There will be at most 20 parentheses in s.",Hard,Backtrack,,431.1K,893.4K,48.30%,17,,,,,X,
+There will be at most 20 parentheses in s.",Hard,Backtracking,Backtrack,,431.1K,893.4K,48.30%,17,,,,,X,
 301,N-Queens,https://leetcode.com/problems/n-queens/,"The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
 
 Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
@@ -3378,7 +3396,7 @@ Output: [[""Q""]]
 Constraints:
 
 1 <= n <= 9
-",Hard,Backtrack,,723.7K,1.1M,68.40%,56,,X,,X,,X
+",Hard,Backtracking,Backtrack,,723.7K,1.1M,68.40%,56,,X,,X,,X
 302,Sudoku Solver,https://leetcode.com/problems/sudoku-solver/,"Write a program to solve a Sudoku puzzle by filling the empty cells.
 
 A sudoku solution must satisfy all of the following rules:
@@ -3401,7 +3419,7 @@ Constraints:
 board.length == 9
 board[i].length == 9
 board[i][j] is a digit or '.'.
-It is guaranteed that the input board has only one solution.",Hard,Backtrack,,589.5K,961.7K,61.30%,65,,,,X,,X
+It is guaranteed that the input board has only one solution.",Hard,Backtracking,Backtrack,,589.5K,961.7K,61.30%,65,,,,X,,X
 303,Letter Case Permutation,https://leetcode.com/problems/letter-case-permutation/,"Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
 
 Return a list of all possible strings we could create. Return the output in any order.","Example 1:
@@ -3417,7 +3435,7 @@ Output: [""3z4"",""3Z4""]
 Constraints:
 
 1 <= s.length <= 12
-s consists of lowercase English letters, uppercase English letters, and digits.",Medium,Backtrack,,301.3K,406K,74.20%,15,,,,,,X
+s consists of lowercase English letters, uppercase English letters, and digits.",Medium,Backtracking,Backtrack,,301.3K,406K,74.20%,15,,,,,,X
 304,Combination Sum,https://leetcode.com/problems/combination-sum/,"Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
 
 The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the 
@@ -3447,7 +3465,7 @@ Constraints:
 1 <= candidates.length <= 30
 2 <= candidates[i] <= 40
 All elements of candidates are distinct.
-1 <= target <= 40",Medium,Backtrack,,1.9M,2.7M,71.60%,77,,X,,X,,X
+1 <= target <= 40",Medium,Backtracking,Backtrack,,1.9M,2.7M,71.60%,77,,X,,X,,X
 305,Combination Sum 2,https://leetcode.com/problems/combination-sum-ii/,"Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
 
 Each number in candidates may only be used once in the combination.
@@ -3476,7 +3494,7 @@ Constraints:
 
 1 <= candidates.length <= 100
 1 <= candidates[i] <= 50
-1 <= target <= 30",Medium,Backtrack,,975.3K,1.8M,54.60%,77,,X,,,,X
+1 <= target <= 30",Medium,Backtracking,Backtrack,,975.3K,1.8M,54.60%,77,,X,,,,X
 306,Combination Sum 3,https://leetcode.com/problems/combination-sum-iii/,"Find all valid combinations of k numbers that sum up to n such that the following conditions are true:
 
 Only numbers 1 through 9 are used.
@@ -3510,7 +3528,7 @@ Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2
 Constraints:
 
 2 <= k <= 9
-1 <= n <= 60",Medium,Backtrack,,512.5K,734.8K,69.70%,35,,,,,,X
+1 <= n <= 60",Medium,Backtracking,Backtrack,,512.5K,734.8K,69.70%,35,,,,,,X
 307,Palindrome Partitioning,https://leetcode.com/problems/palindrome-partitioning/,"Given a string s, partition s such that every 
 substring
  of the partition is a 
@@ -3530,8 +3548,8 @@ Output: [[""a""]]
 Constraints:
 
 1 <= s.length <= 16
-s contains only lowercase English letters.",Medium,"Backtrack, DP",,801.4K,1.2M,67.70%,75,,X,,,,X
-308,Generalized Abbreviation,https://leetcode.com/problems/generalized-abbreviation/,,,Medium,Backtrack,,,,,,,,,,,X
+s contains only lowercase English letters.",Medium,Backtracking,"Backtrack, DP",,801.4K,1.2M,67.70%,75,,X,,,,X
+308,Generalized Abbreviation,https://leetcode.com/problems/generalized-abbreviation/,,,Medium,Backtracking,Backtrack,,,,,,,,,,,X
 309,Partition to K Equal Sum Subsets,https://leetcode.com/problems/partition-to-k-equal-sum-subsets/,"Given an integer array nums and an integer k, return true if it is possible to divide this array into k non-empty subsets whose sums are all equal.
 
 ","Example 1:
@@ -3549,7 +3567,7 @@ Constraints:
 
 1 <= k <= nums.length <= 16
 1 <= nums[i] <= 104
-The frequency of each element is in the range [1, 4].",Medium,Backtrack,,267.7K,698.2K,38.30%,55,,,,,,X
+The frequency of each element is in the range [1, 4].",Medium,Backtracking,Backtrack,,267.7K,698.2K,38.30%,55,,,,,,X
 310,"Splitting a String into Descending 
 Consecutive Values",https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values/,"You are given a string s that consists of only digits.
 
@@ -3580,7 +3598,7 @@ Explanation: There is no valid way to split s.
 Constraints:
 
 1 <= s.length <= 20
-s only consists of digits.",Medium,Backtrack,,25.6K,72.3K,35.50%,7,,,,,,
+s only consists of digits.",Medium,Backtracking,Backtrack,,25.6K,72.3K,35.50%,7,,,,,,
 311,Find Unique Binary String,https://leetcode.com/problems/find-unique-binary-string/,"Given an array of strings nums containing n unique binary strings each of length n, return a binary string of length n that does not appear in nums. If there are multiple answers, you may return any of them.","Example 1:
 
 Input: nums = [""01"",""10""]
@@ -3604,7 +3622,7 @@ n == nums.length
 1 <= n <= 16
 nums[i].length == n
 nums[i] is either '0' or '1'.
-All the strings of nums are unique.",Medium,Backtrack,,137.4K,184.2K,74.6,71,,,,,,
+All the strings of nums are unique.",Medium,Backtracking,Backtrack,,137.4K,184.2K,74.6,71,,,,,,
 312,"Maximum Length of a Concatenated 
 String with Unique Characters",https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/,"You are given an array of strings arr. A string s is formed by the concatenation of a subsequence of arr that has unique characters.
 
@@ -3640,7 +3658,7 @@ Constraints:
 
 1 <= arr.length <= 16
 1 <= arr[i].length <= 26
-arr[i] contains only lowercase English letters.",Medium,Backtrack,,285.7K,528.3K,54.10%,85,,,,,,
+arr[i] contains only lowercase English letters.",Medium,Backtracking,Backtrack,,285.7K,528.3K,54.10%,85,,,,,,
 313,Restore IP Addresses,https://leetcode.com/problems/restore-ip-addresses/,"A valid IP address consists of exactly four integers separated by single dots. Each integer is between 0 and 255 (inclusive) and cannot have leading zeros.
 
 For example, ""0.1.2.201"" and ""192.168.1.1"" are valid IP addresses, but ""0.011.255.245"", ""192.168.1.312"" and ""192.168@1.1"" are invalid IP addresses.
@@ -3663,7 +3681,7 @@ Output: [""1.0.10.23"",""1.0.102.3"",""10.1.0.23"",""10.10.2.3"",""101.0.2.3""]
 Constraints:
 
 1 <= s.length <= 20
-s consists of digits only.",Medium,Backtrack,,459.4K,917.5K,50.10%,67,,,,,,
+s consists of digits only.",Medium,Backtracking,Backtrack,,459.4K,917.5K,50.10%,67,,,,,,
 314,Matchsticks to Squares,https://leetcode.com/problems/matchsticks-to-square/,"You are given an integer array matchsticks where matchsticks[i] is the length of the ith matchstick. You want to use all the matchsticks to make one square. You should not break any stick, but you can link them up, and each matchstick must be used exactly one time.
 
 Return true if you can make this square and false otherwise.","Example 1:
@@ -3682,9 +3700,9 @@ Explanation: You cannot find a way to form a square with all the matchsticks.
 Constraints:
 
 1 <= matchsticks.length <= 15
-1 <= matchsticks[i] <= 108",Medium,Backtrack,,163.5K,406.4K,40.30%,19,,,,,,
-,,,,,,,,,,,,,,,,,
-316,DP Thread on Leetcode,https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns,,,,,,,,,,,,,,,
+1 <= matchsticks[i] <= 108",Medium,Backtracking,Backtrack,,163.5K,406.4K,40.30%,19,,,,,,
+,,,,,,,,,,,,,,,,,,
+316,DP Thread on Leetcode,https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns,,,,,,,,,,,,,,,,
 317,Coin Change,https://leetcode.com/problems/coin-change/,"You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
 
 Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
@@ -3701,7 +3719,7 @@ Output: -1
 Example 3:
 
 Input: coins = [1], amount = 0
-Output: 0",Medium,"DP, Array, BFS",,1.8M,4.1M,44.00%,95,X,X,X,X,X,X
+Output: 0",Medium,1D DP,"DP, Array, BFS",,1.8M,4.1M,44.00%,95,X,X,X,X,X,X
 318,Coin Change 2,https://leetcode.com/problems/coin-change-2/,"You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
 
 Return the number of combinations that make up that amount. If that amount of money cannot be made up by any combination of the coins, return 0.
@@ -3733,7 +3751,7 @@ Constraints:
 1 <= coins.length <= 300
 1 <= coins[i] <= 5000
 All the values of coins are unique.
-0 <= amount <= 5000",Medium,"DP, Array",,615K,962.4K,63.90%,69,,X,,,,
+0 <= amount <= 5000",Medium,1D DP,"DP, Array",,615K,962.4K,63.90%,69,,X,,,,
 319,Combination Sum 4,https://leetcode.com/problems/combination-sum-iv/,"Given an array of distinct integers nums and a target integer target, return the number of possible combinations that add up to target.
 
 The test cases are generated so that the answer can fit in a 32-bit integer.
@@ -3765,7 +3783,7 @@ Constraints:
 1 <= nums.length <= 200
 1 <= nums[i] <= 1000
 All the elements of nums are unique.
-1 <= target <= 1000",Medium,"DP, Array",,482.7K,891.1K,54.20%,81,X,,X,X,,X
+1 <= target <= 1000",Medium,,"DP, Array",,482.7K,891.1K,54.20%,81,X,,X,X,,X
 320,Partition Equal Subset Sum,https://leetcode.com/problems/partition-equal-subset-sum/,"Given an integer array nums, return true if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or false otherwise.
 
 ","Example 1:
@@ -3777,7 +3795,7 @@ Example 2:
 
 Input: nums = [1,2,3,5]
 Output: false
-Explanation: The array cannot be partitioned into equal sum subsets.",Medium,DP,,827.1K,1.8M,46.30%,74,,X,,X,,X
+Explanation: The array cannot be partitioned into equal sum subsets.",Medium,,DP,,827.1K,1.8M,46.30%,74,,X,,X,,X
 321,Minimum Path Sum,https://leetcode.com/problems/minimum-path-sum/,"Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
 
 Note: You can only move either down or right at any point in time.
@@ -3799,7 +3817,7 @@ Constraints:
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 200
-0 <= grid[i][j] <= 200",Medium,DP,,1.2M,1.8M,64.00%,86,,,,,,
+0 <= grid[i][j] <= 200",Medium,,DP,,1.2M,1.8M,64.00%,86,,,,,,
 322,Min Cost Climbing Stairs,https://leetcode.com/problems/min-cost-climbing-stairs/,"You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps.
 
 You can either start from the step with index 0, or the step with index 1.
@@ -3828,7 +3846,7 @@ The total cost is 6.
 Constraints:
 
 2 <= cost.length <= 1000
-0 <= cost[i] <= 999",Easy,DP,,1.2M,1.8M,65.70%,189,,X,,,,
+0 <= cost[i] <= 999",Easy,,DP,,1.2M,1.8M,65.70%,189,,X,,,,
 323,Climbing Stairs,https://leetcode.com/problems/climbing-stairs/,"You are climbing a staircase. It takes n steps to reach the top.
 
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?","Example 1:
@@ -3846,9 +3864,9 @@ Explanation: There are three ways to climb to the top.
 1. 1 step + 1 step + 1 step
 2. 1 step + 2 steps
 3. 2 steps + 1 step
-",Easy,DP,,3.3M,6.2M,52.90%,289,X,X,X,X,X,X
-324,House Robber,https://leetcode.com/problems/house-robber/,,,Medium,DP,,,,,,X,X,X,X,,X
-325,House Robber II,https://leetcode.com/problems/house-robber-ii/,,,Medium,DP,,,,,,X,X,X,,,X
+",Easy,1D DP,DP,,3.3M,6.2M,52.90%,289,X,X,X,X,X,X
+324,House Robber,https://leetcode.com/problems/house-robber/,,,Medium,1D DP,DP,,,,,,X,X,X,X,,X
+325,House Robber II,https://leetcode.com/problems/house-robber-ii/,,,Medium,1D DP,DP,,,,,,X,X,X,,,X
 326,Decode Ways,https://leetcode.com/problems/decode-ways/,"A message containing letters from A-Z can be encoded into numbers using the following mapping:
 
 'A' -> ""1""
@@ -3883,7 +3901,7 @@ Explanation: ""06"" cannot be mapped to ""F"" because of the leading zero (""6""
 Constraints:
 
 1 <= s.length <= 100
-s contains only digits and may contain leading zero(s).",Medium,DP,,1.3M,3.6M,34.90%,210,X,X,X,X,,X
+s contains only digits and may contain leading zero(s).",Medium,1D DP,DP,,1.3M,3.6M,34.90%,210,X,X,X,X,,X
 327,Unique Paths,https://leetcode.com/problems/unique-paths/,"There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 
 Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
@@ -3903,7 +3921,7 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 1. Right -> Down -> Down
 2. Down -> Down -> Right
 3. Down -> Right -> Down
-",Medium,DP,,1.8M,2.8M,64.40%,126,X,X,,X,X,X
+",Medium,2D DP,DP,,1.8M,2.8M,64.40%,126,X,X,,X,X,X
 328,Unique Paths II,https://leetcode.com/problems/unique-paths-ii/,"You are given an m x n integer array grid. There is a robot initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 
 An obstacle and space are marked as 1 or 0 respectively in grid. A path that the robot takes cannot include any square that is an obstacle.
@@ -3931,7 +3949,7 @@ Constraints:
 m == obstacleGrid.length
 n == obstacleGrid[i].length
 1 <= m, n <= 100
-obstacleGrid[i][j] is 0 or 1.",Medium,DP,,931.8K,2.2M,41.60%,93,,,,,,
+obstacleGrid[i][j] is 0 or 1.",Medium,2D DP,DP,,931.8K,2.2M,41.60%,93,,,,,,
 329,Target Sum,https://leetcode.com/problems/target-sum/,"You are given an integer array nums and an integer target.
 
 You want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.
@@ -3958,7 +3976,7 @@ Constraints:
 1 <= nums.length <= 20
 0 <= nums[i] <= 1000
 0 <= sum(nums[i]) <= 1000
--1000 <= target <= 1000",Medium,DP,,593.9K,1.3M,46.90%,50,,X,,,,X
+-1000 <= target <= 1000",Medium,2D DP,DP,,593.9K,1.3M,46.90%,50,,X,,,,X
 330,Number of Dice Rolls w/Target Sum,https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/,"You have n dice, and each dice has k faces numbered from 1 to k.
 
 Given three integers n, k, and target, return the number of possible ways (out of the kn total ways) to roll the dice, so the sum of the face-up numbers equals target. Since the answer may be too large, return it modulo 109 + 7.","Example 1:
@@ -3983,7 +4001,7 @@ Explanation: The answer must be returned modulo 109 + 7.
 Constraints:
 
 1 <= n, k <= 30
-1 <= target <= 1000",Medium,DP,,287.4K,472.5K,60.80%,115,,,,,,
+1 <= target <= 1000",Medium,,DP,,287.4K,472.5K,60.80%,115,,,,,,
 331,Maximum Length of Repeated Subarray,https://leetcode.com/problems/maximum-length-of-repeated-subarray/,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.","Example 1:
 
 Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
@@ -3999,7 +4017,7 @@ Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
 Constraints:
 
 1 <= nums1.length, nums2.length <= 1000
-0 <= nums1[i], nums2[i] <= 100",Medium,DP,,299.2K,587.2K,51.00%,19,,,,,,
+0 <= nums1[i], nums2[i] <= 100",Medium,,DP,,299.2K,587.2K,51.00%,19,,,,,,
 332,Longest Common Subsequence,https://leetcode.com/problems/longest-common-subsequence/,"Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
 
 A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
@@ -4027,7 +4045,7 @@ Explanation: There is no such common subsequence, so the result is 0.
 Constraints:
 
 1 <= text1.length, text2.length <= 1000
-text1 and text2 consist of only lowercase English characters.",Medium,DP,,1.1M,1.9M,57.80%,138,X,X,,,,
+text1 and text2 consist of only lowercase English characters.",Medium,2D DP,DP,,1.1M,1.9M,57.80%,138,X,X,,,,
 333,Edit Distance,https://leetcode.com/problems/edit-distance/,"Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
 
 You have the following three operations permitted on a word:
@@ -4057,7 +4075,7 @@ exection -> execution (insert 'u')
 Constraints:
 
 0 <= word1.length, word2.length <= 500
-word1 and word2 consist of lowercase English letters.",Hard,"DP, String",,857.3K,1.5M,56.50%,75,,X,,,,
+word1 and word2 consist of lowercase English letters.",Hard,2D DP,"DP, String",,857.3K,1.5M,56.50%,75,,X,,,,
 334,Longest Palindromic Subsequence,https://leetcode.com/problems/longest-palindromic-subsequence/,"Given a string s, find the longest palindromic subsequence's length in s.
 
 A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.","Example 1:
@@ -4075,8 +4093,8 @@ Explanation: One possible longest palindromic subsequence is ""bb"".
 Constraints:
 
 1 <= s.length <= 1000
-s consists only of lowercase English letters.",Medium,DP,,484.6K,773.8K,62.60%,67,,,,,,X
-335,Valid Palindrome 3,https://leetcode.com/problems/valid-palindrome-iii/solution/,,,Hard,DP,,,,,,,,,,,
+s consists only of lowercase English letters.",Medium,2D DP,DP,,484.6K,773.8K,62.60%,67,,,,,,X
+335,Valid Palindrome 3,https://leetcode.com/problems/valid-palindrome-iii/solution/,,,Hard,Two Pointers,DP,,,,,,,,,,,
 336,Longest Increasing Subsequence,https://leetcode.com/problems/longest-increasing-subsequence/,"Given an integer array nums, return the length of the longest strictly increasing subsequence
 .Follow up: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
 
@@ -4099,7 +4117,7 @@ Constraints:
 
 1 <= nums.length <= 2500
 -104 <= nums[i] <= 104
-",Medium,DP,,1.7M,3M,55.40%,150,X,X,X,X,X,X
+",Medium,1D DP,DP,,1.7M,3M,55.40%,150,X,X,X,X,X,X
 337,Number of Longest Increasing Subsequence,https://leetcode.com/problems/number-of-longest-increasing-subsequence/,"Given an integer array nums, return the number of longest increasing subsequences.
 
 Notice that the sequence has to be strictly increasing.","Example 1:
@@ -4117,7 +4135,7 @@ Explanation: The length of the longest increasing subsequence is 1, and there ar
 Constraints:
 
 1 <= nums.length <= 2000
--106 <= nums[i] <= 106",Medium,DP,,227.9K,474.5K,48.00%,42,,,,,,X
+-106 <= nums[i] <= 106",Medium,,DP,,227.9K,474.5K,48.00%,42,,,,,,X
 338,Longest Increasing Path in Matrix,https://leetcode.com/problems/longest-increasing-path-in-a-matrix/,"Given an m x n integers matrix, return the length of the longest increasing path in matrix.
 
 From each cell, you can either move in four directions: left, right, up, or down. You may not move diagonally or move outside the boundary (i.e., wrap-around is not allowed).
@@ -4144,7 +4162,7 @@ Constraints:
 m == matrix.length
 n == matrix[i].length
 1 <= m, n <= 200
-0 <= matrix[i][j] <= 231 - 1",Hard,"DP, Array, DFS, BFS, Graph, Topological Sort, Memoization, Matrix",,524.3K,977.3K,53.70%,36,,X,,,,
+0 <= matrix[i][j] <= 231 - 1",Hard,2D DP,"DP, Array, DFS, BFS, Graph, Topological Sort, Memoization, Matrix",,524.3K,977.3K,53.70%,36,,X,,,,
 339,Jump Game,https://leetcode.com/problems/jump-game/,"You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
 
 Return true if you can reach the last index, or false otherwise.","Example 1:
@@ -4158,7 +4176,7 @@ Input: nums = [3,2,1,0,4]
 Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
  
-",Medium,DP,,1.9M,4.9M,38.50%,171,X,X,X,X,,X
+",Medium,,DP,,1.9M,4.9M,38.50%,171,X,X,X,X,,X
 340,Jump Game 2,https://leetcode.com/problems/jump-game-ii/,"You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
 
 Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:
@@ -4182,7 +4200,7 @@ Constraints:
 
 1 <= nums.length <= 104
 0 <= nums[i] <= 1000
-It's guaranteed that you can reach nums[n - 1].",Medium,DP,,1.2M,3.1M,40.50%,131,,X,,,,
+It's guaranteed that you can reach nums[n - 1].",Medium,,DP,,1.2M,3.1M,40.50%,131,,X,,,,
 341,Word Break,https://leetcode.com/problems/word-break/,"Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.","Example 1:
@@ -4208,7 +4226,7 @@ Constraints:
 1 <= wordDict.length <= 1000
 1 <= wordDict[i].length <= 20
 s and wordDict[i] consist of only lowercase English letters.
-All the strings of wordDict are unique.",Medium,DP,,1.7M,3.6M,46.80%,126,X,X,X,X,X,X
+All the strings of wordDict are unique.",Medium,1D DP,DP,,1.7M,3.6M,46.80%,126,X,X,X,X,X,X
 342,Word Break 2,https://leetcode.com/problems/word-break-ii/,"Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.
@@ -4235,7 +4253,7 @@ Constraints:
 1 <= wordDict[i].length <= 10
 s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
-Input is generated in a way that the length of the answer doesn't exceed 105.",Hard,DP,,584.4K,1.2M,48.20%,41,,,,,,
+Input is generated in a way that the length of the answer doesn't exceed 105.",Hard,,DP,,584.4K,1.2M,48.20%,41,,,,,,
 343,Concatenated Words,https://leetcode.com/problems/concatenated-words/,"Given an array of strings words (without duplicates), return all the concatenated words in the given list of words.
 
 A concatenated word is defined as a string that is comprised entirely of at least two shorter words (not necessarily distinct) in the given array.
@@ -4259,7 +4277,7 @@ Constraints:
 1 <= words[i].length <= 30
 words[i] consists of only lowercase English letters.
 All the strings of words are unique.
-1 <= sum(words[i].length) <= 105",Hard,DP,,223.8K,452.8K,49.40%,62,,,,,,X
+1 <= sum(words[i].length) <= 105",Hard,,DP,,223.8K,452.8K,49.40%,62,,,,,,X
 344,Interleaving String,https://leetcode.com/problems/interleaving-string/,"Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
 
 An interleaving of two strings s and t is a configuration where s and t are divided into n and m 
@@ -4298,8 +4316,8 @@ Constraints:
 
 0 <= s1.length, s2.length <= 100
 0 <= s3.length <= 200
-s1, s2, and s3 consist of lowercase English letters.",Medium,DP,,521.9K,1.3M,40.00%,87,,X,,,,
-345,Paint House,https://leetcode.com/problems/paint-house/,,,Medium,DP,,,,,,,,,,,
+s1, s2, and s3 consist of lowercase English letters.",Medium,,DP,,521.9K,1.3M,40.00%,87,,X,,,,
+345,Paint House,https://leetcode.com/problems/paint-house/,,,Medium,,DP,,,,,,,,,,,
 346,Maximal Square,https://leetcode.com/problems/maximal-square/,"Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
 
 ","Example 1:
@@ -4323,7 +4341,7 @@ Constraints:
 m == matrix.length
 n == matrix[i].length
 1 <= m, n <= 300
-matrix[i][j] is '0' or '1'.",Medium,DP,,682.9K,1.5M,46.60%,33,,,,X,,
+matrix[i][j] is '0' or '1'.",Medium,,DP,,682.9K,1.5M,46.60%,33,,,,X,,
 347,Distinct Subsequences,https://leetcode.com/problems/distinct-subsequences/,"Given two strings s and t, return the number of distinct subsequences of s which equals t.
 
 The test cases are generated so that the answer fits on a 32-bit signed integer.","Example 1:
@@ -4351,7 +4369,7 @@ babgbag
 Constraints:
 
 1 <= s.length, t.length <= 1000
-s and t consist of English letters.",Hard,DP,,397.8K,844.8K,47.10%,81,,X,,,,
+s and t consist of English letters.",Hard,2D DP,DP,,397.8K,844.8K,47.10%,81,,X,,,,
 348,Burst Balloons,https://leetcode.com/problems/burst-balloons/,"You are given n balloons, indexed from 0 to n - 1. Each balloon is painted with a number on it represented by an array nums. You are asked to burst all the balloons.
 
 If you burst the ith balloon, you will get nums[i - 1] * nums[i] * nums[i + 1] coins. If i - 1 or i + 1 goes out of bounds of the array, then treat it as if there is a balloon with a 1 painted on it.
@@ -4368,7 +4386,7 @@ coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167
 Example 2:
 
 Input: nums = [1,5]
-Output: 10",Hard,"DP, Array",,281.6K,478.6K,58.58%,32,,X,,,X,
+Output: 10",Hard,2D DP,"DP, Array",,281.6K,478.6K,58.58%,32,,X,,,X,
 349,Perfect Squares,https://leetcode.com/problems/perfect-squares/,"Given an integer n, return the least number of perfect square numbers that sum to n.
 
 A perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, 1, 4, 9, and 16 are perfect squares while 3 and 11 are not.","Example 1:
@@ -4380,7 +4398,7 @@ Example 2:
 
 Input: n = 13
 Output: 2
-Explanation: 13 = 4 + 9.",Medium,"DP, Math, BFS",367,850.7K,1.6M,54.80%,96,,,,,,
+Explanation: 13 = 4 + 9.",Medium,Math,"DP, Math, BFS",367,850.7K,1.6M,54.80%,96,,,,,,
 350,Minimum Cost Tree from Leaf Values,https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/,"Given an array arr of positive integers, consider all binary trees such that:
 
 Each node has either 0 or 2 children;
@@ -4408,7 +4426,7 @@ Constraints:
 
 2 <= arr.length <= 40
 1 <= arr[i] <= 15
-It is guaranteed that the answer fits into a 32-bit signed integer (i.e., it is less than 231).",Medium,DP,,98.7K,145.6K,67.80%,19,,,,,,
+It is guaranteed that the answer fits into a 32-bit signed integer (i.e., it is less than 231).",Medium,,DP,,98.7K,145.6K,67.80%,19,,,,,,
 351,Unique BST's,https://leetcode.com/problems/unique-binary-search-trees/,"Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.","Example 1:
 
 
@@ -4422,7 +4440,7 @@ Output: 1
 
 Constraints:
 
-1 <= n <= 19",Medium,DP,,660.2K,1.1M,61.10%,33,,,,,,
+1 <= n <= 19",Medium,,DP,,660.2K,1.1M,61.10%,33,,,,,,
 352,Triangle,https://leetcode.com/problems/triangle/,"Given a triangle array, return the minimum path sum from top to bottom.
 
 For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
@@ -4450,7 +4468,7 @@ Constraints:
 triangle[0].length == 1
 triangle[i].length == triangle[i - 1].length + 1
 -104 <= triangle[i][j] <= 104
-",Medium,DP,,755.9K,1.3M,56.70%,82,,,,,,
+",Medium,,DP,,755.9K,1.3M,56.70%,82,,,,,,
 353,All Possible Full Binary Trees,https://leetcode.com/problems/all-possible-full-binary-trees/,"Given an integer n, return a list of all possible full binary trees with n nodes. Each node of each tree in the answer must have Node.val == 0.
 
 Each element of the answer is the root node of one possible tree. You may return the final list of trees in any order.
@@ -4468,7 +4486,7 @@ Output: [[0,0,0]]
 
 Constraints:
 
-1 <= n <= 20",Medium,DP,,182K,220.1K,82.70%,53,,,,,,
+1 <= n <= 20",Medium,,DP,,182K,220.1K,82.70%,53,,,,,,
 354,Minimum Cost for Tickets,https://leetcode.com/problems/minimum-cost-for-tickets/,"You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.
 
 Train tickets are sold in three different ways:
@@ -4504,7 +4522,7 @@ Constraints:
 1 <= days[i] <= 365
 days is in strictly increasing order.
 costs.length == 3
-1 <= costs[i] <= 1000",Medium,DP,,289.8K,444.1K,65.30%,43,,,,,,
+1 <= costs[i] <= 1000",Medium,,DP,,289.8K,444.1K,65.30%,43,,,,,,
 355,"Number of Ways to Rearrange Sticks 
 with K Sticks Visible",https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/,"There are n uniquely-sized sticks whose lengths are integers from 1 to n. You want to arrange the sticks such that exactly k sticks are visible from the left. A stick is visible from the left if there are no longer sticks to the left of it.
 
@@ -4526,7 +4544,7 @@ Example 3:
 Input: n = 20, k = 11
 Output: 647427950
 Explanation: There are 647427950 (mod 109 + 7) ways to rearrange the sticks such that exactly 11 sticks are visible.
-",Hard,"DP, Math, Combinatorics",,14.1K,24.8K,57.00%,4,,,,,,
+",Hard,,"DP, Math, Combinatorics",,14.1K,24.8K,57.00%,4,,,,,,
 356,Stickers to Spell Word,https://leetcode.com/problems/stickers-to-spell-word/,"We are given n different types of stickers. Each sticker has a lowercase English word on it.
 
 You would like to spell out the given string target by cutting individual letters from your collection of stickers and rearranging them. You can use each sticker more than once if you want, and you have infinite quantities of each sticker.
@@ -4555,7 +4573,7 @@ n == stickers.length
 1 <= n <= 50
 1 <= stickers[i].length <= 10
 1 <= target.length <= 15
-stickers[i] and target consist of lowercase English letters.",Hard,DP,,68.5K,142.7K,48.70%,12,,,,,,
+stickers[i] and target consist of lowercase English letters.",Hard,,DP,,68.5K,142.7K,48.70%,12,,,,,,
 357,Minimum Number of Days to Eat N Oranges,https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/,"There are n oranges in the kitchen and you decided to eat some of these oranges every day as follows:
 
 Eat one orange.
@@ -4582,7 +4600,7 @@ Day 1: Eat 3 oranges, 6 - 6/2 = 6 - 3 = 3. (Since 6 is divisible by 2).
 Day 2: Eat 2 oranges, 3 - 2*(3/3) = 3 - 2 = 1. (Since 3 is divisible by 3)
 Day 3: Eat the last orange  1 - 1  = 0.
 You need at least 3 days to eat the 6 oranges.
-  ",Hard,DP,,35.4K,100.3K,35.30%,10,,,,,,
+  ",Hard,,DP,,35.4K,100.3K,35.30%,10,,,,,,
 358,Pascal's Triangle,https://leetcode.com/problems/pascals-triangle/,"Given an integer numRows, return the first numRows of Pascal's triangle.
 
 In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:","Example 1:
@@ -4592,7 +4610,7 @@ Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
 Example 2:
 
 Input: numRows = 1
-Output: [[1]]",Easy,DP,,1.7M,2.2M,74.40%,118,,,,,,
+Output: [[1]]",Easy,,DP,,1.7M,2.2M,74.40%,118,,,,,,
 359,Stone Game,https://leetcode.com/problems/stone-game/,"Alice and Bob play a game with piles of stones. There are an even number of piles arranged in a row, and each pile has a positive integer number of stones piles[i].
 
 The objective of the game is to end with the most stones. The total number of stones across all the piles is odd, so there are no ties.
@@ -4622,7 +4640,7 @@ Constraints:
 2 <= piles.length <= 500
 piles.length is even.
 1 <= piles[i] <= 500
-sum(piles[i]) is odd.",Medium,DP,,233.9K,331.5K,70.50%,86,,,,,,
+sum(piles[i]) is odd.",Medium,,DP,,233.9K,331.5K,70.50%,86,,,,,,
 360,Integer Break,https://leetcode.com/problems/integer-break/,"Given an integer n, break it into the sum of k positive integers, where k >= 2, and maximize the product of those integers.
 
 Return the maximum product you can get.","Example 1:
@@ -4635,7 +4653,7 @@ Example 2:
 Input: n = 10
 Output: 36
 Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
-",Medium,"DP, Math",,357.4K,592.2K,60.40%,65,,,,,,
+",Medium,,"DP, Math",,357.4K,592.2K,60.40%,65,,,,,,
 361,Delete and Earn,https://leetcode.com/problems/delete-and-earn/,"You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:
 
 Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 and every element equal to nums[i] + 1.
@@ -4657,8 +4675,8 @@ Explanation: You can perform the following operations:
 - Delete a 3 to earn 3 points. All 2's and 4's are also deleted. nums = [3,3].
 - Delete a 3 again to earn 3 points. nums = [3].
 - Delete a 3 once more to earn 3 points. nums = [].
-You earn a total of 9 points.",Medium,DP,,338.6K,599.3K,56.50%,50,,,,,,
-,,,,,,,,,,,,,,,,,
+You earn a total of 9 points.",Medium,,DP,,338.6K,599.3K,56.50%,50,,,,,,
+,,,,,,,,,,,,,,,,,,
 363,Happy Number,https://leetcode.com/problems/happy-number/,"Write an algorithm to determine if a number n is happy.
 
 A happy number is a number defined by the following process:
@@ -4678,7 +4696,7 @@ Explanation:
 Example 2:
 
 Input: n = 2
-Output: false",Easy,Math,,1.5M,2.6M,56.20%,153,,X,,,,
+Output: false",Easy,Math,Math,,1.5M,2.6M,56.20%,153,,X,,,,
 364,Plus One,https://leetcode.com/problems/plus-one/,"You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
 
 Increment the large integer by one and return the resulting array of digits.","Example 1:
@@ -4708,7 +4726,7 @@ Constraints:
 
 1 <= digits.length <= 100
 0 <= digits[i] <= 9
-digits does not contain any leading 0's.",Easy,Math,,2.2M,5M,45.40%,204,,X,,,,
+digits does not contain any leading 0's.",Easy,Math,Math,,2.2M,5M,45.40%,204,,X,,,,
 365,Multiply Strings,https://leetcode.com/problems/multiply-strings/,"Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
 
 Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.","Example 1:
@@ -4725,7 +4743,7 @@ Constraints:
 
 1 <= num1.length, num2.length <= 200
 num1 and num2 consist of digits only.
-Both num1 and num2 do not contain any leading zero, except the number 0 itself.",Medium,Math,,798.8K,2M,40.50%,99,,X,,,,
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.",Medium,Math,Math,,798.8K,2M,40.50%,99,,X,,,,
 366,Detect Squares,https://leetcode.com/problems/detect-squares/,"You are given a stream of points on the X-Y plane. Design an algorithm that:
 
 Adds new points from the stream into a data structure. Duplicate points are allowed and should be treated as different points.
@@ -4763,7 +4781,7 @@ Constraints:
 
 point.length == 2
 0 <= x, y <= 1000
-At most 3000 calls in total will be made to add and count.",Medium,Math,,64.7K,127.2K,50.90%,9,,X,,,,
+At most 3000 calls in total will be made to add and count.",Medium,Math,Math,,64.7K,127.2K,50.90%,9,,X,,,,
 367,Count Primes,https://leetcode.com/problems/count-primes/,"Given an integer n, return the number of prime numbers that are strictly less than n.
 
 ","Example 1:
@@ -4778,7 +4796,7 @@ Output: 0
 Example 3:
 
 Input: n = 1
-Output: 0",Medium,"Math, Array, Enumeration, Math Theory",349,862.8K,2.6M,33.60%,65,,,,,X,
+Output: 0",Medium,Math,"Math, Array, Enumeration, Math Theory",349,862.8K,2.6M,33.60%,65,,,,,X,
 368,Power of Three,https://leetcode.com/problems/power-of-three/,"Given an integer n, return true if it is a power of three. Otherwise, return false.
 
 An integer n is a power of three, if there exists an integer x such that n == 3x.
@@ -4800,7 +4818,7 @@ Example 3:
 Input: n = -1
 Output: false
 Explanation: There is no x where 3x = (-1).
-",Easy,Math,,833.9K,1.8M,46.60%,46,,,,,X,
+",Easy,Math,Math,,833.9K,1.8M,46.60%,46,,,,,X,
 369,Excel Sheet Column Number,https://leetcode.com/problems/excel-sheet-column-number/,"Given a string columnTitle that represents the column title as appears in an Excel sheet, return its corresponding column number.
 
 For example:
@@ -4831,7 +4849,7 @@ Constraints:
 
 1 <= columnTitle.length <= 7
 columnTitle consists only of uppercase English letters.
-columnTitle is in the range [""A"", ""FXSHRXW""].",Easy,Math,,686.2K,1.1M,63.80%,21,,,,,X,
+columnTitle is in the range [""A"", ""FXSHRXW""].",Easy,Math,Math,,686.2K,1.1M,63.80%,21,,,,,X,
 370,"Pow(x, n)",https://leetcode.com/problems/powx-n/,"Implement pow(x, n), which calculates x raised to the power n (i.e., xn).","Example 1:
 
 Input: x = 2.00000, n = 10
@@ -4853,7 +4871,7 @@ Constraints:
 -231 <= n <= 231-1
 n is an integer.
 Either x is not zero or n > 0.
--104 <= xn <= 104",Medium,Math,,,,,,,X,,X,X,
+-104 <= xn <= 104",Medium,Math,Math,,,,,,,X,,X,X,
 371,Task Scheduler,https://leetcode.com/problems/task-scheduler/,"You are given an array of CPU tasks, each represented by letters A to Z, and a cooling time, n. Each cycle or interval allows the completion of one task. Tasks can be completed in any order, but there's a constraint: identical tasks must be separated by at least n intervals due to cooling time.
 
 ​Return the minimum number of intervals required to complete all tasks.","Example 1:
@@ -4892,7 +4910,7 @@ Constraints:
 
 1 <= tasks.length <= 104
 tasks[i] is an uppercase English letter.
-0 <= n <= 100",Medium,Math,,629.1K,1M,59.90%,125,,X,,X,X,X
+0 <= n <= 100",Medium,Math,Math,,629.1K,1M,59.90%,125,,X,,X,X,X
 372,Max Points on a Line,https://leetcode.com/problems/max-points-on-a-line/,"Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
 
 ","Example 1:
@@ -4912,7 +4930,7 @@ Constraints:
 1 <= points.length <= 300
 points[i].length == 2
 -104 <= xi, yi <= 104
-All the points are unique.",Hard,Math,,392.3K,1.5M,26.80%,159,,,,,X,
+All the points are unique.",Hard,Math,Math,,392.3K,1.5M,26.80%,159,,,,,X,
 373,Integer to English Words,https://leetcode.com/problems/integer-to-english-words/,"Convert a non-negative integer num to its English words representation.
 
 ","Example 1:
@@ -4927,8 +4945,8 @@ Example 3:
 
 Input: num = 1234567
 Output: ""One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven""
- ",Hard,Math,,380.8K,1.2M,30.60%,44,,,,,,
-,,,,,,,,,,,,,,,,,
+ ",Hard,Math,Math,,380.8K,1.2M,30.60%,44,,,,,,
+,,,,,,,,,,,,,,,,,,
 375,Add Binary,https://leetcode.com/problems/add-binary/,"Given two binary strings a and b, return their sum as a binary string.
 
 ","Example 1:
@@ -4945,7 +4963,7 @@ Constraints:
 
 1 <= a.length, b.length <= 104
 a and b consist only of '0' or '1' characters.
-Each string does not contain leading zeros except for the zero itself.",Easy,"Binary, Bit Manipulation",,1.5M,2.7M,53.60%,137,,,,X,,
+Each string does not contain leading zeros except for the zero itself.",Easy,Bit Manipulation,"Binary, Bit Manipulation",,1.5M,2.7M,53.60%,137,,,,X,,
 376,Number of 1 Bits,https://leetcode.com/problems/number-of-1-bits/,Write a function that takes the binary representation of a positive integer and returns the number of set bits it has (also known as the Hamming weight).,"Example 1:
 
 Input: n = 11
@@ -4974,7 +4992,7 @@ Output: 30
 
 Explanation:
 
-The input binary string 1111111111111111111111111111101 has a total of thirty set bits.",Easy,Binary,,1.5M,2.1M,71.20%,153,,X,,X,X,
+The input binary string 1111111111111111111111111111101 has a total of thirty set bits.",Easy,Bit Manipulation,Binary,,1.5M,2.1M,71.20%,153,,X,,X,X,
 377,Counting Bits,https://leetcode.com/problems/counting-bits/,"Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
 
 Follow up:
@@ -5005,7 +5023,7 @@ Explanation:
 Constraints:
 
 0 <= n <= 105
-",Easy,Binary,,1.1M,1.4M,78.30%,73,,X,,X,,X
+",Easy,Bit Manipulation,Binary,,1.1M,1.4M,78.30%,73,,X,,X,,X
 378,Reverse Bits,https://leetcode.com/problems/reverse-bits/,"Reverse bits of a given 32 bits unsigned integer.
 
 Note:
@@ -5031,7 +5049,7 @@ Explanation: The input binary string 11111111111111111111111111111101 represents
 
 Constraints:
 
-The input must be a binary string of length 32",Easy,Binary,,797.6K,1.4M,58.70%,69,,X,,X,,
+The input must be a binary string of length 32",Easy,Bit Manipulation,Binary,,797.6K,1.4M,58.70%,69,,X,,X,,
 379,Reverse Integer,https://leetcode.com/problems/reverse-integer/,"Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
@@ -5048,7 +5066,7 @@ Output: -321
 Example 3:
 
 Input: x = 120
-Output: 21",Medium,Binary,,3.2M,11.2M,28.60%,339,,X,,X,,
+Output: 21",Medium,Bit Manipulation,Binary,,3.2M,11.2M,28.60%,339,,X,,X,,
 380,Sum of Two Integers,https://leetcode.com/problems/sum-of-two-integers/,"Given two integers a and b, return the sum of the two integers without using the operators + and -.
 
 ","Example 1:
@@ -5058,7 +5076,7 @@ Output: 3
 Example 2:
 
 Input: a = 2, b = 3
-Output: 5",Medium,Binary,,480.1K,924.5K,51.90%,64,,X,,,,
+Output: 5",Medium,Bit Manipulation,Binary,,480.1K,924.5K,51.90%,64,,X,,,,
 381,Divide Two Integers,https://leetcode.com/problems/divide-two-integers/,"Given two integers dividend and divisor, divide two integers without using multiplication, division, and mod operator.
 
 The integer division should truncate toward zero, which means losing its fractional part. For example, 8.345 would be truncated to 8, and -2.7335 would be truncated to -2.
@@ -5080,7 +5098,7 @@ Explanation: 7/-3 = -2.33333.. which is truncated to -2.
 Constraints:
 
 -231 <= dividend, divisor <= 231 - 1
-divisor != 0",Medium,Binary,,744.8K,4.3M,17.50%,206,,,,,,
+divisor != 0",Medium,Bit Manipulation,Binary,,744.8K,4.3M,17.50%,206,,,,,,
 382,Maximum XOR of Two Numbers in an Array,https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/,"Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0 <= i <= j < n.
 
 ","Example 1:
@@ -5092,7 +5110,7 @@ Example 2:
 
 Input: nums = [14,70,53,83,49,91,36,80,92,51,66,70]
 Output: 127
-",Medium,Binary,,161K,302.5K,53.20%,46,,,,,,X
+",Medium,Bit Manipulation,Binary,,161K,302.5K,53.20%,46,,,,,,X
 383,LFU Cache,https://leetcode.com/problems/lfu-cache/description/,"Design and implement a data structure for a Least Frequently Used (LFU) cache.
 
 Implement the LFUCache class:
@@ -5139,4 +5157,4 @@ Constraints:
 1 <= capacity <= 104
 0 <= key <= 105
 0 <= value <= 109
-At most 2 * 105 calls will be made to get and put.",Hard,"Hash Table, Doubly Linked List, Desgin",,249.3K,564K,44.20%,89,,,,,,
+At most 2 * 105 calls will be made to get and put.",Hard,,"Hash Table, Doubly Linked List, Desgin",,249.3K,564K,44.20%,89,,,,,,
