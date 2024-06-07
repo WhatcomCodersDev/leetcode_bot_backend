@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app.routes import problem_routes, leaderboard_routes, challenges_routes, space_repetition_routes, users_routes
+from app.routes import problem_routes, leaderboard_routes, challenges_routes, space_repetition_routes, users_routes, cron_routes
 from app.services import (redis_client, 
                           problem_manager, 
                           leaderboard_manager, 
@@ -19,6 +19,7 @@ app.register_blueprint(leaderboard_routes.bp)
 app.register_blueprint(challenges_routes.bp)
 app.register_blueprint(space_repetition_routes.bp)
 app.register_blueprint(users_routes.bp)
+app.register_blueprint(cron_routes.bp)
 
 CORS(app, resources={r"/*": {
         "origins": allowed_origins,

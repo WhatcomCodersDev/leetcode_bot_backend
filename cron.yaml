@@ -1,0 +1,6 @@
+cron:
+  - description: "Daily job to update people's problems marked reviews"
+    url: /tasks/review/daily
+    schedule: every 24 hours
+    timezone: America/Los_Angeles
+    target: leetcode-backend
