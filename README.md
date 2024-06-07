@@ -57,4 +57,6 @@ To set up your local development environment, please follow the steps below:
 
 # ☁️ Deployment
 
-Run `gcloud app deploy`
+Run `gcloud app deploy` for regular deployments
+
+Run `gcloud app deploy app.yaml cron.yaml` if updating the cron
