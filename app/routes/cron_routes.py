@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, request, jsonify
-from app.services import leetcode_review_type_manager, review_manger, fsrs_scheduler, submission_manager
+from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_manager
 
 bp = Blueprint('crons', __name__, url_prefix='/tasks')
 
