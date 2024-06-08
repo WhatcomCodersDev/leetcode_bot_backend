@@ -77,20 +77,20 @@ class RedisClient:
         return self.client.ttl(key)
 
 
-    def check_if_user_has_attempted_problem(self, user_id: str, difficulty: str):
+    def check_if_user_has_attempted_problem(self, user_id: str, problem_difficulty: str):
         try:
-            difficulty_map = self.get_decoded_dict(REDIS_SOLVED_KEY)
+            problem_difficulty_map = self.get_decoded_dict(REDIS_SOLVED_KEY)
         except:
             raise Exception("Invalid key: submission_key has to be either REDIS_SOLVED_KEY constant")
-        if difficulty_map and difficulty in difficulty_map and user_id in difficulty_map[difficulty]:
+        if problem_difficulty_map and problem_difficulty in problem_difficulty_map and user_id in problem_difficulty_map[problem_difficulty]:
             return True
         return False
     
-    def check_if_user_has_submitted_problem(self, user_id: str, difficulty: str):
+    def check_if_user_has_submitted_problem(self, user_id: str, problem_difficulty: str):
         try:
-            difficulty_map = self.get_decoded_dict(REDIS_SOLVED_KEY)
+            problem_difficulty_map = self.get_decoded_dict(REDIS_SOLVED_KEY)
         except:
             raise Exception("Invalid key: attempt_key has to be REDIS_ATTEMPTED_KEY constant")
-        if difficulty_map and difficulty in difficulty_map and user_id in difficulty_map[difficulty]:
+        if problem_difficulty_map and problem_difficulty in problem_difficulty_map and user_id in problem_difficulty_map[problem_difficulty]:
             return True
         return False

@@ -38,12 +38,12 @@ def mark_type_for_review(user_id):
     if not user_id:
         return jsonify({'error': 'User ID not provided'}), 400
     
-    if not data.get('type'):
+    if not data.get('category'):
         print('Problem type not provided')
-        return jsonify({'error': 'Problem type not provided'}), 400
+        return jsonify({'error': 'Problem category not provided'}), 400
 
     try:
-        leetcode_review_type_manager.update_user_review_types(user_id, set(data['type']))
+        leetcode_review_type_manager.update_user_review_types(user_id, set(data['category']))
     except Exception as e:
         print(f"Error in mark_type_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500

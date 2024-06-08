@@ -2,7 +2,7 @@
 # Define the Graph Structure:
 
 # Nodes: Each node represents a LeetCode problem.
-# Edges: Define edges based on certain relationships such as similar questions, same tags, or problems at similar difficulty levels.
+# Edges: Define edges based on certain relationships such as similar questions, same tags, or problems at similar problem_difficulty levels.
 # Construct the Graph:
 
 # Use a graph library like NetworkX to create the graph.

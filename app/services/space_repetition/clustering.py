@@ -78,7 +78,7 @@ df['Submissions'] = df['Submissions'].apply(convert_to_number)
 df['Acceptance Rate'] = df['Acceptance Rate'].apply(lambda x: float(x.replace('%', '')))
 df = df[df['TAG'].str.contains("Graph")]
 # Define columns
-categorical_columns = ['LEVEL', 'TAG']
+categorical_columns = ['PROBLEM_DIFFICULTY', 'TAG']
 numerical_columns = ['Accepted', 'Submissions', 'Acceptance Rate', 'Discussion Count']
 
 # Text embedding

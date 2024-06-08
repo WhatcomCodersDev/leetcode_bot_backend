@@ -5,8 +5,8 @@ class Problem:
     id: int
     name: str
     link: str
-    type: str
-    difficulty: str
+    category: str
+    problem_difficulty: str
     tag: str
     isInBlind75: bool
     isInBlind50: bool
@@ -16,7 +16,7 @@ class Problem:
     # notes: str
 
     def __str__(self):
-        return f"{self.id}. {self.name} ({self.difficulty}, {self.tag}, {self.type})"
+        return f"{self.id}. {self.name} ({self.problem_difficulty}, {self.tag}, {self.category})"
 
     def __repr__(self):
         return self.__str__()
@@ -26,8 +26,8 @@ class Problem:
             'id': self.id,
             'name': self.name,
             'link': self.link,
-            'type': self.type,
-            'difficulty': self.difficulty.lower(),
+            'category': self.category,
+            'problem_difficulty': self.problem_difficulty.lower(),
             'tag': self.tag,
             'isInBlind75': self.isInBlind75,
             'isInBlind50': self.isInBlind50,

@@ -17,7 +17,7 @@ Subcollections:
         Description:
         Document ID: problem_id (int)
         Fields:
-            - difficulty (int): A difficulty scale from 0-5 on how hard the problem was for them
+            - user_rating (int): A difficulty scale from 0-5 on how hard the problem was for them
             - last_attempt_timestamp (date): Timestamp of the last time they’ve attempted the problem
             - last_solved_timestamp (date): Timestamp of the last time they've solved the problem
             - next_review_timestamp (date): Timestamp of the next time they should review the problem
