@@ -22,15 +22,14 @@ def handle_problem_submission(problem_id):
         return jsonify({'error': 'Problem ID not provided'}), 400
     
     problem_data = problem_manager.get_problem_by_id(int(problem_id))
-    user_rating = problem_data.user_rating
+    if 'user_rating' not in data:
+        user_rating = 3 #default
+        
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
     
-    if not data['user_rating']:
-        print('User ID or user_rating not provided')
-        return jsonify({'error': 'User ID or user_rating not provided'}), 400
-    
+   
     if not data.get('solved') and not data.get('attempted'):
         print('Attempted or solved not provided')
         return jsonify({'error': 'Attempted or solved not provided'}), 400
