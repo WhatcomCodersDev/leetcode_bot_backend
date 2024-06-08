@@ -29,6 +29,7 @@ class SubmissionCollectionManager(FirestoreBase):
         super().__init__(project_name, environment, database)
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION
 
+    
     def get_user_submissions(self, uuid: str):
         '''
         The structure is 
@@ -76,6 +77,18 @@ class SubmissionCollectionManager(FirestoreBase):
             print(f"Error in get_user_submission_for_problem for user {uuid}: {e}")
             raise e
 
+    def get_all_user_uuids(self) -> list:
+        '''
+        Get all user uuids
+        '''
+        collection_ref = self.get_collection(self.uuid_collection)
+        try:
+            docs = collection_ref.stream()
+
+            return [doc.id for doc in docs]
+        except Exception as e:
+            print(f"Error in get_all_user_uuids: {e}")
+            raise e
     
     def update_leetcode_submission(self, 
                                    uuid: str,

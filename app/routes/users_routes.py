@@ -20,7 +20,9 @@ def get_all_problems_for_user(user_id):
         return jsonify({'error': e}), 500
     
     if not problems:
-        return jsonify({'error': 'No problem found'}), 404
+        print('No problem found')
+        return jsonify({})
+        # return jsonify({'error': 'No problem found'}), 404
     
     return jsonify(problems), 200
 
