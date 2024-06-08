@@ -43,6 +43,19 @@ class UsersLeetcodeReviewTypeCollectionManager(FirestoreBase):
         except Exception as e:
             print(f"Error in get_user_review_types for user {uuid}: {e}")
             raise e
+        
+    def get_all_user_review_types(self):
+        '''
+        Get all user review types
+        '''
+        collection_ref = self.get_collection(self.uuid_collection)
+        try:
+            docs = collection_ref.stream()
+            return {doc.id: doc.to_dict() for doc in docs}
+        except Exception as e:
+            print(f"Error in get_all_user_review_types: {e}")
+            raise e
+    
     
     def update_user_review_types(self, uuid: str, review_types: set):
         '''

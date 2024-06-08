@@ -14,7 +14,6 @@ bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 def handle_problem_submission(problem_id):
     data = request.json
     print(data)
-
     if not data:
         print('No data provided')
         return jsonify({'error': 'No data provided'}), 400
