@@ -62,7 +62,7 @@ def daily_task():
                 for problem in problems:
                     try:
                         problem = problem.to_dict()
-                        if problem['next_review_date'] and datetime.now() > problem['next_review_date']:
+                        if problem['next_review_timestamp'] and datetime.now() > problem['next_review_timestamp']:
                             review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=2.5, interval=1, performance_rating=4)
                             submission_manager.update_leetcode_submission(user_id, problem['problem_id'], review_data)
                             review_count += 1

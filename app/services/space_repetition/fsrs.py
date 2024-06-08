@@ -24,8 +24,8 @@ class FSRS:
         return ease
 
     def schedule_review(self, last_review_date, interval):
-        next_review_date = last_review_date + timedelta(days=interval)
-        return next_review_date
+        next_review_timestamp = last_review_date + timedelta(days=interval)
+        return next_review_timestamp
 
     def review(self, performance_rating, ease, interval, factor):
         ease = self.update_ease(ease, performance_rating)

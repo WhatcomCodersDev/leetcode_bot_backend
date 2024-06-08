@@ -12,6 +12,7 @@ def get_problem_data_from_spreadsheet(id: int) -> Problem:
     print(list(df))
 
     df_problem = df[df['ID'] == id]
+    df_problem = df_problem.dropna(subset=['CATEGORY'])
     problem_dict = df_problem.to_dict(orient='records')[0]
         
     return Problem(id=int(problem_dict['ID']), 

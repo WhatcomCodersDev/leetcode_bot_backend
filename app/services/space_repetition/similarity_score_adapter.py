@@ -17,6 +17,6 @@ class SimilarityScoreAdapter:
             'problem_id': problem_id,
             'adjusted_ease': ease,
             'adjusted_interval': interval,
-            'next_review_date': fsrs_output['next_review_date']
+            'next_review_timestamp': fsrs_output['next_review_timestamp']
         }
 

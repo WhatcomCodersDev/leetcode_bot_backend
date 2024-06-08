@@ -155,7 +155,7 @@ class ProblemManager:
                             # notes=row['NOTES']
                             )
             problems.append(problem)
-        print("Problems from get_all_problems", problems)
+        # print("Problems from get_all_problems", problems)
         return problems
     
         

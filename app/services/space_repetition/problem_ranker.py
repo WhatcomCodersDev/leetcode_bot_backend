@@ -8,7 +8,7 @@ class ProblemRanker:
     def rank_problems(self, problems_data):
         scores = []
         for data in problems_data:
-            time_since_last_review = (datetime.now() - data['next_review_date']).days
+            time_since_last_review = (datetime.now() - data['next_review_timestamp']).days
             ease_factor = data['adjusted_ease']
             interval = data['adjusted_interval']
 

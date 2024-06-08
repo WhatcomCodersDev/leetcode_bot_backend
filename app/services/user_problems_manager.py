@@ -6,9 +6,9 @@ problem_data = {
     'id': None,
     'name': None,
     'user_rating': None,
-    'problem_type': None,
-    'last_asked_timestamp': None,
-    'next_review_date': None,
+    'category': None,
+    'last_review_timestamp': None,
+    'next_review_timestamp': None,
 }
 
 class UserProblemManager:
@@ -40,17 +40,19 @@ class UserProblemManager:
                 problem_info = self.problem_manager.get_problem_by_id(int(new_problem['id']))
 
                 new_problem['name'] = problem_info.name
-                new_problem['category'] = problem_info.category #todo - rework    
+                
+                if 'difficulty' or 'category' in problem_doc:
+                    new_problem['category'] = problem_info.category #todo - rework    
 
 
                 if 'user_rating' in problem_doc[str(problem_id)]:    #this is an issu   
                     new_problem['user_rating'] = problem_doc[str(problem_id)]['user_rating']
 
-                if 'attempted_timestamp' in problem_doc[str(problem_id)]:
-                    new_problem['attempted_timestamp'] = problem_doc[str(problem_id)]['attempted_timestamp']
+                if 'last_reviewed_timestamp' in problem_doc[str(problem_id)]:
+                    new_problem['last_reviewed_timestamp'] = problem_doc[str(problem_id)]['last_reviewed_timestamp']
                 
-                if 'next_review_date' in problem_doc[str(problem_id)]:
-                    new_problem['next_review_date'] = problem_doc[str(problem_id)]['next_review_date']
+                if 'next_review_timestamp' in problem_doc[str(problem_id)]:
+                    new_problem['next_review_timestamp'] = problem_doc[str(problem_id)]['next_review_timestamp']
 
                 problems_for_user.append(new_problem)
             except Exception as e:

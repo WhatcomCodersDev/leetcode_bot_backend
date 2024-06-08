@@ -37,9 +37,9 @@ class SubmissionCollectionManager(FirestoreBase):
             1. uuid
                 1. problems
                     1. problem_id
-                        1. attempted_timestamp
+                        1. last_reviewed_timestamp
                         2. diffculty
-                        3. next_review_date
+                        3. next_review_timestamp
         
         We need to get the subcollections of problems for a user
         

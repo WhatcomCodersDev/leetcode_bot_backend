@@ -14,7 +14,7 @@ def get_all_problems_for_user(user_id):
 
     try:
         problems = user_problem_manager.get_all_problems_for_user(user_id)
-        print("problems for user:", problems)
+        # print("problems for user:", problems)
     except Exception as e:
         print(f"Error in get_all_problems_for_user for user {user_id}: {e}")
         return jsonify({'error': e}), 500
@@ -39,7 +39,7 @@ def mark_type_for_review(user_id):
         return jsonify({'error': 'User ID not provided'}), 400
     
     if not data.get('category'):
-        print('Problem type not provided')
+        print('Problem category not provided')
         return jsonify({'error': 'Problem category not provided'}), 400
 
     try:
