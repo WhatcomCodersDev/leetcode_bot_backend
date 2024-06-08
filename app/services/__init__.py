@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 
 from app.services.problem_manager import ProblemManager
-from app.services.review.review_manager import ReviewManager
 from app.services.weekly_challenges.leaderboard_manager import LeaderboardManager
 from app.services.user_problems_manager import UserProblemManager
 
@@ -54,7 +53,6 @@ leetcode_review_type_manager = UsersLeetcodeReviewTypeCollectionManager(gc_proje
 problem_manager = ProblemManager(leetcode_collection_manager, redis_client)
 leaderboard_manager = LeaderboardManager(leaderboard_collection_manager, redis_client)
 user_problem_manager = UserProblemManager(submission_manager, problem_manager)
-review_manger = ReviewManager()
 
 fsrs_scheduler = FSRSScheduler()
 # similarity_score_adapter = SimilarityScoreAdapter()
