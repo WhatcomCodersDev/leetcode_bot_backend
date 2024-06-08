@@ -21,23 +21,23 @@ class ProblemManager:
         return df
 
     def _split_sheet_by_difficulty(self, df: pd.DataFrame):
-        df_easy = df[df['LEVEL'] == 'Easy']
-        df_medium = df[df['LEVEL'] == 'Medium']
-        df_hard = df[df['LEVEL'] == 'Hard']
+        df_easy = df[df['PROBLEM_DIFFICULTY'] == 'Easy']
+        df_medium = df[df['PROBLEM_DIFFICULTY'] == 'Medium']
+        df_hard = df[df['PROBLEM_DIFFICULTY'] == 'Hard']
         return df_easy, df_medium, df_hard
     
-    def select_problem_at_random(self, difficulty: str) -> Problem:
-        difficulty_lower = difficulty.lower()
+    def select_problem_at_random(self, problem_difficulty: str) -> Problem:
+        problem_difficulty_lower = problem_difficulty.lower()
         problems = None
 
-        if difficulty_lower == 'easy':
+        if problem_difficulty_lower == 'easy':
             problems = self.easy_problems
-        elif difficulty_lower == 'medium':
+        elif problem_difficulty_lower == 'medium':
             problems = self.medium_problems
-        elif difficulty_lower == 'hard':
+        elif problem_difficulty_lower == 'hard':
             problems = self.hard_problems
         else:
-            raise ValueError(f"Invalid difficulty: {difficulty_lower}")
+            raise ValueError(f"Invalid problem difficulty: {problem_difficulty_lower}")
         
         problem_series = problems.sample()
         problem_dict = problem_series.to_dict(orient='records')[0]
@@ -46,8 +46,8 @@ class ProblemManager:
         return Problem(id=int(problem_dict['ID']), 
                             name=problem_dict['PROBLEM'],
                             link=problem_dict['URL'], 
-                            type=problem_dict['TYPE'], 
-                            difficulty=problem_dict['LEVEL'].lower(), 
+                            category=problem_dict['CATEGORY'], 
+                            problem_difficulty=problem_dict['PROBLEM_DIFFICULTY'].lower(), 
                             tag=problem_dict['TAG'], 
                             isInBlind75=problem_dict['B75'],
                             isInBlind50=problem_dict['B50'],
@@ -62,8 +62,8 @@ class ProblemManager:
         return problem_data
 
     
-    def get_problem(self, difficulty: str) -> Problem:
-        '''Get a problem at random from spreadsheet based on difficulty
+    def get_problem(self, problem_difficulty: str) -> Problem:
+        '''Get a problem at random from spreadsheet based on problem_difficulty
 
         If a problem is currently active, we will fetch the problem id from redis.
         Then we get the problem data from the spreadsheet directly and pass this information
@@ -75,17 +75,17 @@ class ProblemManager:
         problem_data = None
 
         #TODO: make a util function to make this easier and reusable or make a hashmap as a constant
-        if difficulty.lower() == 'easy':
+        if problem_difficulty.lower() == 'easy':
             redis_key = REDIS_EASY_PROBLEM_ID_KEY
-        elif difficulty.lower() == 'medium':
+        elif problem_difficulty.lower() == 'medium':
             redis_key = REDIS_MEDIUM_PROBLEM_ID_KEY
         else:
-            raise Exception(f"Error: no redis key exist for {difficulty}, please make one and retry")
+            raise Exception(f"Error: no redis key exist for {problem_difficulty}, please make one and retry")
 
 
         if not self.redis_client.get_value(redis_key): 
             #TODO: make keys not confusing, we have key which is problem difficulty to user_ids and problem difficulty to problem_id
-            problem_data = self.select_problem_at_random(difficulty)
+            problem_data = self.select_problem_at_random(problem_difficulty)
             self.update_db(problem_data)
             self.redis_client.set_value(redis_key, problem_data.id, get_ttl_for_next_monday_9am())
         else:
@@ -98,18 +98,18 @@ class ProblemManager:
     def get_all_problems(self):
         problems = []
 
-        self.easy_problems['TYPE'] = self.easy_problems['TYPE'].fillna('')#temp
-        self.medium_problems['TYPE'] = self.medium_problems['TYPE'].fillna('')#temp
-        self.hard_problems['TYPE'] = self.hard_problems['TYPE'].fillna('')#temp
+        self.easy_problems['CATEGORY'] = self.easy_problems['CATEGORY'].fillna('')#temp
+        self.medium_problems['CATEGORY'] = self.medium_problems['CATEGORY'].fillna('')#temp
+        self.hard_problems['CATEGORY'] = self.hard_problems['CATEGORY'].fillna('')#temp
 
         for index, row in self.easy_problems.iterrows():
             # row['NOTES'] = ''#temp
-            # row['TYPE'] = ''
+            # row['CATEGORY'] = ''
             problem = Problem(id=row['ID'], 
                             name=row['PROBLEM'],
                             link=row['URL'], 
-                            type=row['TYPE'],
-                            difficulty=row['LEVEL'].lower(), 
+                            category=row['CATEGORY'],
+                            problem_difficulty=row['PROBLEM_DIFFICULTY'].lower(), 
                             tag=row['TAG'], 
                             isInBlind75=row['B75'],
                             isInBlind50=row['B50'],
@@ -122,12 +122,12 @@ class ProblemManager:
         
         for index, row in self.medium_problems.iterrows():
             # row['NOTES'] = ''
-            # row['TYPE'] = ''
+            # row['CATEGORY'] = ''
             problem = Problem(id=row['ID'], 
                             name=row['PROBLEM'],
                             link=row['URL'],
-                            type=row['TYPE'], 
-                            difficulty=row['LEVEL'].lower(), 
+                            category=row['CATEGORY'], 
+                            problem_difficulty=row['PROBLEM_DIFFICULTY'].lower(), 
                             tag=row['TAG'], 
                             isInBlind75=row['B75'],
                             isInBlind50=row['B50'],
@@ -140,12 +140,12 @@ class ProblemManager:
         
         for index, row in self.hard_problems.iterrows():
             # row['NOTES'] = ''
-            # row['TYPE'] = ''
+            # row['CATEGORY'] = ''
             problem = Problem(id=row['ID'], 
                             name=row['PROBLEM'],
                             link=row['URL'], 
-                            type=row['TYPE'], 
-                            difficulty=row['LEVEL'].lower(), 
+                            category=row['CATEGORY'], 
+                            problem_difficulty=row['PROBLEM_DIFFICULTY'].lower(), 
                             tag=row['TAG'], 
                             isInBlind75=row['B75'],
                             isInBlind50=row['B50'],
@@ -155,7 +155,7 @@ class ProblemManager:
                             # notes=row['NOTES']
                             )
             problems.append(problem)
-        print("Problems from get_all_problems", problems)
+        # print("Problems from get_all_problems", problems)
         return problems
     
         

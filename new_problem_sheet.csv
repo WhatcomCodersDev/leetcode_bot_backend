@@ -1,4 +1,4 @@
-ID,PROBLEM,URL,DESCRIPTIONS,EXAMPLES,LEVEL,TYPE,TAG,Similar Questions ID,Accepted,Submissions,Acceptance Rate,Discussion Count,B75,NC.io,B50,G75,LC,SP
+ID,PROBLEM,URL,DESCRIPTIONS,EXAMPLES,PROBLEM_DIFFICULTY,CATEGORY,TAG,Similar Questions ID,Accepted,Submissions,Acceptance Rate,Discussion Count,B75,NC.io,B50,G75,LC,SP
 1,LRU Cache,https://leetcode.com/problems/lru-cache/,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 Implement the LRUCache class:

@@ -22,15 +22,14 @@ def handle_problem_submission(problem_id):
         return jsonify({'error': 'Problem ID not provided'}), 400
     
     problem_data = problem_manager.get_problem_by_id(int(problem_id))
-    difficulty = problem_data.difficulty
+    if 'user_rating' not in data:
+        user_rating = 3 #default
+        
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
     
-    if not data['difficulty']:
-        print('User ID or difficulty not provided')
-        return jsonify({'error': 'User ID or difficulty not provided'}), 400
-    
+   
     if not data.get('solved') and not data.get('attempted'):
         print('Attempted or solved not provided')
         return jsonify({'error': 'Attempted or solved not provided'}), 400
@@ -54,20 +53,23 @@ def handle_problem_submission(problem_id):
                                                      datetime.now(), 
                                                      ease=2.5, 
                                                      interval=1, 
-                                                     performance_rating=4)
+                                                     performance_rating=4) #todo pass user rating instead
         
         # Build submission data
         update_fields = {problem_id: {}}
-        update_fields[problem_id]['difficulty'] = difficulty
+        update_fields[problem_id]['user_rating'] = user_rating
         
         if data.get('solved'):
             update_fields[problem_id]['solved_timestamp'] = datetime.now()
+            update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
+
         
         if data.get('attempted'):
             update_fields[problem_id]['attempted_timestamp'] = datetime.now()
-        
-        update_fields[problem_id]['next_review_date'] = review_data['next_review_date']
-        update_fields[problem_id]['type'] = problem_data.type
+            update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
+
+        update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
+        update_fields[problem_id]['category'] = problem_data.category
         
         # Update datastore
         submission_manager.update_leetcode_submission(user_uuid,
