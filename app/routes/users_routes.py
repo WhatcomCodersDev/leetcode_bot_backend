@@ -1,7 +1,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.services import user_problem_manager
-from app.services import leetcode_review_type_manager
+from app.services import leetcode_review_type_manager, submission_manager
 
 
 bp = Blueprint('users', __name__, url_prefix='/users')
@@ -66,5 +66,28 @@ def mark_problem_categories_for_review(user_id):
     except Exception as e:
         print(f"Error in mark_type_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500
+    
+    return jsonify({'success': True}), 200
+
+@bp.route('/<user_id>/review_problems/submit', methods=['POST'])
+def update_review_problems_for_user(user_id):
+    data = request.json
+    print("data:", data)
+
+    if not data:
+        print('No data provided')
+        return jsonify({'error': 'No data provided'}), 400
+    
+    if not user_id:
+        return jsonify({'error': 'User ID not provided'}), 400
+    
+    for problem_data in data:
+        try:
+            submission_manager.update_leetcode_submission(user_id,
+                                                      problem_data['id'], 
+                                                      problem_data)
+        except Exception as e:
+            print(f"Error in mark_type_for_review for user {user_id}: {e}")
+            return jsonify({'error': e}), 500
     
     return jsonify({'success': True}), 200

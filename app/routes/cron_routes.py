@@ -47,16 +47,16 @@ def daily_task():
     '''
 
     all_user_uuids = submission_manager.get_all_user_uuids() #Todo - This doesn't get all the uuids
-    print(all_user_uuids)
+    print("all_user_uuids:", all_user_uuids)
     all_user_uuids = ['cda573aa-ac80-4f57-9a3c-aa71f13e9290']
     for user_id in all_user_uuids:
         try:
             user_problems = submission_manager.get_user_submissions(user_id)
-            print(user_problems)
+            print("user_problems:", user_problems)
             user_review_categories = leetcode_review_type_manager.get_user_review_types(user_id)['review_types']
-            print(user_review_categories)
+            print("user_review_categories:", user_review_categories)
             user_problems_by_category = create_problem_category_to_problem_map(user_problems, user_review_categories)
-            print(user_problems_by_category)
+            print("user_problems_by_category:", user_problems_by_category)
             for review_category, problems in user_problems_by_category.items():
                 review_count = 0
                 for problem in problems:
@@ -95,7 +95,7 @@ def create_problem_category_to_problem_map(user_problems, user_review_categories
     user_problems_by_category = {}
     for problem in user_problems:
         problem = problem.to_dict()
-        print(problem)
+        print("problem:", problem)
         if 'category' in problem and problem['category']  in user_review_categories:
             user_problems_by_category[problem['category']].append(problem)
     

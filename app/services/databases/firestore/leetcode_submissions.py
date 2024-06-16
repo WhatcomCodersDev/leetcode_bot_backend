@@ -124,6 +124,8 @@ class SubmissionCollectionManager(FirestoreBase):
             subcollection_doc = subcollection_doc_ref.get()
 
             if subcollection_doc.exists:
+                print("doc", subcollection_doc.to_dict())
+                print("updating submission:", update_fields)
                 # Document exists, so we update it, specifically last_asked-timestamp
                 subcollection_doc_ref.update(update_fields)
                 print(f"Updated submission for problem #{problem_id} for user {uuid}.")
