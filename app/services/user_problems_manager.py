@@ -1,5 +1,4 @@
 from typing import List, Dict
-from datetime import datetime
 from app.services.databases.firestore.leetcode_submissions import SubmissionCollectionManager
 from app.services.problem_manager import ProblemManager
 
@@ -17,10 +16,24 @@ class UserProblemManager:
         self.db = db
         self.problem_manager = problem_manager
 
-    def get_all_problems_for_user(self, user_id: str) -> list:
-        '''Get all problems for a user'''
+    def get_all_problems_for_user(self, user_id: str) -> List[Dict[str, str]]:
+        '''Get all problems for a user
+
+        1. Get all user submissions for a user. User submissions may not contain all information about
+        a problem and so we need to make a call to problem_manager to get additional informational
+
+        2. For each problem, get the problem info from the problem manager
+
+        3. Construct a dictionary with the problem info and user submission info and append to list
+        
+        Args:
+            user_id (str): User ID
+        
+        Returns:
+            List of problems for user in the form of a dictionary like problem_data defined above
+        
+        '''
         problem_docs = self.db.get_user_submissions(user_id)
-        # print("problem_docs:", problem_docs)
 
         problems_for_user = []
         for problem_doc in problem_docs:
@@ -31,14 +44,12 @@ class UserProblemManager:
                 # print("problem_doc:", problem_doc)
 
                 problem_id = str(problem_doc.id)
-                print("this is problem id", problem_id)
                 new_problem['id'] = problem_id
 
                 if not problem_doc.exists:
                     continue
 
                 problem_doc = problem_doc.to_dict()
-                # print("problem_doc:", problem_doc)
                 problem_info = self.problem_manager.get_problem_by_id(int(new_problem['id']))
 
                 new_problem['name'] = problem_info.name
@@ -47,7 +58,7 @@ class UserProblemManager:
                     new_problem['category'] = problem_info.category #todo - rework    
 
 
-                if 'user_rating' in problem_doc:    #this is an issu   
+                if 'user_rating' in problem_doc:    #this is an issue   
                     new_problem['user_rating'] = problem_doc['user_rating']
 
                 if 'last_reviewed_timestamp' in problem_doc:

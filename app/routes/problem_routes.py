@@ -1,4 +1,4 @@
-# Routes that handle fetching problems
+# Routes that handle getting problem data
 '''
 1. Get a problem at random from spreadsheet based on difficulty
 2. Get a problem based on id
