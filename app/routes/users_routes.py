@@ -124,17 +124,23 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
     
     for problem_data in data:
         print("problem_data:", problem_data)
+        print(list(problem_data.keys()))
         reference_problem_data = problem_manager.get_problem_by_id(int(problem_data["id"]))
 
         # Build submission data
         update_fields = {problem_data["id"]: {}}
 
-        update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
+        if 'user_rating' in problem_data:
+            update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
         # update_fields[problem_data["id"]]['category'] = problem_data["category"]
-        update_fields[problem_data["id"]]['category'] = reference_problem_data.category
+        
+        if 'category' in problem_data:
+            update_fields[problem_data["id"]]['category'] = reference_problem_data.category
 
-        update_fields[problem_data["id"]]['last_reviewed_timestamp'] = problem_data["last_reviewed_timestamp"]
+        if 'last_reviewed_timestamp' in problem_data:
+            update_fields[problem_data["id"]]['last_reviewed_timestamp'] = problem_data["last_reviewed_timestamp"]
 
+        print("update_fields:", update_fields)
         try:
             submission_collection_manager.update_leetcode_submission(user_id,
                                                       problem_data['id'], 

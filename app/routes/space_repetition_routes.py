@@ -66,10 +66,16 @@ def handle_problem_submission(problem_id):
         
         # Build submission data
         update_fields = {problem_id: {}}
-        update_fields[problem_id]['user_rating'] = user_rating
-        update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
 
-        update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
+        if 'user_rating' in data:
+            update_fields[problem_id]['user_rating'] = user_rating
+        
+        if 'last_reviewed_timestamp' in data:
+            update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
+
+        if 'next_review_timestamp' in data:
+            update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
+        
         update_fields[problem_id]['category'] = problem_data.category
         
         # Update datastore
