@@ -30,8 +30,9 @@ class SubmissionCollectionManager(FirestoreBase):
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION
 
     
-    def get_user_submissions(self, uuid: str):
-        '''
+    def get_user_submissions(self, uuid: str) -> Dict[str, str]:
+        ''' Get users problem submissions
+
         The structure is 
         1. users_leetcode_submissions
             1. uuid
@@ -42,7 +43,12 @@ class SubmissionCollectionManager(FirestoreBase):
                         3. next_review_timestamp
         
         We need to get the subcollections of problems for a user
+
+        Args:
+            uuid (str): User ID
         
+        Returns:
+            Dict: User submissions
         '''
         collection_ref = self.get_collection(self.uuid_collection)
         doc_ref = self.get_doc_ref(collection_ref, uuid)
@@ -82,10 +88,14 @@ class SubmissionCollectionManager(FirestoreBase):
         Get all user uuids
         '''
         collection_ref = self.get_collection(self.uuid_collection)
+        print("collection_ref:", collection_ref)
         try:
-            docs = collection_ref.stream()
-
-            return [doc.id for doc in docs]
+            docs = list(collection_ref.stream())  # Convert to list to print and see content
+            print("Number of documents fetched:", len(docs))
+            print("docs:", docs)  # Print documents for debugging
+            uuids = [doc.id for doc in docs]
+            print("uuids:", uuids)
+            return uuids
         except Exception as e:
             print(f"Error in get_all_user_uuids: {e}")
             raise e
