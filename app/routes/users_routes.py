@@ -130,15 +130,18 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
         # Build submission data
         update_fields = {problem_data["id"]: {}}
 
-        if 'user_rating' in problem_data:
+        if 'user_rating' in problem_data and len(problem_data['user_rating']) > 0:
             update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
         # update_fields[problem_data["id"]]['category'] = problem_data["category"]
         
         if 'category' in problem_data:
             update_fields[problem_data["id"]]['category'] = reference_problem_data.category
 
-        if 'last_reviewed_timestamp' in problem_data:
+        if 'last_reviewed_timestamp' in problem_data and len(problem_data['last_reviewed_timestamp']) > 0:
             update_fields[problem_data["id"]]['last_reviewed_timestamp'] = problem_data["last_reviewed_timestamp"]
+
+        if 'next_review_timestamp' in problem_data and len(problem_data['next_review_timestamp']) > 0:
+            update_fields[problem_data["id"]]['next_review_timestamp'] = problem_data["next_review_timestamp"]
 
         print("update_fields:", update_fields)
         try:

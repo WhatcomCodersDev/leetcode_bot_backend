@@ -68,10 +68,26 @@ def daily_task():
             for review_category, problems in user_problems_by_category.items():
                 review_count = 0
                 for problem in problems:
+                    if 'next_review_timestamp' not in problem:
+                        problem['next_review_timestamp'] = datetime.now()
                     try:
                         if problem['next_review_timestamp'] and datetime.now() > make_naive(problem['next_review_timestamp']):
+                            update_fields = {problem['problem_id']: {}}
                             review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=2.5, interval=1, performance_rating=4)
-                            submission_collection_manager.update_leetcode_submission(user_id, problem['problem_id'], review_data)
+                            
+                            
+                            update_fields[problem['problem_id']]['next_review_timestamp'] = review_data['next_review_timestamp']
+                            
+                            if 'last_reviewed_timestamp' in problem:
+                                update_fields[problem['problem_id']]['last_reviewed_timestamp'] = problem['last_reviewed_timestamp']
+                            
+                            if 'category' in problem:
+                                update_fields[problem['problem_id']]['category'] = problem['category']
+                            
+                            if 'user_rating' in problem:
+                                update_fields[problem['problem_id']]['user_rating'] = problem['user_rating']
+
+                            submission_collection_manager.update_leetcode_submission(user_id, problem['problem_id'], update_fields)
                             review_count += 1
                     except Exception as e:
                         print(f"Error in updating review for user {user_id} and problem {problem['problem_id']}: {e}")

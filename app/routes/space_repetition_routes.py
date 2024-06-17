@@ -20,6 +20,7 @@ def handle_problem_submission(problem_id):
         discord_id (str, optional): discord ID
         user_id (str, optional): user ID
         user_rating (int, optional): user rating
+
     
     Returns:
         dict: review data if successful, else error message
@@ -68,13 +69,14 @@ def handle_problem_submission(problem_id):
         update_fields = {problem_id: {}}
 
         if 'user_rating' in data:
-            update_fields[problem_id]['user_rating'] = user_rating
+            update_fields[problem_id]['user_rating'] = data['user_rating']
         
         if 'last_reviewed_timestamp' in data:
             update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
 
         if 'next_review_timestamp' in data:
             update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
+        
         
         update_fields[problem_id]['category'] = problem_data.category
         
