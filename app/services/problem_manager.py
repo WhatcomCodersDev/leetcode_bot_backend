@@ -158,6 +158,13 @@ class ProblemManager:
         # print("Problems from get_all_problems", problems)
         return problems
     
+    def get_random_problem_by_category(self, category: str) -> Problem:
+        problems = self.get_all_problems()
+        print("Got all problems")
+        problems_in_category = [problem for problem in problems if problem.category == category]
+        random_problem = problems_in_category[0]
+        print("Got random problem")
+        return random_problem
         
     def update_db(self, problem: Problem):
         self.db.update_question_document(question_id=str(problem.id), 

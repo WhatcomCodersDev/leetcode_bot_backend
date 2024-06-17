@@ -36,9 +36,7 @@ def handle_problem_submission(problem_id):
         return jsonify({'error': 'Problem ID not provided'}), 400
     
     problem_data = problem_manager.get_problem_by_id(int(problem_id))
-    
-    if 'user_rating' not in data:
-        user_rating = 3 #default    
+      
 
     if not data.get('discord_id') and not data.get('user_id'):
         return jsonify({'error': 'Discord ID or User ID not provided'}), 400
@@ -58,18 +56,25 @@ def handle_problem_submission(problem_id):
         else:
             user_uuid = data['user_id']
 
-        # First determine next time to review
-        review_data = fsrs_scheduler.schedule_review(problem_id, 
-                                                     datetime.now(), 
-                                                     ease=2.5, 
-                                                     interval=1, 
-                                                     performance_rating=4) #todo pass user rating instead
-        
+    
         # Build submission data
         update_fields = {problem_id: {}}
 
         if 'user_rating' in data:
-            update_fields[problem_id]['user_rating'] = data['user_rating']
+            user_rating = data['user_rating']
+        else:
+            user_rating = 3
+        
+        update_fields[problem_id]['user_rating'] = user_rating
+
+
+        # First determine next time to review
+        review_data = fsrs_scheduler.schedule_review(problem_id, 
+                                                     datetime.now(), 
+                                                     ease=2.5, #todo - adjust ease
+                                                     interval=1, 
+                                                     performance_rating=user_rating) #todo pass user rating instead
+        
         
         if 'last_reviewed_timestamp' in data:
             update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()

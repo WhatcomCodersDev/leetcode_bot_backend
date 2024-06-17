@@ -1,7 +1,7 @@
 import pytz
 from datetime import datetime, timezone
 from flask import Blueprint, request, jsonify
-from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_collection_manager
+from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_collection_manager, problem_manager
 
 bp = Blueprint('crons', __name__, url_prefix='/tasks')
 
@@ -66,6 +66,21 @@ def daily_task():
             user_problems_by_category = create_problem_category_to_problem_map(user_problems, user_review_categories)
             print("user_problems_by_category:", user_problems_by_category)
             for review_category, problems in user_problems_by_category.items():
+
+                # Case when there are no problems to review
+                if not problems:
+                    # Select a new problem, right now at random but in the future using recommendations
+                    problem = problem_manager.get_random_problem_by_category(review_category)
+                    print("problem:", problem.to_dict())
+                    update_fields = {str(int(problem.id)): {}}
+                    review_data = fsrs_scheduler.schedule_review(problem.to_dict(), datetime.now(), ease=2.5, interval=1, performance_rating=4)
+                    update_fields[str(int(problem.id))]['next_review_timestamp'] = review_data['next_review_timestamp']
+                    update_fields[str(int(problem.id))]['category'] = problem.category
+                    print("update_fields:", update_fields)
+                    submission_collection_manager.update_leetcode_submission(user_id, str(int(problem.id)), update_fields)
+                    continue
+
+
                 review_count = 0
                 for problem in problems:
                     if 'next_review_timestamp' not in problem:
@@ -115,14 +130,19 @@ def create_problem_category_to_problem_map(user_problems, user_review_categories
 
     '''
     user_problems_by_category = {}
+
+    for problems_marked_for_review_by_user in user_review_categories:
+
+        user_problems_by_category[problems_marked_for_review_by_user] = []
+
+
     for problem_generator in user_problems:
         problem = problem_generator.to_dict()
         problem_id = problem_generator.id
         # problem = problem.to_dict() # Gets {'1': {problem_data}}
         problem = next(iter(problem.values())) # Gets {problem_data}
         if 'category' in problem and problem['category'] in user_review_categories:
-            if problem['category'] not in user_problems_by_category:
-                user_problems_by_category[problem['category']] = []
+    
             problem["problem_id"] = problem_id # Add the problem id to the problem for future
             user_problems_by_category[problem['category']].append(problem)
     
