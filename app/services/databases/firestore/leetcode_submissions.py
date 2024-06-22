@@ -136,6 +136,39 @@ class SubmissionCollectionManager(FirestoreBase):
         except Exception as e:
             print(f"Error in update_leetcode_submission for user {uuid}: {e}")
             raise e
-        
 
+    def get_problem_past_reviewed_date(self):
+        """
+        Return:
+        {
+            uuid1: [prob_id1, prob_id2, ...],
+            uuid2: [prob_id3, prob_id4, ...]
+        }
+        """
+        collection_ref = self.get_collection(self.uuid_collection)
 
+        subdocument_refs = collection_ref.list_documents()
+
+        uuid_to_problems_id = {}
+        for subdoc_ref in subdocument_refs:
+            uuid = subdoc_ref.id
+            
+            uuid_to_problems_id[uuid] = []
+
+            all_problems = subdoc_ref.collection('problems').stream()
+            for prob in all_problems:
+                prob = prob.to_dict()
+                prob_id = list(prob.keys())[0]
+                prob_info = prob.get(prob_id)
+
+                next_review_timestamp = prob_info.get('next_review_timestamp')
+                if next_review_timestamp is None or isinstance(next_review_timestamp, str) :
+                    continue
+                next_review_date = next_review_timestamp.date()
+                today = datetime.now().date()
+
+                if next_review_date <= today:
+                    uuid_to_problems_id[uuid].append(prob_id)
+            
+
+        return uuid_to_problems_id

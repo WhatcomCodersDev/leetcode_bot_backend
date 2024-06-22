@@ -5,11 +5,11 @@ from app.services.problem import Problem
 from constants import PROBLEM_SHEET_PATH 
 
 def get_problem_data_from_spreadsheet(id: int) -> Problem:
-    print(id, type(id))
+    # print(id, type(id))
     converters_dict = {col: x_to_bool for col in ['B75', 'B50', 'NC.io', 'G75', 'LC', 'SP']}
 
     df = pd.read_csv(PROBLEM_SHEET_PATH, converters=converters_dict)
-    print(list(df))
+    # print(list(df))
 
     df_problem = df[df['ID'] == id]
     df_problem = df_problem.dropna(subset=['CATEGORY'])
