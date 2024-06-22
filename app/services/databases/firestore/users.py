@@ -4,6 +4,7 @@ from app.services.databases.firestore.firestore_base import FirestoreBase
 from datetime import datetime
 from typing import List
 from constants import UUID_COLLECTION
+from google.cloud.firestore_v1.base_query import FieldFilter
 
 '''
 Handles interaction with uuid_mappings collection
@@ -39,6 +40,18 @@ class UserCollectionManager(FirestoreBase):
     
         except Exception as e:
             print(f"Error in get_uuid_from_discord_id for user #{discord_id}: {e}")
+            raise e
+
+    def get_discord_id_from_uuid(self, uuid: str):
+        collection_ref = self.get_collection(self.uuid_collection)
+        try:
+            query = collection_ref.where(filter=FieldFilter("uuid", "==", uuid))
+            doc = query.get()
+
+            return doc[0].id
+    
+        except Exception as e:
+            print(f"Error in get_discord_id_from_uuid for user #{uuid}: {e}")
             raise e
 
 
