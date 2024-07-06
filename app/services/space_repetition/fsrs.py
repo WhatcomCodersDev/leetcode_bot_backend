@@ -11,6 +11,8 @@ class FSRS:
         return next_interval
 
     def update_ease(self, ease, performance_rating):
+        # Todo - Make sure input is an int before passing
+        performance_rating = int(performance_rating)
         if performance_rating >= 4:
             ease += 0.1
         elif performance_rating == 3:
