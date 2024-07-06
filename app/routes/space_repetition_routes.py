@@ -6,9 +6,14 @@
 from datetime import datetime
 from flask import Blueprint, request, jsonify
 from app.services import fsrs_scheduler, submission_collection_manager, user_collection_manager, problem_manager
+from app.services.util import handle_updating_submission_data
 
 bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 
+
+
+# Deprecrate route/simplify 
+# We only call this route for a new problem that hasn't been submitted before
 @bp.route('/<problem_id>/submit', methods=['POST'])
 def handle_problem_submission(problem_id):
     '''Submit problem submission to space repetition service and update user's submission data
@@ -26,31 +31,14 @@ def handle_problem_submission(problem_id):
         dict: review data if successful, else error message
     
     '''
+    print(f'Handling problem submission for problem {problem_id}')
     data = request.json
-    print(data)
-    if not data:
-        print('No data provided')
-        return jsonify({'error': 'No data provided'}), 400
+    is_valid, validation_response = validate_request_data(problem_id, data)
+    if not is_valid:
+        return jsonify({'error': validation_response}), 400
     
-    if not problem_id:
-        return jsonify({'error': 'Problem ID not provided'}), 400
+    problem_data = validation_response
     
-    problem_data = problem_manager.get_problem_by_id(int(problem_id))
-    
-    if 'user_rating' not in data:
-        user_rating = 3 #default    
-
-    if not data.get('discord_id') and not data.get('user_id'):
-        return jsonify({'error': 'Discord ID or User ID not provided'}), 400
-
-
-    if not problem_id:
-        print('ID not provided')
-        return jsonify({'error': 'ID not provided'}), 400
-    
-    if 'attempted' not in data and 'solved' not in data:
-        return jsonify({'error': 'Attempted or Solved not provided'}), 400
-
     try:
         # Get user UUID
         if data.get('discord_id'):
@@ -59,39 +47,59 @@ def handle_problem_submission(problem_id):
             user_uuid = data['user_id']
 
         # First determine next time to review
-        review_data = fsrs_scheduler.schedule_review(problem_id, 
-                                                     datetime.now(), 
-                                                     ease=2.5, 
-                                                     interval=1, 
-                                                     performance_rating=4) #todo pass user rating instead
+        ## Only do if the problem doesn't exist in the submission collection
+        previous_submission_doc = submission_collection_manager.get_user_submission_for_problem(user_uuid, problem_id).to_dict()
+        if not previous_submission_doc:
+            print("This problem hasn't beeen submitted before, so it should be scheduled for review")
+            review_data = fsrs_scheduler.schedule_review(problem_id, 
+                                                        datetime.now(), 
+                                                        ease=2.5, 
+                                                        interval=1, 
+                                                        performance_rating=4) #todo pass user rating instead
+            
+            update_fields = handle_updating_submission_data(user_uuid, problem_id, data, review_data)
+            
+            # Update datastore
+            submission_collection_manager.update_leetcode_submission(user_uuid,
+                                                        problem_id, 
+                                                        update_fields)
+            
+            if not review_data:
+                print('No problem found')
+                return jsonify({'error': 'No problem found'}), 404
         
-        # Build submission data
-        update_fields = {problem_id: {}}
+            return jsonify(review_data), 200
 
-        if 'user_rating' in data:
-            update_fields[problem_id]['user_rating'] = data['user_rating']
-        
-        if 'last_reviewed_timestamp' in data:
-            update_fields[problem_id]['last_reviewed_timestamp'] = datetime.now()
-
-        if 'next_review_timestamp' in data:
-            update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
-        
-        
-        update_fields[problem_id]['category'] = problem_data.category
-        
-        # Update datastore
-        submission_collection_manager.update_leetcode_submission(user_uuid,
-                                                      problem_id, 
-                                                      update_fields)
     
     except ValueError:
         print('Invalid ID')
         return jsonify({'error': 'Invalid ID'}), 400
 
-    if not review_data:
-        print('No problem found')
-        return jsonify({'error': 'No problem found'}), 404
+   
+    return jsonify({'success': True}), 200
     
-    return jsonify(review_data), 200
 
+def validate_request_data(problem_id, data):
+    """Validates the incoming request data.
+    
+    Args:
+        problem_id (str): problem ID
+        data (dict): request JSON data
+    
+    Returns:
+        tuple: (bool, str) indicating success and error message if any
+    """
+    if not data:
+        return False, 'No data provided'
+    
+    if not problem_id:
+        return False, 'Problem ID not provided'
+    
+    problem_data = problem_manager.get_problem_by_id(int(problem_id))
+    if not problem_data:
+        return False, 'No problem found'
+    
+    if not data.get('discord_id') and not data.get('user_id'):
+        return False, 'Discord ID or User ID not provided'
+    
+    return True, problem_data

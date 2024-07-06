@@ -65,6 +65,8 @@ class SubmissionCollectionManager(FirestoreBase):
             raise e
         
     def get_user_submission_for_problem(self, uuid: str, problem_id: str):
+        print(f"Adding problem: {problem_id} for user: {uuid}")
+
         '''
         Get the user's submission for a specific problem
         '''
@@ -76,6 +78,7 @@ class SubmissionCollectionManager(FirestoreBase):
                 subcollection_ref = doc_ref.collection('problems')
                 subcollection_doc_ref = subcollection_ref.document(str(problem_id))
                 subcollection_doc = subcollection_doc_ref.get()
+                print("subcollection_doc:", subcollection_doc.to_dict())
                 return subcollection_doc
             else:
                 return None
