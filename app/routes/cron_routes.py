@@ -1,8 +1,25 @@
-from datetime import datetime
+import pytz
+from datetime import datetime, timezone, timedelta
 from flask import Blueprint, request, jsonify
-from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_manager
+from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_collection_manager
 
 bp = Blueprint('crons', __name__, url_prefix='/tasks')
+
+REVIEW_CATEGORY_KEY = 'review_types'
+
+PT = pytz.timezone('US/Pacific')
+
+
+def make_aware(naive_dt):
+    """Make a naive datetime aware in PT time zone."""
+    # Localize the naive datetime to PT
+    aware_dt = PT.localize(naive_dt)
+    return aware_dt
+
+def make_naive(aware_dt):
+    pt_dt = aware_dt.astimezone(PT)
+    naive_dt = pt_dt.replace(tzinfo=None)
+    return naive_dt
 
 @bp.route('/review/daily', methods=['GET'])
 def daily_task():
@@ -46,26 +63,107 @@ def daily_task():
 
     '''
 
-    all_user_uuids = submission_manager.get_all_user_uuids() #Todo - This doesn't get all the uuids
-    print(all_user_uuids)
-    all_user_uuids = ['cda573aa-ac80-4f57-9a3c-aa71f13e9290']
+    all_user_uuids = submission_collection_manager.get_all_user_uuids() #Todo - This doesn't get all the uuids
+    print("all_user_uuids:", all_user_uuids)
     for user_id in all_user_uuids:
         try:
-            user_problems = submission_manager.get_user_submissions(user_id)
-            print(user_problems)
-            user_review_categories = leetcode_review_type_manager.get_user_review_types(user_id)['review_types']
-            print(user_review_categories)
+            user_problems = submission_collection_manager.get_user_submissions(user_id)
+            user_review_categories = leetcode_review_type_manager.get_problem_categories_marked_for_review_by_user(user_id)[REVIEW_CATEGORY_KEY]
+            print("user_review_categories:", user_review_categories)
             user_problems_by_category = create_problem_category_to_problem_map(user_problems, user_review_categories)
-            print(user_problems_by_category)
+            print("user_problems_by_category:", user_problems_by_category)
             for review_category, problems in user_problems_by_category.items():
                 review_count = 0
                 for problem in problems:
+                    if 'next_review_timestamp' not in problem:
+                        problem['next_review_timestamp'] = datetime.now()
                     try:
-                        problem = problem.to_dict()
-                        if problem['next_review_timestamp'] and datetime.now() > problem['next_review_timestamp']:
-                            review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=2.5, interval=1, performance_rating=4)
-                            submission_manager.update_leetcode_submission(user_id, problem['problem_id'], review_data)
-                            review_count += 1
+                        timewindow_in_memory = problem['next_review_timestamp'] + timedelta(days=1) # time window is 24 hours
+
+                        ## Case 1: Successfully reviewed within the time window
+                        ## last_reviewed: july 10 12pm
+                        ## next_reviewed: july 10
+                        ## time_window: july 11      
+
+                        ## Conditions
+                        ## 1. We are in the time window (between next_reviewed and time_window)
+                        ## 2. The last_reviewed is within the time_window
+
+
+                        ##      |-----------------|-----------------|
+
+                        ##
+
+                        if problem['next_review_timestamp'] and (datetime.now() >= make_naive(problem['next_review_timestamp']) and datetime.now() < make_naive(timewindow_in_memory)) \
+                            and (problem['last_reviewed_timestamp'] >= problem['next_review_timestamp'] and problem['last_reviewed_timestamp'] < timewindow_in_memory):
+                            print("Case 1: This user has successfully reviewed the problem within the time window")
+
+
+                            REVIEWED_EASE = 4
+                            ## TODO - Make its own function
+                            if 'user_rating' in problem:
+                                update_fields = {problem['problem_id']: {}}
+                                review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=REVIEWED_EASE, interval=1, performance_rating=problem['user_rating'])
+                                update_fields[problem['problem_id']]['next_review_timestamp'] = review_data['next_review_timestamp']
+                                update_fields[problem['problem_id']]['last_reviewed_timestamp'] = problem['last_reviewed_timestamp']
+                                update_fields[problem['problem_id']]['category'] = problem['category']
+
+                                if 'user_rating' not in problem:
+                                    update_fields[problem['problem_id']]['user_rating'] = 2
+                                update_fields[problem['problem_id']]['user_rating'] = problem['user_rating']
+                                submission_collection_manager.update_leetcode_submission(user_id, problem['problem_id'], update_fields)
+                                review_count += 1
+
+
+
+                        ## Case 2: Failed to review within the time window
+                        ## last_reviewed: july 6
+                        ## next_reviewed: july 10
+                        ## time_window: july 11
+                        print(datetime.now())
+                        print(make_naive(problem['next_review_timestamp']))
+                        if problem['next_review_timestamp'] and (datetime.now() >= make_naive(problem['next_review_timestamp']) and datetime.now() < make_naive(timewindow_in_memory)) \
+                            and (problem['last_reviewed_timestamp'] < problem['next_review_timestamp'] and problem['last_reviewed_timestamp'] < timewindow_in_memory):
+                            print("Case 2: This user has failed to review the problem within the time window")
+                            ## It should still update the review date, but with a lower ease
+                            FAILED_EASE = 2.5
+                            update_fields = {problem['problem_id']: {}}
+                            review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=FAILED_EASE, interval=1, performance_rating=2)
+                            update_fields[problem['problem_id']]['next_review_timestamp'] = review_data['next_review_timestamp']
+                            update_fields[problem['problem_id']]['last_reviewed_timestamp'] = problem['last_reviewed_timestamp']
+                            update_fields[problem['problem_id']]['category'] = problem['category']
+
+                            if 'user_rating' not in problem:
+                                update_fields[problem['problem_id']]['user_rating'] = 2
+                            update_fields[problem['problem_id']]['user_rating'] = problem['user_rating']
+                            submission_collection_manager.update_leetcode_submission(user_id, problem['problem_id'], update_fields)
+
+
+                        ## Case 3: Time window hasn't opened
+                        if problem['next_review_timestamp'] and datetime.now() < make_naive(problem['next_review_timestamp']):
+                            print("Case 3: Time window hasn't opened")
+                            continue
+
+
+
+                        # if problem['next_review_timestamp'] and datetime.now() > make_naive(problem['next_review_timestamp']):
+                        #     update_fields = {problem['problem_id']: {}}
+                        #     review_data = fsrs_scheduler.schedule_review(problem, datetime.now(), ease=2.5, interval=1, performance_rating=4)
+                            
+                            
+                        #     update_fields[problem['problem_id']]['next_review_timestamp'] = review_data['next_review_timestamp']
+                            
+                        #     if 'last_reviewed_timestamp' in problem:
+                        #         update_fields[problem['problem_id']]['last_reviewed_timestamp'] = problem['last_reviewed_timestamp']
+                            
+                        #     if 'category' in problem:
+                        #         update_fields[problem['problem_id']]['category'] = problem['category']
+                            
+                        #     if 'user_rating' in problem:
+                        #         update_fields[problem['problem_id']]['user_rating'] = problem['user_rating']
+
+                        #     submission_collection_manager.update_leetcode_submission(user_id, problem['problem_id'], update_fields)
+                        #     review_count += 1
                     except Exception as e:
                         print(f"Error in updating review for user {user_id} and problem {problem['problem_id']}: {e}")
                         continue
@@ -81,7 +179,6 @@ def daily_task():
 
     
     print("calling /review/daily endpoint")
-    # Your task logic here
     return "Updated all user's review successfully", 200
 
 def create_problem_category_to_problem_map(user_problems, user_review_categories) -> dict:
@@ -93,10 +190,15 @@ def create_problem_category_to_problem_map(user_problems, user_review_categories
 
     '''
     user_problems_by_category = {}
-    for problem in user_problems:
-        problem = problem.to_dict()
-        print(problem)
-        if 'category' in problem and problem['category']  in user_review_categories:
+    for problem_generator in user_problems:
+        problem = problem_generator.to_dict()
+        problem_id = problem_generator.id
+        # problem = problem.to_dict() # Gets {'1': {problem_data}}
+        problem = next(iter(problem.values())) # Gets {problem_data}
+        if 'category' in problem and problem['category'] in user_review_categories:
+            if problem['category'] not in user_problems_by_category:
+                user_problems_by_category[problem['category']] = []
+            problem["problem_id"] = problem_id # Add the problem id to the problem for future
             user_problems_by_category[problem['category']].append(problem)
     
     return user_problems_by_category

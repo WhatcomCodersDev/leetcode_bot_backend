@@ -30,8 +30,9 @@ class SubmissionCollectionManager(FirestoreBase):
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION
 
     
-    def get_user_submissions(self, uuid: str):
-        '''
+    def get_user_submissions(self, uuid: str) -> Dict[str, str]:
+        ''' Get users problem submissions
+
         The structure is 
         1. users_leetcode_submissions
             1. uuid
@@ -42,7 +43,12 @@ class SubmissionCollectionManager(FirestoreBase):
                         3. next_review_timestamp
         
         We need to get the subcollections of problems for a user
+
+        Args:
+            uuid (str): User ID
         
+        Returns:
+            Dict: User submissions
         '''
         collection_ref = self.get_collection(self.uuid_collection)
         doc_ref = self.get_doc_ref(collection_ref, uuid)
@@ -59,6 +65,8 @@ class SubmissionCollectionManager(FirestoreBase):
             raise e
         
     def get_user_submission_for_problem(self, uuid: str, problem_id: str):
+        print(f"Adding problem: {problem_id} for user: {uuid}")
+
         '''
         Get the user's submission for a specific problem
         '''
@@ -70,6 +78,7 @@ class SubmissionCollectionManager(FirestoreBase):
                 subcollection_ref = doc_ref.collection('problems')
                 subcollection_doc_ref = subcollection_ref.document(str(problem_id))
                 subcollection_doc = subcollection_doc_ref.get()
+                print("subcollection_doc:", subcollection_doc.to_dict())
                 return subcollection_doc
             else:
                 return None
@@ -82,10 +91,14 @@ class SubmissionCollectionManager(FirestoreBase):
         Get all user uuids
         '''
         collection_ref = self.get_collection(self.uuid_collection)
+        print("collection_ref:", collection_ref)
         try:
-            docs = collection_ref.stream()
-
-            return [doc.id for doc in docs]
+            docs = list(collection_ref.stream())  # Convert to list to print and see content
+            print("Number of documents fetched:", len(docs))
+            print("docs:", docs)  # Print documents for debugging
+            uuids = [doc.id for doc in docs]
+            print("uuids:", uuids)
+            return uuids
         except Exception as e:
             print(f"Error in get_all_user_uuids: {e}")
             raise e
@@ -124,6 +137,8 @@ class SubmissionCollectionManager(FirestoreBase):
             subcollection_doc = subcollection_doc_ref.get()
 
             if subcollection_doc.exists:
+                print("doc", subcollection_doc.to_dict())
+                print("updating submission:", update_fields)
                 # Document exists, so we update it, specifically last_asked-timestamp
                 subcollection_doc_ref.update(update_fields)
                 print(f"Updated submission for problem #{problem_id} for user {uuid}.")

@@ -9,7 +9,7 @@ from app.services.databases.firestore.leetcode_submissions import SubmissionColl
 from app.services.databases.firestore.users import UserCollectionManager
 from app.services.databases.firestore.leaderboard import LeaderboardCollectionManager
 from app.services.databases.firestore.leetcode_questions import LeetCodeCollectionManager
-from app.services.databases.firestore.leetcode_reviewTypes import UsersLeetcodeReviewTypeCollectionManager
+from app.services.databases.firestore.leetcode_reviewTypes import UsersLeetcodeReviewCategoriesCollectionManager
 
 from app.services.databases.redis.redis_client import RedisClient
 from app.services.space_repetition.scheduler import FSRSScheduler
@@ -42,17 +42,17 @@ redis_password = os.getenv("REDIS_PWD")
 
 redis_client = RedisClient(redis_host, redis_port, redis_password) #TODO: pass in the redis host, port, and password based on configs
 
-# Firestore Managers
-submission_manager = SubmissionCollectionManager(gc_project_name, environment)
-user_manager = UserCollectionManager(gc_project_name, environment)
+# Firestore Collection Managers
+submission_collection_manager = SubmissionCollectionManager(gc_project_name, environment)
+user_collection_manager = UserCollectionManager(gc_project_name, environment)
 leaderboard_collection_manager = LeaderboardCollectionManager(gc_project_name, environment)
 leetcode_collection_manager = LeetCodeCollectionManager(gc_project_name, environment)
-leetcode_review_type_manager = UsersLeetcodeReviewTypeCollectionManager(gc_project_name, environment)
+leetcode_review_type_manager = UsersLeetcodeReviewCategoriesCollectionManager(gc_project_name, environment)
 
 # Services - TODO - rename
 problem_manager = ProblemManager(leetcode_collection_manager, redis_client)
 leaderboard_manager = LeaderboardManager(leaderboard_collection_manager, redis_client)
-user_problem_manager = UserProblemManager(submission_manager, problem_manager)
+user_problem_manager = UserProblemManager(submission_collection_manager, problem_manager)
 
 fsrs_scheduler = FSRSScheduler()
 # similarity_score_adapter = SimilarityScoreAdapter()

@@ -1,38 +1,55 @@
 
 from flask import Blueprint, request, jsonify
+from typing import List, Dict, Union
 from app.services import user_problem_manager
-from app.services import leetcode_review_type_manager
+from app.services import leetcode_review_type_manager, submission_collection_manager, problem_manager
 
 
 bp = Blueprint('users', __name__, url_prefix='/users')
 
 @bp.route('/<user_id>', methods=['GET'])
-def get_all_problems_for_user(user_id):
+def get_all_problems_for_user(user_id: str) -> Union[List[Dict[str, str]], int]:
+    '''Api route to get all problems for a user
+
+    Args:
+        user_id (str): user id
+    
+    Returns:
+        dict: problems for user if successfuly, else error message
+    '''
     if not user_id:
         return jsonify({'error': 'ID not provided'}), 400
 
 
     try:
         problems = user_problem_manager.get_all_problems_for_user(user_id)
-        # print("problems for user:", problems)
     except Exception as e:
         print(f"Error in get_all_problems_for_user for user {user_id}: {e}")
         return jsonify({'error': e}), 500
     
     if not problems:
+        
         print('No problem found')
-        return jsonify({})
-        # return jsonify({'error': 'No problem found'}), 404
+        return jsonify([{}])
     
     return jsonify(problems), 200
 
 @bp.route('/<user_id>/problem/categories/review', methods=['GET'])
-def get_problem_categories_marked_for_review(user_id):
+def get_problem_categories_marked_for_review(user_id) -> Union[Dict[str, str], int]:
+    '''Api route to get all problem categories marked for review for a user
+    
+    Args:
+        user_id (str): user id
+    
+    Returns:
+        dict: review types for user if successful, else error message
+
+    '''
     if not user_id:
         return jsonify({'error': 'ID not provided'}), 400
 
     try:
-        review_types = leetcode_review_type_manager.get_user_review_types(user_id)
+        review_types = leetcode_review_type_manager.get_problem_categories_marked_for_review_by_user(user_id)
     except Exception as e:
         print(f"Error in get_problem_categories_marked_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500
@@ -46,7 +63,20 @@ def get_problem_categories_marked_for_review(user_id):
 
 
 @bp.route('/<user_id>/problem/categories/review/submit', methods=['POST'])
-def mark_problem_categories_for_review(user_id):
+def mark_problem_categories_for_review(user_id: str) -> Union[Dict[str, str], int]:
+    '''Api route to mark problem categories for review for a user
+    
+    Args:
+        user_id (str): user id
+
+    Data:
+        category (list): list of problem categories marked for review by user
+
+
+    Returns:
+        dict: success message if successful, else error message
+    
+    '''
     data = request.json
     print(data)
 
@@ -62,9 +92,64 @@ def mark_problem_categories_for_review(user_id):
         return jsonify({'error': 'Problem category not provided'}), 400
 
     try:
-        leetcode_review_type_manager.update_user_review_types(user_id, set(data['category']))
+        leetcode_review_type_manager.update_user_problem_categories_marked_for_review(user_id, set(data['category']))
     except Exception as e:
         print(f"Error in mark_type_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500
+    
+    return jsonify({'success': True}), 200
+
+@bp.route('/<user_id>/review_problems/submit', methods=['POST'])
+def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
+    '''Api route to update review problems for a user
+    
+    Args:
+        user_id (str): user id
+    
+    Data:
+        Problems (List[Dict[str, str]]): List of problems with their review status and information
+    
+    Returns:
+        dict: success message if successful, else error message
+    '''
+    data = request.json
+    print("data:", data)
+
+    if not data:
+        print('No data provided')
+        return jsonify({'error': 'No data provided'}), 400
+    
+    if not user_id:
+        return jsonify({'error': 'User ID not provided'}), 400
+    
+    for problem_data in data:
+        print("problem_data:", problem_data)
+        print(list(problem_data.keys()))
+        reference_problem_data = problem_manager.get_problem_by_id(int(problem_data["id"]))
+
+        # Build submission data
+        update_fields = {problem_data["id"]: {}}
+
+        if 'user_rating' in problem_data and len(problem_data['user_rating']) > 0:
+            update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
+        # update_fields[problem_data["id"]]['category'] = problem_data["category"]
+        
+        if 'category' in problem_data:
+            update_fields[problem_data["id"]]['category'] = reference_problem_data.category
+
+        if 'last_reviewed_timestamp' in problem_data and len(problem_data['last_reviewed_timestamp']) > 0:
+            update_fields[problem_data["id"]]['last_reviewed_timestamp'] = problem_data["last_reviewed_timestamp"]
+
+        if 'next_review_timestamp' in problem_data and len(problem_data['next_review_timestamp']) > 0:
+            update_fields[problem_data["id"]]['next_review_timestamp'] = problem_data["next_review_timestamp"]
+
+        print("update_fields:", update_fields)
+        try:
+            submission_collection_manager.update_leetcode_submission(user_id,
+                                                      problem_data['id'], 
+                                                      update_fields)
+        except Exception as e:
+            print(f"Error in mark_type_for_review for user {user_id}: {e}")
+            return jsonify({'error': e}), 500
     
     return jsonify({'success': True}), 200
