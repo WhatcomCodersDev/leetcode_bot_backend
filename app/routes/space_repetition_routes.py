@@ -79,6 +79,28 @@ def handle_problem_submission(problem_id):
     return jsonify({'success': True}), 200
     
 
+@bp.route('/daily_reminder', methods=['GET'])
+def handle_daily_reminder():
+    uuid_to_problems_id = submission_manager.get_problem_past_reviewed_date()
+
+    discord_id_to_problems = {}
+    for uuid, problems_id in uuid_to_problems_id.items():
+        print(uuid, problems_id)
+
+        if len(problems_id) == 0:
+            continue
+
+        discord_id = user_manager.get_discord_id_from_uuid(uuid)
+        print(discord_id)
+        discord_id_to_problems[discord_id] = []
+
+        for prob_id in problems_id:
+            prob_data = problem_manager.get_problem_by_id(int(prob_id))
+            discord_id_to_problems[discord_id].append(prob_data)
+    
+    print(discord_id_to_problems)
+    return jsonify({'discord_id_to_problems': discord_id_to_problems}), 200
+
 def validate_request_data(problem_id, data):
     """Validates the incoming request data.
     
