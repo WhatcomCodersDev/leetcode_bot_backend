@@ -1,25 +1,13 @@
-import pytz
 from datetime import datetime, timezone, timedelta
 from flask import Blueprint, request, jsonify
 from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_collection_manager
+from app.services.util import make_aware, make_naive
 
 bp = Blueprint('crons', __name__, url_prefix='/tasks')
 
 REVIEW_CATEGORY_KEY = 'review_types'
 
-PT = pytz.timezone('US/Pacific')
 
-
-def make_aware(naive_dt):
-    """Make a naive datetime aware in PT time zone."""
-    # Localize the naive datetime to PT
-    aware_dt = PT.localize(naive_dt)
-    return aware_dt
-
-def make_naive(aware_dt):
-    pt_dt = aware_dt.astimezone(PT)
-    naive_dt = pt_dt.replace(tzinfo=None)
-    return naive_dt
 
 @bp.route('/review/daily', methods=['GET'])
 def daily_task():
