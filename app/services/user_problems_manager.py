@@ -84,6 +84,8 @@ class UserProblemManager:
                 if 'next_review_timestamp' in problem:
                     new_problem['next_review_timestamp'] = problem['next_review_timestamp']
 
+                new_problem['link'] = problem_info.link
+
                 problems_for_user.append(new_problem)
             except Exception as e:
                 print(f"Error in get_all_problems_for_user for user {user_id}: {e}")

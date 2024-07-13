@@ -10,6 +10,7 @@ from flask import Blueprint, request, jsonify
 from app.services import redis_client, leaderboard_manager, problem_manager
 from constants import REDIS_ATTEMPTED_KEY, REDIS_SOLVED_KEY
 
+
 bp = Blueprint('challenges', __name__, url_prefix='/challenges')
 
 

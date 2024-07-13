@@ -3,7 +3,7 @@ from flask import Blueprint, request, jsonify
 from typing import List, Dict, Union
 from app.services import user_problem_manager
 from app.services import leetcode_review_type_manager, submission_collection_manager, problem_manager
-
+from datetime import datetime
 
 bp = Blueprint('users', __name__, url_prefix='/users')
 
@@ -124,13 +124,14 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
     
     for problem_data in data:
         print("problem_data:", problem_data)
+        print(type(problem_data["next_review_timestamp"]))
         print(list(problem_data.keys()))
         reference_problem_data = problem_manager.get_problem_by_id(int(problem_data["id"]))
 
         # Build submission data
         update_fields = {problem_data["id"]: {}}
 
-        if 'user_rating' in problem_data and len(problem_data['user_rating']) > 0:
+        if 'user_rating' in problem_data and int(problem_data['user_rating']) > 0:
             update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
         # update_fields[problem_data["id"]]['category'] = problem_data["category"]
         
@@ -138,10 +139,19 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
             update_fields[problem_data["id"]]['category'] = reference_problem_data.category
 
         if 'last_reviewed_timestamp' in problem_data and len(problem_data['last_reviewed_timestamp']) > 0:
-            update_fields[problem_data["id"]]['last_reviewed_timestamp'] = problem_data["last_reviewed_timestamp"]
+            try:
+                update_fields[problem_data["id"]]['last_reviewed_timestamp'] = datetime.strptime(problem_data["last_reviewed_timestamp"], "%b %d, %Y, %I:%M:%S.%f %p")
+            except ValueError:
+                print("Invalid last_reviewed_timestamp format:", problem_data["last_reviewed_timestamp"])
+                return jsonify({'error': 'Invalid last_reviewed_timestamp format'}), 400
 
         if 'next_review_timestamp' in problem_data and len(problem_data['next_review_timestamp']) > 0:
-            update_fields[problem_data["id"]]['next_review_timestamp'] = problem_data["next_review_timestamp"]
+            try:
+                update_fields[problem_data["id"]]['next_review_timestamp'] = datetime.strptime(problem_data["next_review_timestamp"], "%b %d, %Y, %I:%M:%S.%f %p")
+            except ValueError:
+                print("Invalid next_review_timestamp format:", problem_data["next_review_timestamp"])
+                return jsonify({'error': 'Invalid next_review_timestamp format'}), 400
+
 
         print("update_fields:", update_fields)
         try:

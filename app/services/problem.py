@@ -16,7 +16,7 @@ class Problem:
     # notes: str
 
     def __str__(self):
-        return f"{self.id}. {self.name} ({self.problem_difficulty}, {self.tag}, {self.category})"
+        return f"{self.id}. {self.name} (difficulty: {self.problem_difficulty}, tag: {self.tag}, category: {self.category})"
 
     def __repr__(self):
         return self.__str__()
