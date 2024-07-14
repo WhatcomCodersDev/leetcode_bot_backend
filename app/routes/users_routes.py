@@ -131,7 +131,7 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
         # Build submission data
         update_fields = {problem_data["id"]: {}}
 
-        if 'user_rating' in problem_data and int(problem_data['user_rating']) > 0:
+        if 'user_rating' in problem_data and problem_data['user_rating'] != "" and int(problem_data['user_rating']) > 0:
             update_fields[problem_data["id"]]['user_rating'] = int(problem_data["user_rating"])
         # update_fields[problem_data["id"]]['category'] = problem_data["category"]
         
