@@ -19,7 +19,7 @@ bp = Blueprint('challenges', __name__, url_prefix='/challenges')
 def get_problem():
     problem_difficulty = request.args.get('problem_difficulty')
     if not problem_difficulty:
-        return jsonify({'error': 'Problem Difficulty not provided'}), 400
+        return jsonify({'error': 'Problem DDEV_BOTifficulty not provided'}), 400
     
     if problem_difficulty not in ['easy', 'medium', 'hard']:
         return jsonify({'error': 'Invalid problem_difficulty'}), 400

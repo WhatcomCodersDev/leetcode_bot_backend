@@ -90,6 +90,7 @@ class ProblemManager:
             self.redis_client.set_value(redis_key, problem_data.id, get_ttl_for_next_monday_9am())
         else:
             problem_id = self.redis_client.get_decoded_value(redis_key)
+            print('project id returned by redis cache:', problem_id)
             if problem_id:
                 problem_data = get_problem_data_from_spreadsheet(problem_id)
 

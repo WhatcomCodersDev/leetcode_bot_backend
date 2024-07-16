@@ -12,9 +12,14 @@ def get_problem_data_from_spreadsheet(id: int) -> Problem:
     # print(list(df))
 
     df_problem = df[df['ID'] == id]
+    print("Filtered by ID:", df_problem)
+
     df_problem = df_problem.dropna(subset=['CATEGORY'])
+    print('problems by category:', df_problem)
+
+    print('records:', df_problem.to_dict(orient='records'))
     problem_dict = df_problem.to_dict(orient='records')[0]
-        
+
     return Problem(id=int(problem_dict['ID']), 
                             name=problem_dict['PROBLEM'],
                             link=problem_dict['URL'], 
@@ -36,7 +41,7 @@ def x_to_bool(value):
         return False
     else:
         return False  # You can adjust this else-case based on your data specifics
-    
+
 def get_ttl_for_next_monday_9am() -> int:
     now = datetime.now()
     # Find how many days to add to get to the next Monday (1 = Monday, 0 = Sunday)
