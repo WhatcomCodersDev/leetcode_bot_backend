@@ -1,5 +1,5 @@
 from datetime import datetime, timezone, timedelta
-from flask import Blueprint, request, jsonify
+from flask import Blueprint
 from app.services import leetcode_review_type_manager, fsrs_scheduler, submission_collection_manager
 from app.services.util import make_aware, make_naive
 
@@ -66,8 +66,8 @@ def daily_task():
                     if 'next_review_timestamp' not in problem:
                         problem['next_review_timestamp'] = datetime.now()
                     try:
+                        print("error here?", type(problem['next_review_timestamp']))
                         timewindow_in_memory = problem['next_review_timestamp'] + timedelta(days=1) # time window is 24 hours
-
                         ## Case 1: Successfully reviewed within the time window
                         ## last_reviewed: july 10 12pm
                         ## next_reviewed: july 10

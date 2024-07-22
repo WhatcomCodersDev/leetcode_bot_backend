@@ -18,20 +18,7 @@ from app.services.space_repetition.problem_ranker import ProblemRanker
 
 load_dotenv()
 
-environment = os.getenv("ENVIRONMENT", "development")  # Default to development if not set
-print(f"Current environment: {environment}")
-if environment == "production":
-    question_channel_id = int(os.getenv('PROD_QUESTION_CHANNEL_ID'))
-    answer_channel_id = int(os.getenv('PROD_ANSWER_CHANNEL_ID'))
-    announce_channel_id = int(os.getenv('PROD_ANNOUNCE_CHANNEL_ID'))
-    discord_bot_token = os.getenv("DISCORD_BOT_TOKEN")
-else:
-    question_channel_id = int(os.getenv('TEST_QUESTION_CHANNEL_ID'))
-    answer_channel_id = int(os.getenv('TEST_ANSWER_CHANNEL_ID'))
-    announce_channel_id = int(os.getenv('TEST_ANNOUNCE_CHANNEL_ID'))
-    discord_bot_token = os.getenv('DEV_BOT_TOKEN')
 
-# Todo - Load environment variables somewhere else
 environment = os.getenv("ENVIRONMENT", "development")  # Default to development if not set
 gc_project_name = os.getenv("PROJECT_NAME")
 
@@ -45,13 +32,11 @@ redis_client = RedisClient(redis_host, redis_port, redis_password) #TODO: pass i
 # Firestore Collection Managers
 submission_collection_manager = SubmissionCollectionManager(gc_project_name, environment)
 user_collection_manager = UserCollectionManager(gc_project_name, environment)
-leaderboard_collection_manager = LeaderboardCollectionManager(gc_project_name, environment)
 leetcode_collection_manager = LeetCodeCollectionManager(gc_project_name, environment)
 leetcode_review_type_manager = UsersLeetcodeReviewCategoriesCollectionManager(gc_project_name, environment)
 
 # Services - TODO - rename
 problem_manager = ProblemManager(leetcode_collection_manager, redis_client)
-leaderboard_manager = LeaderboardManager(leaderboard_collection_manager, redis_client)
 user_problem_manager = UserProblemManager(submission_collection_manager, problem_manager)
 
 fsrs_scheduler = FSRSScheduler()
