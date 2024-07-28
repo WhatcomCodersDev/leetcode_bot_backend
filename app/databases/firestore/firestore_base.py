@@ -1,6 +1,6 @@
 # firestore_base.py
 from google.cloud import firestore
-from app.services.databases.firestore.firestore_client import FirestoreClient
+from app.databases.firestore.firestore_client import FirestoreClient
 from google.cloud.firestore import CollectionReference, DocumentReference
 
 class FirestoreBase:

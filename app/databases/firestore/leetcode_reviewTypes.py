@@ -1,4 +1,4 @@
-from app.services.databases.firestore.firestore_base import FirestoreBase
+from app.databases.firestore.firestore_base import FirestoreBase
 from typing import Dict, Set
 from constants import USER_PROBLEM_TYPES_FOR_REVIEW_COLLECTION
 
@@ -16,7 +16,7 @@ Fields:
 
 '''
 
-class UsersLeetcodeReviewCategoriesCollectionManager(FirestoreBase):
+class FirestoreUsersLeetcodeReviewCategoriesCollectionWrapper(FirestoreBase):
     def __init__(self, project_name: str, environment: str = "development", database: str = "github-commit-data"):
         super().__init__(project_name, environment, database)
         self.uuid_collection = USER_PROBLEM_TYPES_FOR_REVIEW_COLLECTION if environment == "production" else USER_PROBLEM_TYPES_FOR_REVIEW_COLLECTION

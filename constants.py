@@ -1,11 +1,5 @@
-PROBLEM_SHEET_PATH = 'new_problem_sheet.csv'
+PROBLEM_SHEET_PATH = 'app/services/problem_sheet/sheets/new_problem_sheet.csv'
 
-# point system
-SUBMIT = 0
-ATTEMPTED = 1
-MEDIUM_PT = 4.0
-EASY_PT = 2.0
-ATTEMPT_PT = 1.0
 
 # document properties/fields
 TITLE = "title"
@@ -23,13 +17,11 @@ USER_SUBMISSION_COLLECTION = "users_leetcode_submissions"
 TEST_LEETCODE_COLLECTION = "test_leetcode_questions"
 TEST_LEADERBOARD_COLLECTION = "test_leetcode_leaderboard"
 
-# question duration
-TTL = 300
-QUESTION_TTL_SECONDS = 604800
-TEST_QUESTION_TTL_SECONDS = 10
+# user submissions and reviewing
+REVIEW_CATEGORY_KEY = 'review_types' # Key for the review types in the firestore document
+REVIEWED_EASE = 4
+FAILED_EASE = 2.5
 
-# redis cache key
-REDIS_SOLVED_KEY = 'solved'
-REDIS_ATTEMPTED_KEY = 'attempted'
-REDIS_EASY_PROBLEM_ID_KEY = 'easy_problem_id'
-REDIS_MEDIUM_PROBLEM_ID_KEY = 'medium_problem_id'
+# redis
+TTL = 300
+
