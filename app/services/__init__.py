@@ -2,12 +2,10 @@ import os
 from dotenv import load_dotenv
 
 from app.services.problem_manager import ProblemManager
-from app.services.weekly_challenges.leaderboard_manager import LeaderboardManager
 from app.services.user_problems_manager import UserProblemManager
 
 from app.services.databases.firestore.leetcode_submissions import SubmissionCollectionManager
 from app.services.databases.firestore.users import UserCollectionManager
-from app.services.databases.firestore.leaderboard import LeaderboardCollectionManager
 from app.services.databases.firestore.leetcode_questions import LeetCodeCollectionManager
 from app.services.databases.firestore.leetcode_reviewTypes import UsersLeetcodeReviewCategoriesCollectionManager
 
