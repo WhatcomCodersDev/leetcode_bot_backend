@@ -5,8 +5,8 @@
 '''
 from datetime import datetime, timedelta
 from flask import Blueprint, request, jsonify
-from app.services import fsrs_scheduler, submission_collection_manager, user_collection_manager, problem_manager, leetcode_review_type_manager
-from app.services.util import handle_updating_submission_data, make_aware, make_naive, convert_dateime_now_to_pt
+from app.services import fsrs_scheduler, firestore_submission_collection_wrapper, firestore_user_collection_wrapper, problem_manager, firestore_leetcode_review_type_wrapper
+from app.services.time_utils import handle_updating_submission_data, make_aware, make_naive, convert_dateime_now_to_pt
 
 bp = Blueprint('space_repetition', __name__, url_prefix='/space_repetition')
 
@@ -43,7 +43,7 @@ def handle_problem_submission(problem_id):
     try:
         # Get user UUID
         if data.get('discord_id'):
-            user_uuid = user_collection_manager.get_uuid_from_discord_id(data['discord_id'])
+            user_uuid = firestore_user_collection_wrapper.get_uuid_from_discord_id(data['discord_id'])
         else:
             user_uuid = data['user_id']
 
@@ -51,7 +51,7 @@ def handle_problem_submission(problem_id):
 
         # First determine next time to review
         ## Only do if the problem doesn't exist in the submission collection
-        previous_submission_doc = submission_collection_manager.get_user_submission_for_problem(user_uuid, problem_id).to_dict()[problem_id]
+        previous_submission_doc = firestore_submission_collection_wrapper.get_user_submission_for_problem(user_uuid, problem_id).to_dict()[problem_id]
         print("previous_submission_doc", previous_submission_doc)
         review_data = None
         if not previous_submission_doc  and problem_data.category != None:
@@ -86,7 +86,7 @@ def handle_problem_submission(problem_id):
             print("update_fields", update_fields)
         
         # Update datastore
-        submission_collection_manager.update_leetcode_submission(user_uuid,
+        firestore_submission_collection_wrapper.update_leetcode_submission(user_uuid,
                                                 problem_id, 
                                                 update_fields)
         
@@ -104,11 +104,11 @@ def handle_problem_submission(problem_id):
 
 @bp.route('/daily_reminder', methods=['GET'])
 def handle_daily_reminder():
-    uuid_to_problems_id = submission_collection_manager.get_problem_past_reviewed_date()
+    uuid_to_problems_id = firestore_submission_collection_wrapper.get_problem_past_reviewed_date()
     print("uuid_to_problems_id", uuid_to_problems_id)
     discord_id_to_problems = {}
     for uuid, problems_id in uuid_to_problems_id.items():
-        user_review_categories = leetcode_review_type_manager.get_problem_categories_marked_for_review_by_user(uuid)
+        user_review_categories = firestore_leetcode_review_type_wrapper.get_problem_categories_marked_for_review_by_user(uuid)
         
         if user_review_categories:
             user_review_categories = user_review_categories['review_types']
@@ -118,7 +118,7 @@ def handle_daily_reminder():
             if len(problems_id) == 0:
                 continue
 
-            discord_id = user_collection_manager.get_discord_id_from_uuid(uuid)
+            discord_id = firestore_user_collection_wrapper.get_discord_id_from_uuid(uuid)
             print(discord_id)
             discord_id_to_problems[discord_id] = []
 
@@ -146,8 +146,8 @@ def get_upcoming_review_problems_for_user(uuid):
   
 
     REVIEW_CATEGORY_KEY = 'review_types'
-    user_problems = submission_collection_manager.get_user_submissions(uuid)
-    user_review_categories = leetcode_review_type_manager.get_problem_categories_marked_for_review_by_user(uuid)[REVIEW_CATEGORY_KEY]
+    user_problems = firestore_submission_collection_wrapper.get_user_submissions(uuid)
+    user_review_categories = firestore_leetcode_review_type_wrapper.get_problem_categories_marked_for_review_by_user(uuid)[REVIEW_CATEGORY_KEY]
 
     # filter problems if they are in the review categories
     review_problems = []

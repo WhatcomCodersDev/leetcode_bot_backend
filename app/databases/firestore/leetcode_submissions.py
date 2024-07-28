@@ -1,6 +1,6 @@
 # leetcode_manager.py
 import uuid
-from app.services.databases.firestore.firestore_base import FirestoreBase
+from app.databases.firestore.firestore_base import FirestoreBase
 from datetime import datetime
 from typing import Dict, Union
 from constants import USER_SUBMISSION_COLLECTION
@@ -24,7 +24,7 @@ Subcollections:
 
 '''
 
-class SubmissionCollectionManager(FirestoreBase):
+class FirestoreSubmissionCollectionWrapper(FirestoreBase):
     def __init__(self, project_name: str, environment: str = "development", database: str = "github-commit-data"):
         super().__init__(project_name, environment, database)
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION

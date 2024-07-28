@@ -13,7 +13,6 @@ class Problem:
     isInNeetcode: bool
     isInGrind75: bool
     isInSeanPrasadList: bool
-    # notes: str
 
     def __str__(self):
         return f"{self.id}. {self.name} (difficulty: {self.problem_difficulty}, tag: {self.tag}, category: {self.category})"
@@ -34,5 +33,4 @@ class Problem:
             'isInNeetcode': self.isInNeetcode,
             'isInGrind75': self.isInGrind75,
             'isInSeanPrasadList': self.isInSeanPrasadList,
-            # 'notes': self.notes
         }

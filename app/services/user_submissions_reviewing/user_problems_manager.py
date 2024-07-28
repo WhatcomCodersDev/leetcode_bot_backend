@@ -1,6 +1,6 @@
 from typing import List, Dict
-from app.services.databases.firestore.leetcode_submissions import SubmissionCollectionManager
-from app.services.problem_manager import ProblemManager
+from app.databases.firestore.leetcode_submissions import FirestoreSubmissionCollectionWrapper
+from app.services.problem_sheet.problem_manager import ProblemManager
 
 problem_data = {
     'id': None,
@@ -12,7 +12,7 @@ problem_data = {
 }
 
 class UserProblemManager:
-    def __init__(self, db: SubmissionCollectionManager, problem_manager: ProblemManager):
+    def __init__(self, db: FirestoreSubmissionCollectionWrapper, problem_manager: ProblemManager):
         self.db = db
         self.problem_manager = problem_manager
 

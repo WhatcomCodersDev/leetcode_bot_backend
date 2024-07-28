@@ -1,5 +1,5 @@
 # leetcode_manager.py
-from app.services.databases.firestore.firestore_base import FirestoreBase
+from app.databases.firestore.firestore_base import FirestoreBase
 from datetime import datetime
 from typing import List
 from constants import TITLE, TIMESTAMP, USERS_SOLVED, LEETCODE_COLLECTION, TEST_LEETCODE_COLLECTION
@@ -17,7 +17,7 @@ Fields:
 
 '''
 
-class LeetCodeCollectionManager(FirestoreBase):
+class FirestoreLeetCodeCollectionWrapper(FirestoreBase):
     def __init__(self, project_name: str, environment: str = "development", database: str = "github-commit-data"):
         super().__init__(project_name, environment, database)
         self.leetcode_collection = LEETCODE_COLLECTION if environment == "production" else TEST_LEETCODE_COLLECTION

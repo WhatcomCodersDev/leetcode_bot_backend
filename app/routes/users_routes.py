@@ -2,7 +2,11 @@
 from flask import Blueprint, request, jsonify
 from typing import List, Dict, Union
 from app.services import user_problem_manager
-from app.services import leetcode_review_type_manager, submission_collection_manager, problem_manager
+from app.services import (
+    firestore_leetcode_review_type_wrapper, 
+    firestore_submission_collection_wrapper, 
+    problem_manager
+)
 from datetime import datetime
 
 bp = Blueprint('users', __name__, url_prefix='/users')
@@ -49,7 +53,7 @@ def get_problem_categories_marked_for_review(user_id) -> Union[Dict[str, str], i
         return jsonify({'error': 'ID not provided'}), 400
 
     try:
-        review_types = leetcode_review_type_manager.get_problem_categories_marked_for_review_by_user(user_id)
+        review_types = firestore_leetcode_review_type_wrapper.get_problem_categories_marked_for_review_by_user(user_id)
     except Exception as e:
         print(f"Error in get_problem_categories_marked_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500
@@ -92,7 +96,7 @@ def mark_problem_categories_for_review(user_id: str) -> Union[Dict[str, str], in
         return jsonify({'error': 'Problem category not provided'}), 400
 
     try:
-        leetcode_review_type_manager.update_user_problem_categories_marked_for_review(user_id, set(data['category']))
+        firestore_leetcode_review_type_wrapper.update_user_problem_categories_marked_for_review(user_id, set(data['category']))
     except Exception as e:
         print(f"Error in mark_type_for_review for user {user_id}: {e}")
         return jsonify({'error': e}), 500
@@ -155,7 +159,7 @@ def update_review_problems_for_user(user_id: str) -> Union[Dict[str, str], int]:
 
         print("update_fields:", update_fields)
         try:
-            submission_collection_manager.update_leetcode_submission(user_id,
+            firestore_submission_collection_wrapper.update_leetcode_submission(user_id,
                                                       problem_data['id'], 
                                                       update_fields)
         except Exception as e:

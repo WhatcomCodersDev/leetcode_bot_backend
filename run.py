@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app.routes import problem_routes, leaderboard_routes, challenges_routes, space_repetition_routes, users_routes, cron_routes
+from app.routes import problem_sheet_routes, space_repetition_routes, users_routes, cron_routes
 from app.services import (
                            problem_manager, 
                           
@@ -14,7 +14,7 @@ allowed_origins = [
 ]
 
 app = Flask(__name__)
-app.register_blueprint(problem_routes.bp)
+app.register_blueprint(problem_sheet_routes.bp)
 app.register_blueprint(space_repetition_routes.bp)
 app.register_blueprint(users_routes.bp)
 app.register_blueprint(cron_routes.bp)

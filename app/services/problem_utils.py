@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 from datetime import timedelta
-from app.services.problem import Problem
+from app.services.problem_sheet.problem import Problem
 from constants import PROBLEM_SHEET_PATH 
 
 def get_problem_data_from_spreadsheet(id: int) -> Problem:
