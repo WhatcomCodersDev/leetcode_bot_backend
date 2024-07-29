@@ -51,14 +51,19 @@ def handle_problem_submission(problem_id):
 
         # First determine next time to review
         ## Only do if the problem doesn't exist in the submission collection
-        previous_submission_doc = firestore_submission_collection_wrapper.get_user_submission_for_problem(user_uuid, problem_id).to_dict()[problem_id]
+        previous_submission_doc = None
+        previous_submission = firestore_submission_collection_wrapper.get_user_submission_for_problem(user_uuid, problem_id).to_dict()
+        
+        if previous_submission and problem_id in previous_submission:
+            previous_submission_doc = previous_submission[problem_id]
+        
         print("previous_submission_doc", previous_submission_doc)
         review_data = None
         if not previous_submission_doc  and problem_data.category != None:
             print("This problem hasn't beeen submitted before, so it should be scheduled for review")
             review_data = fsrs_scheduler.schedule_review(problem_id, 
                                                         datetime.now(), 
-                                                        ease=2.5, 
+                                                        ease=1, 
                                                         interval=1, 
                                                         performance_rating=4) #todo pass user rating instead
             
@@ -71,7 +76,7 @@ def handle_problem_submission(problem_id):
             print("This problem has beeen submitted before, but it doesn't have a next_review_timestamp")
             review_data = fsrs_scheduler.schedule_review(problem_id, 
                                                         convert_dateime_now_to_pt(), 
-                                                        ease=2.5, 
+                                                        ease=1, 
                                                         interval=1, 
                                                         performance_rating=4) #todo pass user rating instead
             

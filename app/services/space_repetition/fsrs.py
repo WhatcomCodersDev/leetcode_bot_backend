@@ -1,12 +1,15 @@
 from datetime import timedelta
 
 class FSRS:
-    def __init__(self, initial_ease=2.5, initial_interval=1, initial_factor=1.3):
+    def __init__(self, initial_ease=1, initial_interval=1, initial_factor=1):
         self.initial_ease = initial_ease
         self.initial_interval = initial_interval
         self.initial_factor = initial_factor
     
     def calculate_next_interval(self, ease, interval, factor):
+        # Adjust interval calculation to keep initial intervals short
+        if interval < 1:
+            interval = 1  # Ensuring minimum interval of 1 day
         next_interval = interval * ease * factor
         return next_interval
 

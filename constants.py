@@ -19,8 +19,8 @@ TEST_LEADERBOARD_COLLECTION = "test_leetcode_leaderboard"
 
 # user submissions and reviewing
 REVIEW_CATEGORY_KEY = 'review_types' # Key for the review types in the firestore document
-REVIEWED_EASE = 4
-FAILED_EASE = 2.5
+REVIEWED_EASE = 2
+FAILED_EASE = 1
 
 # redis
 TTL = 300
