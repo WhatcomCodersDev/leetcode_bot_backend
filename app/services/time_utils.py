@@ -1,23 +1,30 @@
 import pytz
 from datetime import datetime, timezone, timedelta
+from app.services.problem_sheet.problem import Problem
+from typing import Dict 
 
-def handle_updating_submission_data(problem_id, data, review_data, problem_data):
+def handle_updating_submission_data(
+        problem_id: str, 
+        submission_data: Dict[str, str], 
+        review_data: Dict[str, str],
+        problem_data: Problem,
+        ):
     # Build submission data
     update_fields = {problem_id: {}}
 
-    if 'user_rating' in data:
-        update_fields[problem_id]['user_rating'] = data['user_rating']
+    if 'user_rating' in submission_data:
+        update_fields[problem_id]['user_rating'] = submission_data['user_rating']
     
-    if 'last_reviewed_timestamp' in data:
+    if 'last_reviewed_timestamp' in submission_data:
         update_fields[problem_id]['last_reviewed_timestamp'] = convert_dateime_now_to_pt()
 
     
-    if review_data and 'next_review_timestamp' in data:
+    if review_data and 'next_review_timestamp' in submission_data:
         update_fields[problem_id]['next_review_timestamp'] = review_data['next_review_timestamp']
-    elif 'next_review_timestamp' in data:
-        update_fields[problem_id]['next_review_timestamp'] = data['next_review_timestamp']
+    elif 'next_review_timestamp' in submission_data:
+        update_fields[problem_id]['next_review_timestamp'] = submission_data['next_review_timestamp']
     
-    update_fields[problem_id]['category'] = problem_data.category
+    update_fields[problem_id]['category'] = problem_data.get_category()
 
     return update_fields
 
