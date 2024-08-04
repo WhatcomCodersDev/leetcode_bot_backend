@@ -34,3 +34,38 @@ class Problem:
             'isInGrind75': self.isInGrind75,
             'isInSeanPrasadList': self.isInSeanPrasadList,
         }
+    
+    def get_category(self):
+        return self.category
+    
+    def get_difficulty(self):
+        return self.problem_difficulty
+    
+    def get_tag(self):
+        return self.tag
+    
+    def get_id(self):
+        return self.id
+    
+    def get_name(self):
+        return self.name
+    
+    def get_link(self):
+        return self.link
+    
+    def get_isInBlind75(self):
+        return self.isInBlind75
+    
+    def get_isInBlind50(self):
+        return self.isInBlind50
+    
+    def get_isInNeetcode(self):
+        return self.isInNeetcode
+    
+    def get_isInGrind75(self):
+        return self.isInGrind75
+    
+    def get_isInSeanPrasadList(self):
+        return self.isInSeanPrasadList
+    
+

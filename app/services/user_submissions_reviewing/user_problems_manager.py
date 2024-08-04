@@ -34,6 +34,9 @@ class UserProblemManager:
         
         '''
         problem_docs = self.db.get_user_submissions(user_id)
+        if not problem_docs:
+            print(f'No problems found for user {user_id}')
+            return []
 
         problems_for_user = []
         for problem_doc in problem_docs:

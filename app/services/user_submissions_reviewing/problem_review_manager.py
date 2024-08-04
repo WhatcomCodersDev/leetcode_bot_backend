@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta
+from typing import List, Dict 
 from app.databases.firestore.leetcode_submissions import FirestoreSubmissionCollectionWrapper
 from app.databases.firestore.leetcode_reviewTypes import FirestoreUsersLeetcodeReviewCategoriesCollectionWrapper
 from app.services.space_repetition.scheduler import FSRSScheduler
+from app.services.user_submissions_reviewing.problem_to_review_data import ProblemToReview
 from app.services.time_utils import make_aware, make_naive
 from constants import REVIEW_CATEGORY_KEY, REVIEWED_EASE, FAILED_EASE
 
@@ -62,22 +64,27 @@ class ProblemReviewManager:
 
         '''
         user_problems_by_category = self.get_user_problems_by_category(user_id)
-        for review_category, problems in user_problems_by_category.items():
+        for review_category, problems_to_review in user_problems_by_category.items():
             review_count = 0
-            for problem in problems:
-                timewindow_in_memory = problem['next_review_timestamp'] + timedelta(days=1)
-                review_count += self.handle_review_logic(user_id, problem, timewindow_in_memory)
-            if review_count == len(problems):
+            for problem_to_review in problems_to_review:
+                if 'next_review_timestamp' not in problem_to_review:
+                    problem_to_review.set_next_review_timestamp(make_aware(datetime.now()))
+                timewindow_in_memory = problem_to_review.get_next_review_timestamp() + timedelta(days=1)
+                review_count += self.handle_review_logic(user_id, problem_to_review, timewindow_in_memory)
+            if review_count == len(problems_to_review):
                 print("TODO - Add a new problem for that review category")
 
 
-    def get_user_problems_by_category(self, user_id):
+    def get_user_problems_by_category(self, user_id) -> Dict[str, List[ProblemToReview]]:
         user_problems = self.firestore_submission_collection_wrapper.get_user_submissions(user_id)
         user_review_categories_list = self.firestore_leetcode_review_type_wrapper.get_problem_categories_marked_for_review_by_user(user_id)
         user_review_categories = user_review_categories_list[REVIEW_CATEGORY_KEY]
         return self.create_problem_category_to_problem_map(user_problems, user_review_categories)
 
-    def create_problem_category_to_problem_map(self, user_problems, user_review_categories) -> dict:
+    def create_problem_category_to_problem_map(self, 
+                                               user_problems, 
+                                               user_review_categories,
+                                               ) -> Dict[str, List[ProblemToReview]]:
         '''
         Create a map of problem categories to problems
 
@@ -86,53 +93,95 @@ class ProblemReviewManager:
 
         '''
         user_problems_by_category = {}
+        # iterate through firestore snapshot
         for problem_generator in user_problems:
-            problem = problem_generator.to_dict()
+            problem = problem_generator
+            print("problem:", problem)
             problem_id = problem_generator.id
+            problem_data = next(iter(problem.to_dict().values()))
+            print("problem:", problem_data)
+
+            problem_to_review = ProblemToReview(problem_id=problem_id, **problem_data)
+
+            print("problem_id:", problem_id)
             # problem = problem.to_dict() # Gets {'1': {problem_data}}
-            problem = next(iter(problem.values())) # Gets {problem_data}
-            if 'category' in problem and problem['category'] in user_review_categories:
-                if problem['category'] not in user_problems_by_category:
-                    user_problems_by_category[problem['category']] = []
-                problem["problem_id"] = problem_id # Add the problem id to the problem for future
-                user_problems_by_category[problem['category']].append(problem)
+            if problem_to_review.category and problem_to_review.get_category() in user_review_categories:
+                if problem_to_review.get_category() not in user_problems_by_category:
+                    user_problems_by_category[problem_to_review.get_category()] = []
+                user_problems_by_category[problem_to_review.get_category()].append(problem_to_review)
         
+        print("user_problems_by_category:", user_problems_by_category)
         return user_problems_by_category
 
-    def update_review_date(self, user_id, problem, review_data, ease):
-        update_fields = {problem['problem_id']: {}}
-        update_fields[problem['problem_id']]['next_review_timestamp'] = review_data['next_review_timestamp']
-        update_fields[problem['problem_id']]['last_reviewed_timestamp'] = problem['last_reviewed_timestamp']
-        update_fields[problem['problem_id']]['category'] = problem['category']
-        if 'user_rating' not in problem:
-            update_fields[problem['problem_id']]['user_rating'] = 2
-        update_fields[problem['problem_id']]['user_rating'] = problem['user_rating']
-        self.firestore_submission_collection_wrapper.update_leetcode_submission(user_id, problem['problem_id'], update_fields)
+    def update_review_date(self, 
+                           user_id: str, 
+                           problem_to_review: ProblemToReview, 
+                           review_data: Dict[str, datetime],
+                           ):
+        problem_to_review = ProblemToReview(
+            problem_id=problem_to_review.get_problem_id(),
+            category=problem_to_review.get_category(),
+            user_rating=problem_to_review.get_user_rating(),
+            last_reviewed_timestamp=problem_to_review.get_last_reviewed_timestamp(),
+            next_review_timestamp=review_data['next_review_timestamp'],
+            streak=problem_to_review.get_streak(),
+        )
+        self.firestore_submission_collection_wrapper.update_leetcode_submission(
+            user_id, 
+            problem_to_review.get_problem_id(), 
+            problem_to_review.to_dict(),
+        )
 
 
-    def handle_review_logic(self, user_id, problem, timewindow_in_memory):
+    def handle_review_logic(self, 
+                            user_id: str, 
+                            problem_to_review: ProblemToReview, 
+                            timewindow_in_memory: datetime,
+                            ):
         review_count = 0
-        if 'next_review_timestamp' not in problem:
-            problem['next_review_timestamp'] = datetime.now()
+        if not problem_to_review.get_last_reviewed_timestamp():
+            problem_to_review.set_next_review_timestamp(datetime.now())
         try:
-            if self.case1_logic(problem, timewindow_in_memory):
+            if self.case1_logic(problem_to_review, timewindow_in_memory):
                 print("Case 1: This user has successfully reviewed the problem within the time window")
-                review_data = self.fsrs_scheduler.schedule_review(problem, datetime.now(), ease=REVIEWED_EASE, interval=1, performance_rating=problem['user_rating'])
-                self.update_review_date(user_id, problem, review_data, REVIEWED_EASE)
+                review_data = self.fsrs_scheduler.schedule_review(
+                    problem_to_review.get_problem_id(), 
+                    datetime.now(), 
+                    ease=REVIEWED_EASE, 
+                    interval=1, 
+                    performance_rating=problem_to_review.get_user_rating()
+                )
+                self.update_review_date(user_id, 
+                                        problem_to_review, 
+                                        review_data, 
+                                        )
                 review_count += 1
-            elif self.case2_logic(problem, timewindow_in_memory):
+            elif self.case2_logic(problem_to_review, timewindow_in_memory):
                 print("Case 2: This user has failed to review the problem within the time window")
-                review_data = self.fsrs_scheduler.schedule_review(problem, datetime.now(), ease=FAILED_EASE, interval=1, performance_rating=2)
-                self.update_review_date(user_id, problem, review_data, FAILED_EASE)
-            elif self.case3_logic(problem):
+                review_data = self.fsrs_scheduler.schedule_review(
+                    problem_to_review.get_problem_id(), 
+                    datetime.now(), 
+                    ease=FAILED_EASE, 
+                    interval=1, 
+                    performance_rating=2,
+                )
+                self.update_review_date(
+                    user_id, 
+                    problem_to_review, 
+                    review_data,
+                )
+            elif self.case3_logic(problem_to_review):
                 print("Case 3: Time window hasn't opened")
             else:
                 print("Case 4: No case matched")
         except Exception as e:
-            print(f"Error in updating review for user {user_id} and problem {problem['problem_id']}: {e}")
+            print(f"Error in updating review for user {user_id} and problem {problem_to_review.get_problem_id()}: {e}")
         return review_count
 
-    def case1_logic(self, problem, timewindow_in_memory):
+    def case1_logic(self, 
+                    problem_to_review: ProblemToReview,
+                    timewindow_in_memory: datetime,
+                    ):
         '''Case 1: This user has successfully reviewed the problem within the time window
         
             last_reviewed: july 10 12pm
@@ -151,10 +200,13 @@ class ProblemReviewManager:
             next_reviewed    last_reviewed    time_window
         '''
 
-        return problem['next_review_timestamp'] and (datetime.now() >= make_naive(problem['next_review_timestamp']) and datetime.now() < make_naive(timewindow_in_memory)) \
-            and (problem['last_reviewed_timestamp'] >= problem['next_review_timestamp'] and problem['last_reviewed_timestamp'] < timewindow_in_memory)
+        return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() < make_naive(timewindow_in_memory)) \
+            and (problem_to_review.get_last_reviewed_timestamp() >= problem_to_review.get_next_review_timestamp() and problem_to_review.get_last_reviewed_timestamp() < timewindow_in_memory)
 
-    def case2_logic(self, problem, timewindow_in_memory):
+    def case2_logic(self, 
+                    problem_to_review: ProblemToReview, 
+                    timewindow_in_memory: datetime,
+                    ):
         '''Case 2: This user has failed to review the problem within the time window
         
             last_reviewed: july 6
@@ -172,10 +224,12 @@ class ProblemReviewManager:
              last_reviewed    next_reviewed    time_window/current_time
         
         '''
-        return problem['next_review_timestamp'] and (datetime.now() >= make_naive(problem['next_review_timestamp']) and datetime.now() < make_naive(timewindow_in_memory)) \
-            and (problem['last_reviewed_timestamp'] < problem['next_review_timestamp'] and problem['last_reviewed_timestamp'] < timewindow_in_memory)
+        return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() < make_naive(timewindow_in_memory)) \
+            and (problem_to_review.get_last_reviewed_timestamp() < problem_to_review.get_next_review_timestamp() and problem_to_review.get_last_reviewed_timestamp() < timewindow_in_memory)
 
-    def case3_logic(self, problem):
+    def case3_logic(self, 
+                    problem_to_review: ProblemToReview,
+                    ):
         '''Case 3: Time window hasn't opened
         
             last_reviewed: july 6
@@ -191,5 +245,5 @@ class ProblemReviewManager:
              last_reviewed      current_time       next_reviewed       time_window
         
         '''
-        return problem['next_review_timestamp'] and datetime.now() < make_naive(problem['next_review_timestamp'])
+        return problem_to_review.get_next_review_timestamp() and datetime.now() < make_naive(problem_to_review.get_next_review_timestamp())
     

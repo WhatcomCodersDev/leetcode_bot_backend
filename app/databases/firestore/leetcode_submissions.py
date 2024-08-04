@@ -4,6 +4,7 @@ from app.databases.firestore.firestore_base import FirestoreBase
 from datetime import datetime
 from typing import Dict, Union
 from constants import USER_SUBMISSION_COLLECTION
+from app.services.user_submissions_reviewing.problem_to_review_data import ProblemToReview
 
 '''
 Handles interaction with users_leetcode_submission collection
@@ -54,6 +55,7 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
         doc_ref = self.get_doc_ref(collection_ref, uuid)
         try:
             doc = doc_ref.get()
+            print("doc:", doc.to_dict())
             if doc.exists:
                 subcollection_ref = doc_ref.collection('problems')
                 docs = subcollection_ref.stream()
@@ -64,12 +66,13 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
             print(f"Error in get_user_submissions for user {uuid}: {e}")
             raise e
         
-    def get_user_submission_for_problem(self, uuid: str, problem_id: str):
-        print(f"Adding problem: {problem_id} for user: {uuid}")
-
+    def get_user_submission_for_problem(self, 
+                                        uuid: str, 
+                                        problem_id: str,
+                                        ) -> ProblemToReview:
+        ''' Get the user's submission for a specific problem
         '''
-        Get the user's submission for a specific problem
-        '''
+        print(f"Getting problem: {problem_id} for user: {uuid}")
         collection_ref = self.get_collection(self.uuid_collection)
         doc_ref = self.get_doc_ref(collection_ref, uuid)
         try:
@@ -78,8 +81,15 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
                 subcollection_ref = doc_ref.collection('problems')
                 subcollection_doc_ref = subcollection_ref.document(str(problem_id))
                 subcollection_doc = subcollection_doc_ref.get()
-                print("subcollection_doc:", subcollection_doc.to_dict())
-                return subcollection_doc
+
+                if subcollection_doc.exists:
+                    subcollection_doc = subcollection_doc.to_dict()
+                    print("subcollection_doc:", subcollection_doc)
+                    
+                    return ProblemToReview(problem_id=problem_id, 
+                                           **subcollection_doc[problem_id])
+                else:
+                    return None
             else:
                 return None
         except Exception as e:
@@ -106,7 +116,7 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
     def update_leetcode_submission(self, 
                                    uuid: str,
                                    problem_id: str, 
-                                   update_fields: Dict[int, Union[int, datetime]],
+                                   problem_to_review: ProblemToReview,
                                    ):
         '''
         1. Get the user's submission document by uuid
@@ -119,37 +129,48 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
         This means that one timestamp will remain the same, while the other will be updated
         '''
                                   
+        # Get the user's submission collection: https://console.cloud.google.com/firestore/databases/github-commit-data/data/panel/users_leetcode_submissions?project=gothic-sled-375305
         collection_ref = self.get_collection(self.uuid_collection)
+
+        # Get the user's submission document based on uuid if it exists
         doc_ref = self.get_doc_ref(collection_ref, uuid)
+        
+        # Check if the uuid exists otherwise create it
+        doc = doc_ref.get()
+        if not doc.exists:
+            print(f"User {uuid} doesn't exist in the db. Creating a new document for them.")
+            doc_ref.set({})
+
+        # Now create/update the problem sub collection
         try:
-            # Get the user's submission document
-            doc = doc_ref.get()
+            # Get the subcollection of problems for the user
             subcollection_ref = doc_ref.collection('problems')
+            # Get the document reference for the specific problem
             subcollection_doc_ref = subcollection_ref.document(str(problem_id))
         except Exception as e:
-            print(f"Error in update_leetcode_submission for user {uuid}: {e}")
+            print(f"Error in update_leetcode_submission for user {uuid} in phase 1: {e}")
             raise e
-        
-
 
 
         try:
+            # Get the document for the specific problem
             subcollection_doc = subcollection_doc_ref.get()
 
+            # Check if the document for the problem submission exists
             if subcollection_doc.exists:
                 print("doc", subcollection_doc.to_dict())
-                print("updating submission:", update_fields)
+                print("updating submission:", problem_to_review)
                 # Document exists, so we update it, specifically last_asked-timestamp
-                subcollection_doc_ref.update(update_fields)
+                subcollection_doc_ref.update(problem_to_review)
                 print(f"Updated submission for problem #{problem_id} for user {uuid}.")
             else:
                 # Document doesn't exist, so we create it with the initial user in users_solved
                
-                subcollection_doc_ref.set(update_fields) #todo - make problems a constant
+                subcollection_doc_ref.set(problem_to_review) #todo - make problems a constant
                 print(f"Submission for problem #{problem_id} added successfully to the db for user {uuid}")
                 
         except Exception as e:
-            print(f"Error in update_leetcode_submission for user {uuid}: {e}")
+            print(f"Error in update_leetcode_submission for user {uuid} in phase 2: {e}")
             raise e
 
     def get_problem_past_reviewed_date(self):
