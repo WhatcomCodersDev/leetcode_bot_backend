@@ -109,15 +109,14 @@ def add_problem_to_user_problems_for_review(problem_id: str) -> Union[Dict[str, 
             user_uuid, 
             problem_id
             )
-        print(f'previous_problem_to_review: {previous_problem_to_review.to_dict()}')
         
         if previous_problem_to_review:
+            print(f'previous_problem_to_review: {previous_problem_to_review.to_dict()}')
             previous_problem_submission = previous_problem_to_review.to_dict()
-        
-        print(f'previous_problem_submission: {previous_problem_submission}')
-        # If the dictionary exists, get the problem data by indexing the problem_id
-        if previous_problem_submission and problem_id in previous_problem_submission:
-            previous_problem_data = previous_problem_submission[problem_id]
+            print(f'previous_problem_submission: {previous_problem_submission}')
+            # If the dictionary exists, get the problem data by indexing the problem_id
+            if previous_problem_submission and problem_id in previous_problem_submission:
+                previous_problem_data = previous_problem_submission[problem_id]
         
         print(f'previous_problem_data: {previous_problem_data}')
         # Case 1 - User has added a submission for this problem before

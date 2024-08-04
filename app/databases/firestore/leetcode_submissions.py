@@ -55,6 +55,7 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
         doc_ref = self.get_doc_ref(collection_ref, uuid)
         try:
             doc = doc_ref.get()
+            print("doc:", doc.to_dict())
             if doc.exists:
                 subcollection_ref = doc_ref.collection('problems')
                 docs = subcollection_ref.stream()
@@ -128,23 +129,34 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
         This means that one timestamp will remain the same, while the other will be updated
         '''
                                   
+        # Get the user's submission collection: https://console.cloud.google.com/firestore/databases/github-commit-data/data/panel/users_leetcode_submissions?project=gothic-sled-375305
         collection_ref = self.get_collection(self.uuid_collection)
+
+        # Get the user's submission document based on uuid if it exists
         doc_ref = self.get_doc_ref(collection_ref, uuid)
+        
+        # Check if the uuid exists otherwise create it
+        doc = doc_ref.get()
+        if not doc.exists:
+            print(f"User {uuid} doesn't exist in the db. Creating a new document for them.")
+            doc_ref.set({})
+
+        # Now create/update the problem sub collection
         try:
-            # Get the user's submission document
-            doc = doc_ref.get()
+            # Get the subcollection of problems for the user
             subcollection_ref = doc_ref.collection('problems')
+            # Get the document reference for the specific problem
             subcollection_doc_ref = subcollection_ref.document(str(problem_id))
         except Exception as e:
             print(f"Error in update_leetcode_submission for user {uuid} in phase 1: {e}")
             raise e
-        
-
 
 
         try:
+            # Get the document for the specific problem
             subcollection_doc = subcollection_doc_ref.get()
 
+            # Check if the document for the problem submission exists
             if subcollection_doc.exists:
                 print("doc", subcollection_doc.to_dict())
                 print("updating submission:", problem_to_review)
