@@ -67,7 +67,7 @@ def handle_problem_submission(problem_id):
         review_data = None
         if not previous_submission_doc  and problem_data.category != None:
             print("This problem hasn't beeen submitted before, so it should be scheduled for review")
-            review_data = fsrs_scheduler.schedule_review(
+            review_data = fsrs_scheduler.get_next_review_data_for_problem(
                 problem_id, 
                 datetime.now(), 
                 ease=1, 
@@ -80,14 +80,14 @@ def handle_problem_submission(problem_id):
                 category=problem_data.category,
                 user_rating=data.get('user_rating', 3),
                 last_reviewed_timestamp=convert_dateime_now_to_pt(),
-                next_review_timestamp=review_data['next_review_timestamp'],
+                next_review_timestamp=review_data.get_next_review_timestamp(),
                 streak=0                
             )
                     
 
         elif previous_submission_doc and 'next_review_timestamp' not in previous_submission_doc:
             print("This problem has beeen submitted before, but it doesn't have a next_review_timestamp")
-            review_data = fsrs_scheduler.schedule_review(problem_id, 
+            review_data = fsrs_scheduler.get_next_review_data_for_problem(problem_id, 
                                                         convert_dateime_now_to_pt(), 
                                                         ease=1, 
                                                         interval=1, 
@@ -97,7 +97,7 @@ def handle_problem_submission(problem_id):
                 category=problem_data.category,
                 user_rating=data.get('user_rating', 3),
                 last_reviewed_timestamp=convert_dateime_now_to_pt(),
-                next_review_timestamp=review_data['next_review_timestamp'],
+                next_review_timestamp=review_data.get_next_review_timestamp(),
                 streak=0                
             )
             

@@ -1,8 +1,8 @@
 # leetcode_manager.py
-import uuid
+from google.cloud.firestore_v1 import DocumentSnapshot # type: ignore
 from app.databases.firestore.firestore_base import FirestoreBase
 from datetime import datetime
-from typing import Dict, Union
+from typing import List
 from constants import USER_SUBMISSION_COLLECTION
 from app.services.user_submissions_reviewing.problem_to_review_data import ProblemToReview
 
@@ -31,7 +31,7 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
         self.uuid_collection = USER_SUBMISSION_COLLECTION if environment == "production" else USER_SUBMISSION_COLLECTION
 
     
-    def get_user_submissions(self, uuid: str) -> Dict[str, str]:
+    def get_user_submissions(self, uuid: str) -> List[DocumentSnapshot]:
         ''' Get users problem submissions
 
         The structure is 
@@ -49,13 +49,12 @@ class FirestoreSubmissionCollectionWrapper(FirestoreBase):
             uuid (str): User ID
         
         Returns:
-            Dict: User submissions
+            DocumentSnapshot: User submissions
         '''
         collection_ref = self.get_collection(self.uuid_collection)
         doc_ref = self.get_doc_ref(collection_ref, uuid)
         try:
             doc = doc_ref.get()
-            print("doc:", doc.to_dict())
             if doc.exists:
                 subcollection_ref = doc_ref.collection('problems')
                 docs = subcollection_ref.stream()
