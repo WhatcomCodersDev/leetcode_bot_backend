@@ -1,3 +1,5 @@
+import pytz
+
 from datetime import datetime, timedelta
 from typing import List, Dict 
 from app.databases.firestore.leetcode_submissions import FirestoreSubmissionCollectionWrapper
@@ -72,8 +74,9 @@ class ProblemReviewManager:
         for review_category, problems_to_review in user_problems_by_category.items():
             review_count = 0
             for problem_to_review in problems_to_review:
-                if 'next_review_timestamp' not in problem_to_review:
+                if not problem_to_review.get_next_review_timestamp():
                     problem_to_review.set_next_review_timestamp(make_aware(datetime.now()))
+
                 timewindow_in_memory = problem_to_review.get_next_review_timestamp() + timedelta(days=1)
                 review_count += self.handle_review_logic(user_id, problem_to_review, timewindow_in_memory)
             if review_count == len(problems_to_review):
@@ -173,6 +176,7 @@ class ProblemReviewManager:
                             timewindow_in_memory: datetime,
                             ):
         review_count = 0
+        print("problem_to_review:", problem_to_review)
         if not problem_to_review.get_last_reviewed_timestamp():
             # If the problem has not been reviewed yet, skip the review logic
             print(f"Problem {problem_to_review.get_problem_id()} has not been reviewed yet")
@@ -236,6 +240,8 @@ class ProblemReviewManager:
              last_reviewed      current_time       next_reviewed       time_window
         
         '''
+
+
         return problem_to_review.get_next_review_timestamp() and datetime.now() < make_naive(problem_to_review.get_next_review_timestamp())
     
 
