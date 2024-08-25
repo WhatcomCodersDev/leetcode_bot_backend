@@ -158,7 +158,7 @@ def test_create_problem_category_to_problem_map(problem_review_manager):
 
 
 def test_user_reviewed_problem_within_timewindow(problem_review_manager):
-    '''Case 1: This user has successfully reviewed the problem within the time window
+    '''Case 2: This user has successfully reviewed the problem within the time window
         
 
 
@@ -189,7 +189,7 @@ def test_user_reviewed_problem_within_timewindow(problem_review_manager):
     assert result is True
 
 def test_user_failed_to_review_problem_within_timewindow(problem_review_manager):
-    '''Case 2: This user has failed to review the problem within the time window
+    '''Case 4: This user has failed to review the problem within the time window
     
         Conditions
         1. We were in the time window and it has finished (current time is after next_reviewed and time_window)
@@ -198,15 +198,15 @@ def test_user_failed_to_review_problem_within_timewindow(problem_review_manager)
             
         Current Time: july 11 (after time window)
 
-            |-----------------|-----------------|
-            last_reviewed    next_reviewed    time_window/current_time
+            |-----------------|-----------------|----------------------------|
+            last_reviewed    next_reviewed    time_window/current_time      now (failed to review)
     '''
     problem_to_review = MagicMock(spec=ProblemToReview)
     
     # Setting up timestamps
     next_review_timestamp = datetime.now() - timedelta(hours=10)  # 10 hours ago
     last_reviewed_timestamp = datetime.now() - timedelta(hours=11)  # 11 hour ago
-    timewindow_in_memory = datetime.now() - timedelta(hours=10) + timedelta(days=1)  # 1 day from the next_review_timestamp
+    timewindow_in_memory = datetime.now() - timedelta(hours=9)  # Lets say the time window was 9 hours ago
     
 
     problem_to_review.get_next_review_timestamp.return_value = next_review_timestamp
@@ -217,9 +217,36 @@ def test_user_failed_to_review_problem_within_timewindow(problem_review_manager)
     # The user reviewed the problem outside the time window, before next_review and after time_window
     assert result is True
 
+def test_user_has_not_reviewed_but_time_window_is_still_open(problem_review_manager):
+    '''Case 3: The review window has opened, but the user has not reviewed the problem yet, but the time window is still open
+                
+            
+        Current Time: july 11 (after time window)
+
+            |-----------------|-----------------|
+            last_reviewed    next_reviewed    time_window/current_time
+    '''
+    problem_to_review = MagicMock(spec=ProblemToReview)
+    
+    problem_to_review = MagicMock(spec=ProblemToReview)
+    
+    # Setting up timestamps
+    next_review_timestamp = datetime.now() - timedelta(hours=10)  # 10 hours ago
+    last_reviewed_timestamp = datetime.now() - timedelta(hours=11)  # 11 hour ago
+    timewindow_in_memory = datetime.now() - timedelta(hours=10) + timedelta(days=1)  # 1 day from the next_review_timestamp
+    # The user still has time to review the problem, so they haven't failed
+
+    problem_to_review.get_next_review_timestamp.return_value = next_review_timestamp
+    problem_to_review.get_last_reviewed_timestamp.return_value = last_reviewed_timestamp
+
+
+    result = problem_review_manager.user_has_not_reviewed_but_time_window_is_still_open(problem_to_review, timewindow_in_memory)
+
+    assert result is True
+
 def test_timewindow_not_open_yet(problem_review_manager):
     '''
-    Case 3: Time window hasn't opened
+    Case 1: Time window hasn't opened
         
     Conditions
     1. The current time is before the next_reviewed
