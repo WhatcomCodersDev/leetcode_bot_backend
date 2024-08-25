@@ -201,8 +201,13 @@ class ProblemReviewManager:
                                         review_data, 
                                         )
                 review_count += 1
+            
+            elif self.user_has_not_reviewed_but_time_window_is_still_open(problem_to_review, timewindow_in_memory):
+                print("Case 3: The time window has opened but the user has not reviewed the problem. The user still has time to review the problem before the time window closes")
+                
+            
             elif self.user_failed_to_review_problem_within_timewindow(problem_to_review, timewindow_in_memory):
-                print("Case 3: This user has failed to review the problem within the time window")
+                print("Case 4: This user has failed to review the problem within the time window")
                 review_data = self.fsrs_scheduler.get_next_review_data_for_problem(
                     problem_to_review.get_problem_id(), 
                     datetime.now(), 
@@ -245,6 +250,7 @@ class ProblemReviewManager:
         return problem_to_review.get_next_review_timestamp() and datetime.now() < make_naive(problem_to_review.get_next_review_timestamp())
     
 
+
     def user_reviewed_problem_within_timewindow(self, 
                     problem_to_review: ProblemToReview,
                     timewindow_in_memory: datetime,
@@ -263,18 +269,43 @@ class ProblemReviewManager:
             Current Time: july 10 - july 11  
 
 
-                |-----------------|-----------------|
-            next_reviewed    last_reviewed    time_window
+                |-----------------|----------|----------|
+            next_reviewed    last_reviewed   now    time_window
         '''
 
         return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() < make_naive(timewindow_in_memory)) \
             and (problem_to_review.get_last_reviewed_timestamp() >= problem_to_review.get_next_review_timestamp() and problem_to_review.get_last_reviewed_timestamp() < timewindow_in_memory)
 
+    
+    def user_has_not_reviewed_but_time_window_is_still_open(self,
+                                                            problem_to_review: ProblemToReview,
+                                                            timewindow_in_memory: datetime,
+                                                            ):
+        '''Case 3: The time window has opened but the user has not reviewed the problem. The
+        user still has time to review the problem before the time window closes
+        
+            last_reviewed: july 6
+            next_reviewed: july 10
+            time_window: july 11
+
+            Conditions
+            1. The current time is within the time window (between next_reviewed and time_window)
+            2. The last_reviewed is not within the time_window
+
+            Current Time: july 10 - july 11
+
+                |-----------------|-----------------|
+             last_reviewed    next_reviewed    time_window/current_time
+        '''
+        return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() < make_naive(timewindow_in_memory)) \
+            and (problem_to_review.get_last_reviewed_timestamp() < problem_to_review.get_next_review_timestamp() and problem_to_review.get_last_reviewed_timestamp() < timewindow_in_memory)
+        
+    
     def user_failed_to_review_problem_within_timewindow(self, 
                     problem_to_review: ProblemToReview, 
                     timewindow_in_memory: datetime,
                     ):
-        '''Case 3: This user has failed to review the problem within the time window
+        '''Case 4: This user has failed to review the problem within the time window
         
             last_reviewed: july 6
             next_reviewed: july 10
@@ -287,9 +318,9 @@ class ProblemReviewManager:
             
             Current Time: july 11 (after time window)
 
-                |-----------------|-----------------|
-             last_reviewed    next_reviewed    time_window/current_time
+                |-----------------|-----------------|-------------|
+             last_reviewed    next_reviewed    time_window       now
         
         '''
-        return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() < make_naive(timewindow_in_memory)) \
+        return problem_to_review.get_next_review_timestamp() and (datetime.now() >= make_naive(problem_to_review.get_next_review_timestamp()) and datetime.now() > make_naive(timewindow_in_memory)) \
             and (problem_to_review.get_last_reviewed_timestamp() < problem_to_review.get_next_review_timestamp() and problem_to_review.get_last_reviewed_timestamp() < timewindow_in_memory)
